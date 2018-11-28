@@ -1,0 +1,38 @@
+<RCC>
+    <qresource prefix="/Images">
+        <file>Carro_s(1).png</file>
+        <file>Carro_s(2).png</file>
+        <file>playmove1.png</file>
+        <file>playmove.png</file>
+        <file>caminar10.png</file>
+        <file>caminar11.png</file>
+        <file>caminar2.png</file>
+        <file>caminar3.png</file>
+        <file>caminar4.png</file>
+        <file>caminar5.png</file>
+        <file>caminar6.png</file>
+        <file>caminar7.png</file>
+        <file>caminar8.png</file>
+        <file>caminar9.png</file>
+        <file>pegar1.png</file>
+        <file>pegar3.png</file>
+        <file>pegar4.png</file>
+        <file>pegar5.png</file>
+        <file>pegar6.png</file>
+        <file>5b734c53396e3.r_1534285969832.0-0-1280-640.jpeg</file>
+        <file>5b734c53396e3_opt.jpg</file>
+        <file>caminar1.png</file>
+        <file>saltar2.png</file>
+        <file>saltar3.png</file>
+        <file>saltar4.png</file>
+        <file>saltar5.png</file>
+        <file>saltar6.png</file>
+        <file>saltar7.png</file>
+        <file>saltar8.png</file>
+        <file>saltar1.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>playmove1.png</file>
+        <file>playmove.png</file>
+    </qresource>
+</RCC>
