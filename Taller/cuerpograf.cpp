@@ -1,3 +1,4 @@
+
 #include "cuerpograf.h"
 #include <cuerpo.h>
 
@@ -84,9 +85,15 @@ void grafica::pelea()
         {
             setPixmap(QPixmap(":/Images/pegar6.png"));
             flag=1;
+            contador2=5;
+        }
+        else if (contador2==5&& cont >20)
+        {
+            setPixmap(QPixmap(":/Images/pegar7.png"));
+            flag=1;
             contador2=0;
         }
-        if (cont==20)cont=0;
+        if (cont==24)cont=0;
 
         cont++;
 

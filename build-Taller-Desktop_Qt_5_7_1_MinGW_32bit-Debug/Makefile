@@ -186,6 +186,7 @@ Makefile: ../Taller/Taller.pro ../../../../qt/5.7/mingw53_32/mkspecs/win32-g++/q
 		../../../../qt/5.7/mingw53_32/mkspecs/features/win32/qt_config.prf \
 		../../../../qt/5.7/mingw53_32/mkspecs/win32-g++/qmake.conf \
 		../../../../qt/5.7/mingw53_32/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../../qt/5.7/mingw53_32/mkspecs/features/exclusive_builds.prf \
 		../../../../qt/5.7/mingw53_32/mkspecs/features/toolchain.prf \
 		../../../../qt/5.7/mingw53_32/mkspecs/features/default_pre.prf \
@@ -210,8 +211,10 @@ Makefile: ../Taller/Taller.pro ../../../../qt/5.7/mingw53_32/mkspecs/win32-g++/q
 		../../../../qt/5.7/mingw53_32/mkspecs/features/lex.prf \
 		../Taller/Taller.pro \
 		../../../../qt/5.7/mingw53_32/lib/qtmaind.prl \
+		../../../../qt/5.7/mingw53_32/lib/Qt5Multimedia.prl \
 		../../../../qt/5.7/mingw53_32/lib/Qt5Widgets.prl \
 		../../../../qt/5.7/mingw53_32/lib/Qt5Gui.prl \
+		../../../../qt/5.7/mingw53_32/lib/Qt5Network.prl \
 		../../../../qt/5.7/mingw53_32/lib/Qt5Core.prl
 	$(QMAKE) -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" -o Makefile ..\Taller\Taller.pro
 ../../../../qt/5.7/mingw53_32/mkspecs/features/spec_pre.prf:
@@ -341,6 +344,7 @@ Makefile: ../Taller/Taller.pro ../../../../qt/5.7/mingw53_32/mkspecs/win32-g++/q
 ../../../../qt/5.7/mingw53_32/mkspecs/features/win32/qt_config.prf:
 ../../../../qt/5.7/mingw53_32/mkspecs/win32-g++/qmake.conf:
 ../../../../qt/5.7/mingw53_32/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../../qt/5.7/mingw53_32/mkspecs/features/exclusive_builds.prf:
 ../../../../qt/5.7/mingw53_32/mkspecs/features/toolchain.prf:
 ../../../../qt/5.7/mingw53_32/mkspecs/features/default_pre.prf:
@@ -365,8 +369,10 @@ Makefile: ../Taller/Taller.pro ../../../../qt/5.7/mingw53_32/mkspecs/win32-g++/q
 ../../../../qt/5.7/mingw53_32/mkspecs/features/lex.prf:
 ../Taller/Taller.pro:
 ../../../../qt/5.7/mingw53_32/lib/qtmaind.prl:
+../../../../qt/5.7/mingw53_32/lib/Qt5Multimedia.prl:
 ../../../../qt/5.7/mingw53_32/lib/Qt5Widgets.prl:
 ../../../../qt/5.7/mingw53_32/lib/Qt5Gui.prl:
+../../../../qt/5.7/mingw53_32/lib/Qt5Network.prl:
 ../../../../qt/5.7/mingw53_32/lib/Qt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" -o Makefile ..\Taller\Taller.pro

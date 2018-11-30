@@ -24,15 +24,27 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    menu.cpp \
+    registro.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    menu.h \
+    registro.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    menu.ui \
+    registro.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    resources.qrc
+
+DISTFILES += \
+    6282614902_ded28303e1_b.jpg

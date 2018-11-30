@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QFileDialog>
+#include <QGraphicsScene>
+#include <QFile>
 
 namespace Ui {
 class MainWindow;
@@ -15,8 +18,14 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
+    int h_limit;                //longitud en X del mundo
+    int v_limit;
+    QGraphicsScene *scene;
 };
 
 #endif // MAINWINDOW_H

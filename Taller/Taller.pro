@@ -4,7 +4,8 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui multimedia
+
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -25,3 +26,7 @@ FORMS    += mainwindow.ui
 
 RESOURCES += \
     resource.qrc
+
+DISTFILES += \
+    Contra_(NES)_Music_-_Jungle_Theme.mp3
+QMAKE_CXXFLAGS += -std=gnu++11

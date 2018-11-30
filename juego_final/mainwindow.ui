@@ -17,11 +17,37 @@
    <widget class="QGraphicsView" name="graphicsView">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>20</y>
-      <width>631</width>
-      <height>341</height>
+      <x>0</x>
+      <y>0</y>
+      <width>691</width>
+      <height>381</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>150</y>
+      <width>161</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>OpenHandCursor</cursorShape>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../Taller/start-1414148_960_720.jpg</normaloff>../Taller/start-1414148_960_720.jpg</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>160</width>
+      <height>150</height>
+     </size>
     </property>
    </widget>
   </widget>

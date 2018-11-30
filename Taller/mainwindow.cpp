@@ -1,11 +1,13 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+#include "qmediaplayer.h"
+#include <QFileDialog>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    mMediaPlayer = new QMediaPlayer(this);
     h_limit=1000;                  //Asigna los valores leidos el archivo
     v_limit=593;
     timer_mov = new QTimer(this);
@@ -27,13 +29,23 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(timer_par,SIGNAL(timeout()),this,SLOT(par()));
     connect(timer_salt,SIGNAL(timeout()),this,SLOT(salto()));
      ui->graphicsView->setBackgroundBrush(QImage(":/Images/5b734c53396e3_opt.jpg"));
+     //QString nombre=QFileDialog::getOpenFileName(this,":/Images/Contra_(NES)_Music_-_Jungle_Theme.mp3");
+     mMediaPlayer->setMedia(QUrl::fromLocalFile("Contra_(NES)_Music_-_Jungle_Theme.mp3"));
+     mMediaPlayer->setVolume(100);
+     mMediaPlayer->play();
+
 
     c=new grafica();
+    d=new grafica();
 
-    c->get_carro()->set_valores(0,0,450,450);
+    c->get_carro()->set_valores(0,-450,450,450);
     c->posicion(v_limit);
     scene->addItem(c);
     scene->setFocusItem(c);
+    d->get_carro()->set_valores(600,-450,450,450);
+    d->posicion(v_limit);
+    scene->addItem(d);
+    scene->setFocusItem(d);
     vel=3;
     i=0;
 }
@@ -61,6 +73,14 @@ void MainWindow::mov()
     }
     else{
         c->mov();
+        cont=0;
+    }
+    if(d->get_carro()->GetVy()>sp){
+        d->salto(2);
+        sp=d->get_carro()->GetVy();
+    }
+    else{
+        d->mov();
         cont=0;
     }
 
@@ -117,6 +137,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event){       //Funciones de teclas
         on_pegar();
         event->accept();
         c->pelea();
+        d-> setPixmap(QPixmap(":/Images/saltar2.png"));;
 
     }
 
@@ -125,9 +146,11 @@ void MainWindow::keyPressEvent(QKeyEvent *event){       //Funciones de teclas
         timer_pel->stop();
         timer_salt->stop();
         c->get_carro()->set_px(c->get_carro()->get_px()+vel);
+        d->get_carro()->set_px(d->get_carro()->get_px()-vel);
         on_actionStop_triggered();
         event->accept();
         c->mov();
+        d->mov();
     }
    if(event->key()== Qt::Key_A&& c->get_carro()->get_px()>0)
     {
@@ -142,9 +165,10 @@ void MainWindow::keyPressEvent(QKeyEvent *event){       //Funciones de teclas
     {
         timer_pel->stop();
        // c->get_carro()->set_py(c->get_carro()->get_py()+vel);
-        //on_actionStop_triggered();
-        timer_salt->start();
+        on_actionStop_triggered();
+        timer_salt->stop();
         event->accept();
+        timer_salt->start();
         //c->mov();
     }
    if(event->key()== Qt::Key_S && c->get_carro()->get_py()>0)
@@ -165,11 +189,22 @@ void MainWindow::keyPressEvent(QKeyEvent *event){       //Funciones de teclas
         event->accept();
         c->mov();
     }
+   if (event->key()==Qt::Key_4){
+       timer_pel->stop();
+       timer_salt->stop();
+        d->get_carro()->set_px(d->get_carro()->get_px()-vel) ;
+        //d->get_carro()->SetVx(-50);
+        on_actionStop_triggered();
+        event->accept();
+        d->mov();
+   }
 
 
-//c->mov();
+c->mov();
 //timer_pel->stop();
 //c->pelea();
 //timer_salt->start();
 c->posicion(v_limit);
+d->posicion(v_limit);
+
     }

@@ -14,7 +14,7 @@
 namespace Ui {
 class MainWindow;
 }
-
+class QMediaPlayer;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -35,6 +35,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    QMediaPlayer *mMediaPlayer;
     int h_limit;                //longitud en X del mundo
     int v_limit;                //longitud en Y del mundo
     int vel;
@@ -46,6 +47,7 @@ private:
     QTimer *timer_salt;
     QGraphicsScene *scene;
     grafica *c;
+    grafica *d;
     int sp=0.0;
 };
 
