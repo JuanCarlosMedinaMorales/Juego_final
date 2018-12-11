@@ -32,6 +32,7 @@
         <file>saltar1.png</file>
         <file>pegar7.png</file>
         <file>Contra_(NES)_Music_-_Jungle_Theme.mp3</file>
+        <file>made.jpg</file>
     </qresource>
     <qresource prefix="/">
         <file>playmove1.png</file>

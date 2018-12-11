@@ -15,6 +15,11 @@ public:
     explicit Modo_de_juego(QWidget *parent = nullptr);
     ~Modo_de_juego();
 
+private slots:
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_3_clicked();
+
 private:
     Ui::Modo_de_juego *ui;
 };

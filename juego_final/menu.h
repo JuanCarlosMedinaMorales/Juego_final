@@ -2,6 +2,7 @@
 #define MENU_H
 
 #include <QDialog>
+#include <QMouseEvent>
 
 namespace Ui {
 class Menu;
@@ -13,11 +14,13 @@ class Menu : public QDialog
 
 public:
     explicit Menu(QWidget *parent = nullptr);
+
     ~Menu();
 
 private slots:
     void on_pushButton_clicked();
 
+    void on_pushButton_2_clicked();
 private:
     Ui::Menu *ui;
 };

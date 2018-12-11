@@ -46,10 +46,11 @@ public:
         graphicsView->setGeometry(QRect(0, 0, 691, 381));
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(50, 150, 161, 81));
+        pushButton->setGeometry(QRect(50, 80, 151, 151));
         pushButton->setCursor(QCursor(Qt::OpenHandCursor));
+        pushButton->setStyleSheet(QStringLiteral("background-image: url(:/6282614902_ded28303e1_b.jpg);"));
         QIcon icon;
-        icon.addFile(QStringLiteral("../Taller/start-1414148_960_720.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QStringLiteral(":/START.png"), QSize(), QIcon::Normal, QIcon::Off);
         pushButton->setIcon(icon);
         pushButton->setIconSize(QSize(160, 150));
         MainWindow->setCentralWidget(centralWidget);

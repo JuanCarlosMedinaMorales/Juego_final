@@ -212,7 +212,9 @@ Makefile: ../juego_final/juego_final.pro ../../../../qt/5.7/mingw53_32/mkspecs/w
 		../juego_final/juego_final.pro \
 		../../../../qt/5.7/mingw53_32/lib/qtmaind.prl \
 		../../../../qt/5.7/mingw53_32/lib/Qt5Widgets.prl \
+		../../../../qt/5.7/mingw53_32/lib/Qt5Multimedia.prl \
 		../../../../qt/5.7/mingw53_32/lib/Qt5Gui.prl \
+		../../../../qt/5.7/mingw53_32/lib/Qt5Network.prl \
 		../../../../qt/5.7/mingw53_32/lib/Qt5Core.prl
 	$(QMAKE) -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" -o Makefile ..\juego_final\juego_final.pro
 ../../../../qt/5.7/mingw53_32/mkspecs/features/spec_pre.prf:
@@ -368,7 +370,9 @@ Makefile: ../juego_final/juego_final.pro ../../../../qt/5.7/mingw53_32/mkspecs/w
 ../juego_final/juego_final.pro:
 ../../../../qt/5.7/mingw53_32/lib/qtmaind.prl:
 ../../../../qt/5.7/mingw53_32/lib/Qt5Widgets.prl:
+../../../../qt/5.7/mingw53_32/lib/Qt5Multimedia.prl:
 ../../../../qt/5.7/mingw53_32/lib/Qt5Gui.prl:
+../../../../qt/5.7/mingw53_32/lib/Qt5Network.prl:
 ../../../../qt/5.7/mingw53_32/lib/Qt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug" -o Makefile ..\juego_final\juego_final.pro

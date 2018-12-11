@@ -7,6 +7,7 @@
 #include <QGraphicsPixmapItem>
 #include <QGraphicsScene>
 #include "cuerpo.h"
+#include "QList"
 
 class grafica:public QObject,
               public QGraphicsPixmapItem
@@ -22,6 +23,10 @@ private:
     int cont=1;
     int contador=0;
     int contador2=0;
+     QString c=":/caminar1.png";
+     //lista de nombres para las animaciones
+     QList<QString>n;
+     QList<QList<QString>>f;
 public:
     grafica(QGraphicsItem* carr = 0);
     void mov();
@@ -33,5 +38,6 @@ public:
     ~grafica();
     float get_escala();
     float get_contador();
+    void set_c(QString co);
 };
 #endif // CUERPOGRAF_H

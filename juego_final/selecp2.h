@@ -15,6 +15,9 @@ public:
     explicit selecp2(QWidget *parent = nullptr);
     ~selecp2();
 
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::selecp2 *ui;
 };

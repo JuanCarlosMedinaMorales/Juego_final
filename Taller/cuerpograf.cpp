@@ -4,9 +4,17 @@
 
 grafica::grafica(QGraphicsItem* carr):QGraphicsPixmapItem(carr)
 {
-    setPixmap(QPixmap(":/Images/caminar1.png"));
+    setPixmap(QPixmap(c));
 
     car=new Cuerpo;
+    n.append(":/Images/caminar1.png");
+    n.append(":/Images/caminar2.png");
+    n.append(":/Images/caminar3.png");
+    n.append(":/Images/caminar4.png");
+    n.append(":/Images/caminar5.png");
+    n.append(":/Images/caminar6.png");
+
+    f.append(n);
 
 }
 
@@ -15,42 +23,44 @@ void grafica::mov()
    // int contador=0;
     if (contador==0 && cont<4)
     {
-        setPixmap(QPixmap(":/Images/caminar1.png"));
+        setPixmap(QPixmap(f.at(0).at(0)));
         contador=1;
+
         flag=0;
     }
     else if (contador==1&& cont >4)
     {
-        setPixmap(QPixmap(":/Images/caminar2.png"));
+        setPixmap(QPixmap(f.at(0).at(1)));
         flag=2;
         contador=2;
     }
     else if (contador==2&& cont >8)
     {
-        setPixmap(QPixmap(":/Images/caminar3.png"));
+        setPixmap(QPixmap(f.at(0).at(2)));
         flag=1;
         contador=3;
     }
     else if (contador==3&& cont >12)
     {
-        setPixmap(QPixmap(":/Images/caminar4.png"));
+        setPixmap(QPixmap(f.at(0).at(3)));
         flag=1;
         contador=4;
     }
     else if (contador==4&& cont >16)
     {
-        setPixmap(QPixmap(":/Images/caminar5.png"));
+        setPixmap(QPixmap(f.at(0).at(4)));
         flag=1;
         contador=5;
     }
     else if (contador==5&& cont >20)
     {
-        setPixmap(QPixmap(":/Images/caminar6.png"));
+        setPixmap(QPixmap(f.at(0).at(5)));
         flag=1;
         contador=0;
     }
 
     if (cont==24)cont=0;
+
 
     cont++;
 
@@ -134,6 +144,7 @@ void grafica::salto(int vec)
             flag=1;
             contador2=5;
         }
+        get_carro()->CalcularPosicion();
     }
     else if(vec==2){
         if (contador2==5 && cont<4)
@@ -166,11 +177,13 @@ void grafica::salto(int vec)
             flag=1;
             contador2=0;
         }
+        get_carro()->CalcularPosicion();
     }
 
     if (cont==20)cont=0;
 
     cont++;
+    get_carro()->CalcularPosicion();
 
 }
 
@@ -185,6 +198,7 @@ Cuerpo* grafica::get_carro(){
 void grafica::posicion(float v_lim){
     car->CalcularPosicion();
     setPos(car->get_px(),(v_lim-car->get_py()-((car->get_h())*escala)));
+
 }
 void grafica::par(float v_lim){
 
@@ -206,3 +220,8 @@ float grafica::get_contador()
 {
     return contador;
 }
+void grafica::set_c(QString co)
+{
+    c=co;
+}
+

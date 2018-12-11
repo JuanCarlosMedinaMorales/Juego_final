@@ -15,6 +15,17 @@ public:
     explicit selecP(QWidget *parent = nullptr);
     ~selecP();
 
+private slots:
+    void on_pushButton_clicked();
+
+    void on_radioButton_clicked();
+
+    void on_radioButton_3_clicked();
+
+    void on_radioButton_5_clicked();
+
+    void on_label_linkHovered(const QString &link);
+
 private:
     Ui::selecP *ui;
 };

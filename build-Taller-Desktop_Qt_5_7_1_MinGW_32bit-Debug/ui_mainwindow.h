@@ -18,6 +18,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QProgressBar>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
@@ -31,6 +32,7 @@ public:
     QAction *actionStop;
     QWidget *centralWidget;
     QGraphicsView *graphicsView;
+    QProgressBar *progressBar;
     QMenuBar *menuBar;
     QMenu *menuOptions;
     QToolBar *mainToolBar;
@@ -51,6 +53,35 @@ public:
         graphicsView->setObjectName(QStringLiteral("graphicsView"));
         graphicsView->setGeometry(QRect(0, 0, 1111, 600));
         graphicsView->setStyleSheet(QStringLiteral("background-color: rgb(0, 0, 0);"));
+        progressBar = new QProgressBar(centralWidget);
+        progressBar->setObjectName(QStringLiteral("progressBar"));
+        progressBar->setGeometry(QRect(10, 10, 241, 31));
+        QPalette palette;
+        QBrush brush(QColor(85, 0, 0, 255));
+        brush.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::Button, brush);
+        palette.setBrush(QPalette::Active, QPalette::Base, brush);
+        palette.setBrush(QPalette::Active, QPalette::Window, brush);
+        QBrush brush1(QColor(0, 0, 0, 255));
+        brush1.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::AlternateBase, brush1);
+        palette.setBrush(QPalette::Inactive, QPalette::Button, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Base, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Window, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::AlternateBase, brush1);
+        palette.setBrush(QPalette::Disabled, QPalette::Button, brush);
+        palette.setBrush(QPalette::Disabled, QPalette::Base, brush);
+        palette.setBrush(QPalette::Disabled, QPalette::Window, brush);
+        palette.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush1);
+        progressBar->setPalette(palette);
+        progressBar->setCursor(QCursor(Qt::WaitCursor));
+        progressBar->setStyleSheet(QLatin1String("background-image: url(:/Images/made.jpg);\n"
+"background-color: rgb(85, 0, 0);\n"
+"alternate-background-color: rgb(0, 0, 0);\n"
+""));
+        progressBar->setValue(100);
+        progressBar->setInvertedAppearance(false);
+        progressBar->setTextDirection(QProgressBar::BottomToTop);
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));

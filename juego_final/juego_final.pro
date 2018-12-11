@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui widgets
+QT       += core gui widgets multimedia
 
 TARGET = juego_final
 TEMPLATE = app
@@ -26,17 +26,48 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     menu.cpp \
-    registro.cpp
+    registro.cpp \
+    iniciar_sesion.cpp \
+    partidas.cpp \
+    modo_de_juego.cpp \
+    selecp.cpp \
+    selecp2.cpp \
+    juego.cpp \
+    iniciar_juego.cpp \
+    cuerpo.cpp \
+    cuerpograf.cpp \
+    instrucciones.cpp \
+    cargar_partidas.cpp
 
 HEADERS += \
         mainwindow.h \
     menu.h \
-    registro.h
+    registro.h \
+    iniciar_sesion.h \
+    partidas.h \
+    modo_de_juego.h \
+    selecp.h \
+    selecp2.h \
+    juego.h \
+    iniciar_juego.h \
+    cuerpo.h \
+    cuerpograf.h \
+    instrucciones.h \
+    cargar_partidas.h
 
 FORMS += \
         mainwindow.ui \
     menu.ui \
-    registro.ui
+    registro.ui \
+    iniciar_sesion.ui \
+    partidas.ui \
+    modo_de_juego.ui \
+    selecp.ui \
+    selecp2.ui \
+    juego.ui \
+    iniciar_juego.ui \
+    instrucciones.ui \
+    cargar_partidas.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -48,3 +79,4 @@ RESOURCES += \
 
 DISTFILES += \
     6282614902_ded28303e1_b.jpg
+QMAKE_CXXFLAGS += -std=gnu++11

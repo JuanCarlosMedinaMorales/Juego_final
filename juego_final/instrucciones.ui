@@ -1,16 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>instrucciones</class>
- <widget name="instrucciones" class="QDialog">
+ <widget class="QDialog" name="instrucciones">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>506</width>
+    <height>344</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">image: url(:/instruccionesListas.png);
+background-image: url(:/1. Tropel Ut - Noviembre 27 de 2014.jpg);</string>
   </property>
  </widget>
  <resources/>

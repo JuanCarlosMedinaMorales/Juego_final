@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "qmediaplayer.h"
 #include <QFileDialog>
+#include <QList>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -34,9 +35,29 @@ MainWindow::MainWindow(QWidget *parent) :
      mMediaPlayer->setVolume(100);
      mMediaPlayer->play();
 
-
+    grafica *cuerpo1;
     c=new grafica();
+    QList<grafica*> l;
+    l.append(c);
+    l.last()->setPixmap(QPixmap(":/Images/caminar1.png"));
+
+
     d=new grafica();
+    l.append(d);
+    l.last()->setPixmap(QPixmap(":/Images/pegar5.png"));
+
+    if(flag==0){
+        timer_salt->stop();
+        timer_salt->start();
+        timer_pel->stop();
+        c->get_carro()->CalcularPosicion();
+       // c->get_carro()->set_py(c->get_carro()->get_py()+vel);
+        on_actionStop_triggered();
+
+        if(c->get_carro()->GetVy()==0){
+            flag=1;
+        }
+    }
 
     c->get_carro()->set_valores(0,-450,450,450);
     c->posicion(v_limit);
@@ -117,15 +138,36 @@ void MainWindow::pegar()
 
 void MainWindow::salto()
 {
-    if(c->get_carro()->GetVy()>0){
-        c->salto(1);
+    if(flag ==0){
+        //c->salto(1);
+        if(c->get_carro()->get_py()==posi ){
+           c->get_carro()->SetVy(c->get_carro()->GetVy()+1000);
+
+        }
+
+        if(c->get_carro()->GetVy()>0){
+            c->salto(1);
+
+        }
+        else if(c->get_carro()->GetVy()<=0){
+            c->salto(2);
+        }
+        c->posicion(v_limit);
+        d->posicion(v_limit);
+        if(c->get_carro()->get_px()>=950){
+            flag=1;
+
+            timer_salt->stop();
+        }
+
+
 
     }
-    else if(c->get_carro()->GetVy()<=0){
-        c->salto(2);
+    else{
+        timer_salt->stop();
     }
-    c->get_carro()->SetVy(500);
-    c->get_carro()->SetVx(200);
+
+    //c->get_carro()->SetVx();
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event){       //Funciones de teclas
@@ -139,9 +181,15 @@ void MainWindow::keyPressEvent(QKeyEvent *event){       //Funciones de teclas
         c->pelea();
         d-> setPixmap(QPixmap(":/Images/saltar2.png"));;
 
+            if(c->collidesWithItem(d)==true)
+            {
+                ui->progressBar->setValue(vida-20);
+                vida-=20;
+            }
+
     }
 
-    if(event->key()== Qt::Key_D && c->get_carro()->get_px()<1200-(c->get_carro()->get_w()*c->get_escala()))
+    if(event->key()== Qt::Key_D && c->get_carro()->get_px()<950)
     {
         timer_pel->stop();
         timer_salt->stop();
@@ -151,27 +199,38 @@ void MainWindow::keyPressEvent(QKeyEvent *event){       //Funciones de teclas
         event->accept();
         c->mov();
         d->mov();
+        recuerdo='D';
     }
-   if(event->key()== Qt::Key_A&& c->get_carro()->get_px()>0)
+   if(event->key()== Qt::Key_A&& c->get_carro()->get_px()>0 && flag==1)
     {
        timer_pel->stop();
        timer_salt->stop();
         c->get_carro()->set_px(c->get_carro()->get_px()-vel) ;
+        d->get_carro()->set_px(d->get_carro()->get_px()+vel);
         on_actionStop_triggered();
         event->accept();
         c->mov();
+        d->mov();
+        recuerdo='A';
     }
-    if(event->key()== Qt::Key_W && c->get_carro()->get_py()<200)
+    if(event->key()== Qt::Key_W && c->get_carro()->get_py()<200 )
     {
-        timer_pel->stop();
-       // c->get_carro()->set_py(c->get_carro()->get_py()+vel);
-        on_actionStop_triggered();
-        timer_salt->stop();
-        event->accept();
-        timer_salt->start();
+
+            posi=c->get_carro()->get_py();
+            flag=0;
+            timer_pel->stop();
+           // c->get_carro()->set_py(c->get_carro()->get_py()+vel);
+            on_actionStop_triggered();
+            timer_salt->stop();
+            event->accept();
+            timer_salt->start(90);
+
+
+        recuerdo='W';
+
         //c->mov();
     }
-   if(event->key()== Qt::Key_S && c->get_carro()->get_py()>0)
+   if(event->key()== Qt::Key_S && c->get_carro()->get_py()>0 && flag==1)
     {
        timer_pel->stop();
        timer_salt->stop();
@@ -179,6 +238,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event){       //Funciones de teclas
         on_actionStop_triggered();
         event->accept();
         c->mov();
+        recuerdo='S';
     }
    if(event->key()== Qt::Key_M)
     {
@@ -189,7 +249,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event){       //Funciones de teclas
         event->accept();
         c->mov();
     }
-   if (event->key()==Qt::Key_4){
+   if (event->key()==Qt::Key_4 ){
        timer_pel->stop();
        timer_salt->stop();
         d->get_carro()->set_px(d->get_carro()->get_px()-vel) ;
@@ -198,6 +258,17 @@ void MainWindow::keyPressEvent(QKeyEvent *event){       //Funciones de teclas
         event->accept();
         d->mov();
    }
+   if (event->key()==Qt::Key_O ){
+       timer_pel->stop();
+       // d->get_carro()->set_px(d->get_carro()->get_px()-vel) ;
+        //d->get_carro()->SetVx(-50);
+        on_actionStop_triggered();
+        event->accept();
+        //d->mov();
+        d->get_carro()->SetVy(d->get_carro()->GetVy()+200);
+        d->get_carro()->SetVx(d->get_carro()->GetVx()+10);
+   }
+
 
 
 c->mov();

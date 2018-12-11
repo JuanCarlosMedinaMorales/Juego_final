@@ -28,20 +28,23 @@
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>150</y>
-      <width>161</width>
-      <height>81</height>
+      <y>80</y>
+      <width>151</width>
+      <height>151</height>
      </rect>
     </property>
     <property name="cursor">
      <cursorShape>OpenHandCursor</cursorShape>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/6282614902_ded28303e1_b.jpg);</string>
+    </property>
     <property name="text">
      <string/>
     </property>
     <property name="icon">
-     <iconset>
-      <normaloff>../Taller/start-1414148_960_720.jpg</normaloff>../Taller/start-1414148_960_720.jpg</iconset>
+     <iconset resource="resources.qrc">
+      <normaloff>:/START.png</normaloff>:/START.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -72,6 +75,8 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

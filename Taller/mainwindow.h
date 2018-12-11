@@ -40,7 +40,9 @@ private:
     int v_limit;                //longitud en Y del mundo
     int vel;
     bool i=0;
+    bool flag=1;
     int cont;
+    float posi;
     QTimer *timer_mov;
     QTimer *timer_par;
     QTimer *timer_pel;
@@ -49,6 +51,10 @@ private:
     grafica *c;
     grafica *d;
     int sp=0.0;
+    char recuerdo='o';
+    float rec;
+    int vida=100;
+    QList<grafica*> lista;
 };
 
 #endif // MAINWINDOW_H
