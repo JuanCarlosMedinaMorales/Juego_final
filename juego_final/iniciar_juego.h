@@ -57,9 +57,12 @@ private:
     grafica *d;
     grafica *lacr;
     int sp=0.0;
-    char recuerdo='o';
+    char recuerdo='-';
+    char recuerdo2='-';
+    char recor_salto='-';
     Cuerpo *proyectil;
     QList<grafica*> lista;
+
     int vida=100;
     int puntaje=0;
 };

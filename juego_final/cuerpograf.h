@@ -30,7 +30,7 @@ private:
     QList<QList<QString>>f;
 public:
     grafica(QGraphicsItem* carr = 0);
-    void mov(int seleccion);
+    void mov(int seleccion,char direccion);
     void par(float v_limit);
     void pelea();
     void salto(int vec);

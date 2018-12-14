@@ -16,11 +16,15 @@ public:
     explicit cargar_partidas(QString ca,QWidget *parent = nullptr);
     ~cargar_partidas();
 
+private slots:
+    void on_pushButton_2_clicked();
+
 private:
     Ui::cargar_partidas *ui;
     int contador=0;
     int contador2=0;
     QString nom;
+    QString cla;
 };
 
 #endif // CARGAR_PARTIDAS_H

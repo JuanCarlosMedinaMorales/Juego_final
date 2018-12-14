@@ -60,7 +60,6 @@ void Cuerpo::CalcularPosicion()
 
     if(py>-200){
         vy-=50;
-        vx+=20;
         ax=0;
         ay=1;
     }

@@ -15,6 +15,7 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
@@ -30,6 +31,7 @@ public:
     QWidget *centralWidget;
     QGraphicsView *graphicsView;
     QPushButton *pushButton;
+    QLabel *label;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -38,25 +40,32 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(689, 420);
+        MainWindow->resize(578, 445);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         graphicsView = new QGraphicsView(centralWidget);
         graphicsView->setObjectName(QStringLiteral("graphicsView"));
-        graphicsView->setGeometry(QRect(0, 0, 691, 381));
+        graphicsView->setGeometry(QRect(0, 0, 581, 426));
+        graphicsView->setStyleSheet(QStringLiteral("background-image: url(:/PORTADA.gif);"));
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(50, 80, 151, 151));
+        pushButton->setGeometry(QRect(220, 240, 121, 101));
         pushButton->setCursor(QCursor(Qt::OpenHandCursor));
         pushButton->setStyleSheet(QStringLiteral("background-image: url(:/6282614902_ded28303e1_b.jpg);"));
         QIcon icon;
         icon.addFile(QStringLiteral(":/START.png"), QSize(), QIcon::Normal, QIcon::Off);
         pushButton->setIcon(icon);
         pushButton->setIconSize(QSize(160, 150));
+        label = new QLabel(centralWidget);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(0, 0, 581, 426));
         MainWindow->setCentralWidget(centralWidget);
+        graphicsView->raise();
+        label->raise();
+        pushButton->raise();
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 689, 20));
+        menuBar->setGeometry(QRect(0, 0, 578, 20));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -74,6 +83,7 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
         pushButton->setText(QString());
+        label->setText(QString());
     } // retranslateUi
 
 };

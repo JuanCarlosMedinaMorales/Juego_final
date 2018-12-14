@@ -10,6 +10,10 @@ grafica::grafica(QGraphicsItem* carr):QGraphicsPixmapItem(carr)
     n.append(":/caminar4.png");
     n.append(":/caminar5.png");
     n.append(":/caminar6.png");
+    n.append(":/caminar1V.png");
+    n.append(":/caminar2V.png");
+    n.append(":/caminar3v.png");
+    n.append(":/caminar4v.png");
 
     f.append(n);
     cap.append(":/CCV1.png");
@@ -25,7 +29,7 @@ grafica::grafica(QGraphicsItem* carr):QGraphicsPixmapItem(carr)
 
 }
 
-void grafica::mov(int seleccion)
+void grafica::mov(int seleccion,char direccion)
 {
    // int contador=0;
     if (contador==0 && cont<4)
@@ -107,10 +111,9 @@ void grafica::pelea()
         {
             setPixmap(QPixmap(":/pegar7.png"));
             flag=1;
-            contador2=0;
+            contador2=3;
         }
         if (cont==24)cont=0;
-
         cont++;
 
 

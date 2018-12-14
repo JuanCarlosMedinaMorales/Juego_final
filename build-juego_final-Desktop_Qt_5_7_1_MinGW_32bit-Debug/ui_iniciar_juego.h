@@ -69,7 +69,7 @@ public:
         progressBar_2->setObjectName(QStringLiteral("progressBar_2"));
         progressBar_2->setGeometry(QRect(657, 10, 441, 23));
         progressBar_2->setCursor(QCursor(Qt::WaitCursor));
-        progressBar_2->setValue(91);
+        progressBar_2->setValue(100);
         progressBar_2->setInvertedAppearance(true);
         lcdNumber = new QLCDNumber(centralwidget);
         lcdNumber->setObjectName(QStringLiteral("lcdNumber"));

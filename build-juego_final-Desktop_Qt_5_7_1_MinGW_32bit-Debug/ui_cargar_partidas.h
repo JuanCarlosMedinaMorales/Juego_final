@@ -75,13 +75,13 @@ public:
     QLCDNumber *lcdNumber_13;
     QPushButton *pushButton;
     QPushButton *pushButton_2;
-    QCheckBox *checkBox;
     QCheckBox *checkBox_2;
     QCheckBox *checkBox_3;
     QCheckBox *checkBox_4;
     QCheckBox *checkBox_5;
     QLCDNumber *lcdNumber_14;
     QLCDNumber *lcdNumber_15;
+    QPushButton *pushButton_3;
 
     void setupUi(QDialog *cargar_partidas)
     {
@@ -273,9 +273,6 @@ public:
         pushButton_2 = new QPushButton(cargar_partidas);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
         pushButton_2->setGeometry(QRect(70, 250, 131, 51));
-        checkBox = new QCheckBox(cargar_partidas);
-        checkBox->setObjectName(QStringLiteral("checkBox"));
-        checkBox->setGeometry(QRect(70, 40, 31, 19));
         checkBox_2 = new QCheckBox(cargar_partidas);
         checkBox_2->setObjectName(QStringLiteral("checkBox_2"));
         checkBox_2->setGeometry(QRect(240, 40, 72, 19));
@@ -294,6 +291,67 @@ public:
         lcdNumber_15 = new QLCDNumber(cargar_partidas);
         lcdNumber_15->setObjectName(QStringLiteral("lcdNumber_15"));
         lcdNumber_15->setGeometry(QRect(510, 120, 51, 16));
+        pushButton_3 = new QPushButton(cargar_partidas);
+        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+        pushButton_3->setGeometry(QRect(60, 30, 161, 121));
+        pushButton_3->setStyleSheet(QStringLiteral("background-color: rgb(0, 0, 0);"));
+        label->raise();
+        pushButton_3->raise();
+        label_2->raise();
+        label_3->raise();
+        label_4->raise();
+        label_5->raise();
+        label_6->raise();
+        label_7->raise();
+        label_8->raise();
+        label_9->raise();
+        label_10->raise();
+        label_11->raise();
+        label_12->raise();
+        label_13->raise();
+        label_14->raise();
+        label_15->raise();
+        label_16->raise();
+        label_17->raise();
+        label_18->raise();
+        label_19->raise();
+        label_20->raise();
+        label_21->raise();
+        label_22->raise();
+        label_23->raise();
+        label_24->raise();
+        label_25->raise();
+        label_26->raise();
+        label_27->raise();
+        label_28->raise();
+        label_29->raise();
+        label_30->raise();
+        lcdNumber->raise();
+        lcdNumber_2->raise();
+        lcdNumber_3->raise();
+        label_31->raise();
+        lcdNumber_4->raise();
+        lcdNumber_5->raise();
+        lcdNumber_6->raise();
+        label_32->raise();
+        label_33->raise();
+        label_34->raise();
+        label_35->raise();
+        lcdNumber_7->raise();
+        lcdNumber_8->raise();
+        lcdNumber_9->raise();
+        lcdNumber_10->raise();
+        lcdNumber_11->raise();
+        lcdNumber_12->raise();
+        lcdNumber_13->raise();
+        pushButton->raise();
+        pushButton_2->raise();
+        checkBox_2->raise();
+        checkBox_3->raise();
+        checkBox_4->raise();
+        checkBox_5->raise();
+        lcdNumber_14->raise();
+        lcdNumber_15->raise();
 
         retranslateUi(cargar_partidas);
 
@@ -340,11 +398,11 @@ public:
         label_35->setText(QString());
         pushButton->setText(QApplication::translate("cargar_partidas", "Cargar", Q_NULLPTR));
         pushButton_2->setText(QApplication::translate("cargar_partidas", "Regresar", Q_NULLPTR));
-        checkBox->setText(QString());
         checkBox_2->setText(QString());
         checkBox_3->setText(QString());
         checkBox_4->setText(QString());
         checkBox_5->setText(QString());
+        pushButton_3->setText(QString());
     } // retranslateUi
 
 };

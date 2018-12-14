@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>689</width>
-    <height>420</height>
+    <width>578</width>
+    <height>445</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,18 +19,21 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>691</width>
-      <height>381</height>
+      <width>581</width>
+      <height>426</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/PORTADA.gif);</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>80</y>
-      <width>151</width>
-      <height>151</height>
+      <x>220</x>
+      <y>240</y>
+      <width>121</width>
+      <height>101</height>
      </rect>
     </property>
     <property name="cursor">
@@ -53,13 +56,29 @@
      </size>
     </property>
    </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>581</width>
+      <height>426</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <zorder>graphicsView</zorder>
+   <zorder>label</zorder>
+   <zorder>pushButton</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>689</width>
+     <width>578</width>
      <height>20</height>
     </rect>
    </property>

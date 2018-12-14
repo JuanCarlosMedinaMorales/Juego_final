@@ -30,8 +30,8 @@ iniciar_juego::iniciar_juego(QWidget *parent) :
     connect(timer_salt,SIGNAL(timeout()),this,SLOT(salto()));
 
      ui->graphicsView->setBackgroundBrush(QImage(":/5b734c53396e3_opt.jpg"));
-     //QString nombre=QFileDialog::getOpenFileName(this,":/Images/Contra_(NES)_Music_-_Jungle_Theme.mp3");
-     mMediaPlayer->setMedia(QUrl::fromLocalFile(":/Contra_(NES)_Music_-_Jungle_Theme.mp3"));
+
+     mMediaPlayer->setMedia(QUrl::fromLocalFile(":/Amon_Amarth_-_Victorious_March_[Fanvideo].mp3"));
      mMediaPlayer->setVolume(100);
      mMediaPlayer->play();
 
@@ -103,8 +103,9 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
         c->get_carro()->set_px(c->get_carro()->get_px()+vel);
         on_actionstop_triggered();
         event->accept();
-        c->mov(0);
         recuerdo='D';
+        c->mov(0,recuerdo);
+
     }
     if(event->key()== Qt::Key_6 && c->get_carro()->get_px()<950)
     {
@@ -113,8 +114,9 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
         d->get_carro()->set_px(d->get_carro()->get_px()+vel);
         on_actionstop_triggered();
         event->accept();
-        d->mov(1);
-        recuerdo='6';
+         recuerdo2='6';
+        d->mov(1,recuerdo2);
+
     }
    if(event->key()== Qt::Key_A&& c->get_carro()->get_px()>0 && flag==1)
     {
@@ -123,8 +125,9 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
         c->get_carro()->set_px(c->get_carro()->get_px()-vel) ;
         on_actionstop_triggered();
         event->accept();
-        c->mov(0);
         recuerdo='A';
+        c->mov(0,recuerdo);
+
     }
     if(event->key()== Qt::Key_W && c->get_carro()->get_py()<200 )
     {
@@ -135,10 +138,8 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
             on_actionstop_triggered();
             timer_salt->stop();
             event->accept();
+            recor_salto='W';
             timer_salt->start(50);
-
-
-        recuerdo='W';
 
     }
     if(event->key()== Qt::Key_8 && c->get_carro()->get_py()<200 )
@@ -150,10 +151,9 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
             on_actionstop_triggered();
             timer_salt->stop();
             event->accept();
-            d->get_carro()->SetVy(d->get_carro()->GetVy()+1000);
+            recor_salto='8';
+            timer_salt->start(50);
 
-
-        recuerdo='W';
 
     }
    if(event->key()== Qt::Key_S && c->get_carro()->get_py()>0 && flag==1)
@@ -163,18 +163,8 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
         c->get_carro()->set_py(c->get_carro()->get_py()-vel);
         on_actionstop_triggered();
         event->accept();
-        c->mov(0);
-        recuerdo='S';
     }
-   if(event->key()== Qt::Key_M)
-    {
-       timer_pel->stop();
-       timer_salt->stop();
-       on_actionstop_triggered();
-        timer_par->start();
-        event->accept();
-        c->mov(0);
-    }
+
    if (event->key()==Qt::Key_4 ){
        timer_pel->stop();
        timer_salt->stop();
@@ -182,7 +172,8 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
         //d->get_carro()->SetVx(-50);
         on_actionstop_triggered();
         event->accept();
-        d->mov(1);
+        recuerdo2='4';
+        d->mov(1,recuerdo2);
    }
    if (event->key()==Qt::Key_O ){
        timer_pel->stop();
@@ -195,17 +186,24 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
         d->get_carro()->SetVx(d->get_carro()->GetVx()+10);
    }
    if (event->key()==Qt::Key_V ){
-       float x=30;
-       float y=30;
-       float g=-3;
-       lista.append(new grafica());
-       lista.last()->setPixmap(QPixmap(":/oie_wjRyGB5Cadu8.png"));
-       lista.last()->get_carro()->SetVx(x);
-       lista.last()->get_carro()->SetVy(y);
-       scene->addItem(lista.last());
+       float x=1000;
+       float y=1000;
+       float px=c->get_carro()->get_px();
+       float py=c->get_carro()->get_py();
+
+       lacr->setPixmap(QPixmap(":/oie_wjRyGB5Cadu8.png"));
+       lacr->get_carro()->SetVx(x);
+       lacr->get_carro()->SetVy(y);
+       lacr->get_carro()->set_px(px);
+       lacr->get_carro()->set_py(py*-1);
+       scene->addEllipse(84,200,100,100);
+
+       scene->addItem(lacr);
+
+
+
        //lista.last()->get_carro()->set_valores(c->get_carro()->get_px(),c->get_carro()->get_py(),450,450);
-        lista.last()->get_carro()->set_px(c->get_carro()->get_px());
-        lista.last()->get_carro()->set_py(c->get_carro()->get_py());
+
 //        for(int i=0;i<5;i++){
 
 //            lista.append(lacr);
@@ -224,12 +222,13 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
 
 
 
-c->mov(0);
 //timer_pel->stop();
 //c->pelea();
 //timer_salt->start();
+
 c->posicion(v_limit);
 d->posicion(v_limit);
+lacr->posicion(v_limit);
 
 }
 
@@ -245,7 +244,7 @@ void iniciar_juego::mov()
         sp=c->get_carro()->GetVy();
     }
     else{
-        c->mov(0);
+        c->mov(0,recuerdo);
         cont=0;
     }
     if(d->get_carro()->GetVy()>sp){
@@ -253,7 +252,7 @@ void iniciar_juego::mov()
         sp=d->get_carro()->GetVy();
     }
     else{
-        d->mov(1);
+        d->mov(1,recuerdo2);
         cont=0;
     }
 }
@@ -279,55 +278,136 @@ void iniciar_juego::pegar()
 
 void iniciar_juego::salto()
 {
-    if(c->get_carro()->get_py()<=-200){
-        if(flag==0){
-           flag=1;
-            c->get_carro()->SetVy(c->get_carro()->GetVy()+1000);
+    if(recor_salto=='W'){
+        if(c->get_carro()->get_py()<=-200){
+            if(flag==0){
+               flag=1;
+               if(recuerdo=='D'){
+                  c->get_carro()->SetVy(c->get_carro()->GetVy()+1000);
+                  c->get_carro()->SetVx(c->get_carro()->GetVx()+200);
+               }
+               else{
+                  c->get_carro()->SetVy(c->get_carro()->GetVy()+1000);
+                  c->get_carro()->SetVx(c->get_carro()->GetVx()-200);
+               }
+
+
+
+            }
+            else {
+                flag=2;
+                timer_salt->stop();
+            }
 
 
         }
-        else {
-            flag=2;
+        else{
+            flag=0;
+
+        }
+        if(flag ==0 || flag==1){
+            if(c->get_carro()->get_py()==posi ){
+               c->get_carro()->SetVy(c->get_carro()->GetVy()+1000);
+               if(recuerdo=='D'){
+                   c->get_carro()->SetVx(c->get_carro()->GetVx()+200);
+               }
+               else{
+                   c->get_carro()->SetVx(c->get_carro()->GetVx()-200);
+               }
+
+            }
+            if(c->get_carro()->GetVy()>0){
+                c->salto(1);
+
+
+            }
+            else if(c->get_carro()->GetVy()<=0){
+                c->salto(2);
+                flag=1;
+            }
+    //        c->posicion(v_limit);
+    //        d->posicion(v_limit);
+            if(c->get_carro()->get_px()>=950){
+                flag=1;
+
+                timer_salt->stop();
+            }
+
+
+
+        }
+        else if(flag==2){
             timer_salt->stop();
-        }
-
-
-    }
-    else{
-        flag=0;
-
-    }
-    if(flag ==0 || flag==1){
-        if(c->get_carro()->get_py()==posi ){
-           c->get_carro()->SetVy(c->get_carro()->GetVy()+1000);
-
-        }
-        if(c->get_carro()->GetVy()>0){
-            c->salto(1);
-
-
-        }
-        else if(c->get_carro()->GetVy()<=0){
-            c->salto(2);
             flag=1;
         }
-//        c->posicion(v_limit);
-//        d->posicion(v_limit);
-        if(c->get_carro()->get_px()>=950){
-            flag=1;
+    }
+    if(recor_salto=='8'){
+        if(d->get_carro()->get_py()<=-200){
+            if(flag==0){
+               flag=1;
+               if(recuerdo2=='6'){
+                  d->get_carro()->SetVy(d->get_carro()->GetVy()+1000);
+                  d->get_carro()->SetVx(d->get_carro()->GetVx()+200);
+               }
+               else{
+                  d->get_carro()->SetVy(d->get_carro()->GetVy()+1000);
+                  d->get_carro()->SetVx(d->get_carro()->GetVx()-200);
+               }
 
-            timer_salt->stop();
+
+
+            }
+            else {
+                flag=2;
+                timer_salt->stop();
+            }
+
+
         }
+        else{
+            flag=0;
+
+        }
+        if(flag ==0 || flag==1){
+            if(d->get_carro()->get_py()==posi ){
+               d->get_carro()->SetVy(d->get_carro()->GetVy()+1000);
+               if(recuerdo=='D'){
+                   d->get_carro()->SetVx(d->get_carro()->GetVx()+200);
+               }
+               else{
+                   d->get_carro()->SetVx(d->get_carro()->GetVx()-200);
+               }
+
+            }
+            if(d->get_carro()->GetVy()>0){
+               // d->setPixmap(QPixmap(""))
+
+
+            }
+            else if(d->get_carro()->GetVy()<=0){
+                d->salto(2);
+                flag=1;
+            }
+    //        c->posicion(v_limit);
+    //        d->posicion(v_limit);
+            if(d->get_carro()->get_px()>=950){
+                flag=1;
+
+                timer_salt->stop();
+            }
 
 
 
+        }
+        else if(flag==2){
+            timer_salt->stop();
+            flag=1;
+        }
     }
-    else if(flag==2){
-        timer_salt->stop();
-        flag=1;
-    }
+
     c->posicion(v_limit);
     d->posicion(v_limit);
+
 }
 
 

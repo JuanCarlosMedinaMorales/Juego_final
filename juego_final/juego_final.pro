@@ -4,7 +4,8 @@
 #
 #-------------------------------------------------
 
-QT       += core gui widgets multimedia
+QT       += core gui widgets \
+         multimedia
 
 TARGET = juego_final
 TEMPLATE = app

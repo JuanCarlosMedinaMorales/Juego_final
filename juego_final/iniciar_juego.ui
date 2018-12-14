@@ -53,7 +53,7 @@
      <cursorShape>WaitCursor</cursorShape>
     </property>
     <property name="value">
-     <number>91</number>
+     <number>100</number>
     </property>
     <property name="invertedAppearance">
      <bool>true</bool>

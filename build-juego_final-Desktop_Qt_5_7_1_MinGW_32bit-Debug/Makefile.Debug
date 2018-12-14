@@ -173,59 +173,71 @@ compiler_rcc_clean:
 	-$(DEL_FILE) debug\qrc_resources.cpp
 debug/qrc_resources.cpp: ../juego_final/resources.qrc \
 		../../../../qt/5.7/mingw53_32/bin/rcc.exe \
-		../juego_final/FB_IMG_1542470393887.jpg \
-		../juego_final/saltar3.png \
-		../juego_final/caminar3.png \
-		../juego_final/CCV6.png \
-		../juego_final/salpicadura-de-la-sangre-en-color-rojo-de-la-tinta-en-fondo-negro-71669375.jpg \
-		../juego_final/Sembrador_de_Estrellas-UdeA.jpg \
 		../juego_final/saltar2.png \
-		../juego_final/caminar2.png \
-		../juego_final/CCV5.png \
-		../juego_final/3822176_n_vir6.jpg \
-		../juego_final/capuchoEntero.png \
-		../juego_final/pegar7.png \
-		../juego_final/saltar1.png \
-		../juego_final/caminar1.png \
-		../juego_final/CCV4.png \
+		../juego_final/CCD4.png \
+		../juego_final/CCV6.png \
 		../juego_final/START.png \
-		../juego_final/oie_wjRyGB5Cadu8.png \
-		../juego_final/6282614902_ded28303e1_b.jpg \
-		../juego_final/pegar6.png \
-		../juego_final/artesEntero.png \
-		../juego_final/caminar11.png \
-		../juego_final/CCV3.png \
-		../juego_final/caminar9.png \
-		../juego_final/pegar5.png \
+		../juego_final/caminar7.png \
+		../juego_final/instrucciones.jpg \
+		../juego_final/3822176_n_vir6.jpg \
+		../juego_final/instruccionesListas.png \
+		../juego_final/pegar4.png \
+		../juego_final/saltar6.png \
 		../juego_final/esmad.png \
+		../juego_final/CCV1.png \
+		../juego_final/caminar2.png \
+		../juego_final/saltar1.png \
+		../juego_final/CCD3.png \
+		../juego_final/CCV5.png \
+		../juego_final/caminar6.png \
+		../juego_final/artesEntero.png \
+		../juego_final/capu_saltandoV2.png \
+		../juego_final/pegar3.png \
+		../juego_final/saltar5.png \
+		../juego_final/caminar1.png \
+		../juego_final/calav.png \
+		../juego_final/salpicadura-de-la-sangre-en-color-rojo-de-la-tinta-en-fondo-negro-71669375.jpg \
+		../juego_final/pegar7.png \
+		../juego_final/inicioSesion.png \
+		../juego_final/CCD2.png \
+		../juego_final/caminar1V.png \
+		../juego_final/CCV4.png \
+		../juego_final/caminar5.png \
+		../juego_final/PORTADA.gif \
+		../juego_final/oie_wjRyGB5Cadu8.png \
+		../juego_final/capu_saltandoV1.png \
+		../juego_final/inicioSesionConectar.png \
+		../juego_final/FB_IMG_1539484049613.jpg \
+		../juego_final/saltar4.png \
+		../juego_final/oie_transparent.png \
+		../juego_final/capuchoEntero.png \
+		../juego_final/6282614902_ded28303e1_b.jpg \
+		../juego_final/caminar9.png \
+		../juego_final/caminar2V.png \
+		../juego_final/pegar6.png \
+		../juego_final/saltar8.png \
+		../juego_final/caminar11.png \
+		../juego_final/caminar3v.png \
+		../juego_final/CCD1.png \
+		../juego_final/FB_IMG_1542470393887.jpg \
+		../juego_final/CCV3.png \
+		../juego_final/caminar4.png \
+		../juego_final/esmadEntero.png \
+		../juego_final/pegar1.png \
+		../juego_final/saltar3.png \
+		../juego_final/Sembrador_de_Estrellas-UdeA.jpg \
+		../juego_final/caminar4v.png \
+		../juego_final/caminar8.png \
+		../juego_final/IMAGEN-16182163-2.png \
+		../juego_final/pegar5.png \
+		../juego_final/saltar7.png \
+		../juego_final/5b734c53396e3_opt.jpg \
 		../juego_final/caminar10.png \
+		../juego_final/Amon_Amarth_-_Victorious_March_[Fanvideo].mp3 \
+		../juego_final/arte.png \
 		../juego_final/CCV2.png \
 		../juego_final/FB_IMG_1543031202147.jpg \
-		../juego_final/saltar8.png \
-		../juego_final/caminar8.png \
-		../juego_final/inicioSesion.png \
-		../juego_final/pegar4.png \
-		../juego_final/oie_transparent.png \
-		../juego_final/CCV1.png \
-		../juego_final/instruccionesListas.png \
-		../juego_final/saltar7.png \
-		../juego_final/caminar7.png \
-		../juego_final/pegar3.png \
-		../juego_final/saltar6.png \
-		../juego_final/caminar6.png \
-		../juego_final/inicioSesionConectar.png \
-		../juego_final/arte.png \
-		../juego_final/IMAGEN-16182163-2.png \
-		../juego_final/FB_IMG_1539484049613.jpg \
-		../juego_final/saltar5.png \
-		../juego_final/caminar5.png \
-		../juego_final/pegar1.png \
-		../juego_final/Contra_(NES)_Music_-_Jungle_Theme.mp3 \
-		../juego_final/5b734c53396e3_opt.jpg \
-		../juego_final/instrucciones.jpg \
-		../juego_final/saltar4.png \
-		../juego_final/caminar4.png \
-		../juego_final/esmadEntero.png
+		../juego_final/caminar3.png
 	C:\UDEA\qt\5.7\mingw53_32\bin\rcc.exe -name resources ..\juego_final\resources.qrc -o debug\qrc_resources.cpp
 
 compiler_moc_header_make_all: debug/moc_mainwindow.cpp debug/moc_menu.cpp debug/moc_registro.cpp debug/moc_iniciar_sesion.cpp debug/moc_partidas.cpp debug/moc_modo_de_juego.cpp debug/moc_selecp.cpp debug/moc_selecp2.cpp debug/moc_juego.cpp debug/moc_iniciar_juego.cpp debug/moc_cuerpograf.cpp debug/moc_instrucciones.cpp debug/moc_cargar_partidas.cpp
@@ -750,6 +762,7 @@ debug/moc_partidas.cpp: ../../../../qt/5.7/mingw53_32/include/QtWidgets/QDialog 
 		../../../../qt/5.7/mingw53_32/include/QtCore/qfiledevice.h \
 		../../../../qt/5.7/mingw53_32/include/QtGui/qvector2d.h \
 		../../../../qt/5.7/mingw53_32/include/QtGui/qtouchdevice.h \
+		../../../../qt/5.7/mingw53_32/include/QtCore/QString \
 		../juego_final/partidas.h \
 		../../../../qt/5.7/mingw53_32/bin/moc.exe
 	C:\UDEA\qt\5.7\mingw53_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/UDEA/qt/5.7/mingw53_32/mkspecs/win32-g++ -I"C:/UDEA/final/practca 6/Nueva carpeta/juego_final" -IC:/UDEA/qt/5.7/mingw53_32/include -IC:/UDEA/qt/5.7/mingw53_32/include/QtWidgets -IC:/UDEA/qt/5.7/mingw53_32/include/QtMultimedia -IC:/UDEA/qt/5.7/mingw53_32/include/QtGui -IC:/UDEA/qt/5.7/mingw53_32/include/QtANGLE -IC:/UDEA/qt/5.7/mingw53_32/include/QtNetwork -IC:/UDEA/qt/5.7/mingw53_32/include/QtCore -I. -IC:/UDEA/qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/UDEA/qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/UDEA/qt/Tools/mingw530_32/i686-w64-mingw32/include -IC:/UDEA/qt/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/UDEA/qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/UDEA/qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\juego_final\partidas.h -o debug\moc_partidas.cpp
@@ -1774,7 +1787,12 @@ debug/main.o: ../juego_final/main.cpp ../juego_final/mainwindow.h \
 		../../../../qt/5.7/mingw53_32/include/QtCore/qeventloop.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qdesktopwidget.h \
 		../../../../qt/5.7/mingw53_32/include/QtGui/qguiapplication.h \
-		../../../../qt/5.7/mingw53_32/include/QtGui/qinputmethod.h
+		../../../../qt/5.7/mingw53_32/include/QtGui/qinputmethod.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/QSplashScreen \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qsplashscreen.h \
+		../../../../qt/5.7/mingw53_32/include/QtCore/QTimer \
+		../../../../qt/5.7/mingw53_32/include/QtCore/qtimer.h \
+		../../../../qt/5.7/mingw53_32/include/QtCore/qbasictimer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\juego_final\main.cpp
 
 debug/mainwindow.o: ../juego_final/mainwindow.cpp ../juego_final/mainwindow.h \
@@ -1923,6 +1941,8 @@ debug/mainwindow.o: ../juego_final/mainwindow.cpp ../juego_final/mainwindow.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qstyle.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qtabbar.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qrubberband.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/QLabel \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qlabel.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/QMenuBar \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qmenubar.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qmenu.h \
@@ -1937,6 +1957,29 @@ debug/mainwindow.o: ../juego_final/mainwindow.cpp ../juego_final/mainwindow.h \
 		../juego_final/menu.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/QDialog \
 		../../../../qt/5.7/mingw53_32/include/QtGui/QMouseEvent \
+		../../../../qt/5.7/mingw53_32/include/QtGui/QMovie \
+		../../../../qt/5.7/mingw53_32/include/QtGui/qmovie.h \
+		../../../../qt/5.7/mingw53_32/include/QtGui/qimagereader.h \
+		../../../../qt/5.7/mingw53_32/include/QtGui/qimageiohandler.h \
+		../../../../qt/5.7/mingw53_32/include/QtCore/qplugin.h \
+		../../../../qt/5.7/mingw53_32/include/QtCore/qpointer.h \
+		../../../../qt/5.7/mingw53_32/include/QtCore/qjsonobject.h \
+		../../../../qt/5.7/mingw53_32/include/QtCore/qjsonvalue.h \
+		../../../../qt/5.7/mingw53_32/include/QtCore/qfactoryinterface.h \
+		../../../../qt/5.7/mingw53_32/include/QtMultimedia/qmediaplayer.h \
+		../../../../qt/5.7/mingw53_32/include/QtMultimedia/qmediaobject.h \
+		../../../../qt/5.7/mingw53_32/include/QtMultimedia/qtmultimediadefs.h \
+		../../../../qt/5.7/mingw53_32/include/QtMultimedia/qmultimedia.h \
+		../../../../qt/5.7/mingw53_32/include/QtMultimedia/qmediacontent.h \
+		../../../../qt/5.7/mingw53_32/include/QtMultimedia/qmediaresource.h \
+		../../../../qt/5.7/mingw53_32/include/QtNetwork/qnetworkrequest.h \
+		../../../../qt/5.7/mingw53_32/include/QtCore/QSharedDataPointer \
+		../../../../qt/5.7/mingw53_32/include/QtCore/QString \
+		../../../../qt/5.7/mingw53_32/include/QtCore/QUrl \
+		../../../../qt/5.7/mingw53_32/include/QtMultimedia/qmediaenumdebug.h \
+		../../../../qt/5.7/mingw53_32/include/QtCore/qmetaobject.h \
+		../../../../qt/5.7/mingw53_32/include/QtMultimedia/qaudio.h \
+		../../../../qt/5.7/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/QGraphicsPixmapItem \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qgraphicsitem.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o ..\juego_final\mainwindow.cpp
@@ -2497,6 +2540,7 @@ debug/partidas.o: ../juego_final/partidas.cpp ../juego_final/partidas.h \
 		../../../../qt/5.7/mingw53_32/include/QtCore/qfiledevice.h \
 		../../../../qt/5.7/mingw53_32/include/QtGui/qvector2d.h \
 		../../../../qt/5.7/mingw53_32/include/QtGui/qtouchdevice.h \
+		../../../../qt/5.7/mingw53_32/include/QtCore/QString \
 		ui_partidas.h \
 		../../../../qt/5.7/mingw53_32/include/QtCore/QVariant \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/QAction \
@@ -2534,8 +2578,7 @@ debug/partidas.o: ../juego_final/partidas.cpp ../juego_final/partidas.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qpushbutton.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qabstractbutton.h \
 		../juego_final/modo_de_juego.h \
-		../juego_final/cargar_partidas.h \
-		../../../../qt/5.7/mingw53_32/include/QtCore/QString
+		../juego_final/cargar_partidas.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\partidas.o ..\juego_final\partidas.cpp
 
 debug/modo_de_juego.o: ../juego_final/modo_de_juego.cpp ../juego_final/modo_de_juego.h \
@@ -3640,8 +3683,50 @@ debug/cargar_partidas.o: ../juego_final/cargar_partidas.cpp ../juego_final/carga
 		../../../../qt/5.7/mingw53_32/include/QtGui/qtouchdevice.h \
 		../../../../qt/5.7/mingw53_32/include/QtCore/QString \
 		ui_cargar_partidas.h \
+		../../../../qt/5.7/mingw53_32/include/QtCore/QVariant \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/QAction \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qaction.h \
+		../../../../qt/5.7/mingw53_32/include/QtGui/qicon.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qactiongroup.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/QApplication \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qapplication.h \
+		../../../../qt/5.7/mingw53_32/include/QtCore/qcoreapplication.h \
+		../../../../qt/5.7/mingw53_32/include/QtCore/qeventloop.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qdesktopwidget.h \
+		../../../../qt/5.7/mingw53_32/include/QtGui/qguiapplication.h \
+		../../../../qt/5.7/mingw53_32/include/QtGui/qinputmethod.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/QButtonGroup \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qbuttongroup.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/QCheckBox \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qcheckbox.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qabstractbutton.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/QHeaderView \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qheaderview.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qabstractitemview.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qframe.h \
+		../../../../qt/5.7/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		../../../../qt/5.7/mingw53_32/include/QtCore/qitemselectionmodel.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qstyleoption.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qabstractspinbox.h \
+		../../../../qt/5.7/mingw53_32/include/QtGui/qvalidator.h \
+		../../../../qt/5.7/mingw53_32/include/QtCore/qregularexpression.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qslider.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qabstractslider.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qstyle.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qtabbar.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qtabwidget.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qrubberband.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/QLCDNumber \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qlcdnumber.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/QLabel \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qlabel.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/QPushButton \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qpushbutton.h \
 		../../../../qt/5.7/mingw53_32/include/QtCore/QFile \
-		../../../../qt/5.7/mingw53_32/include/QtCore/QTextStream
+		../../../../qt/5.7/mingw53_32/include/QtCore/QTextStream \
+		../juego_final/partidas.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\cargar_partidas.o ..\juego_final\cargar_partidas.cpp
 
 debug/qrc_resources.o: debug/qrc_resources.cpp 

@@ -32,7 +32,7 @@ void Registro::on_pushButton_clicked()
         out << ui->plainTextEdit_4->toPlainText()<<endl;
         out << "partidas"<<ui->plainTextEdit_4->toPlainText()<<endl;
 
-        pal=ui->label_4->text();
+        pal=ui->label_4->text();//clave
         file.close();
         if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
             return;
@@ -48,10 +48,10 @@ void Registro::on_pushButton_clicked()
                            ))
                            return;
 
-                       QTextStream out1(&file);
-                       out1 <<endl<<"1"<<endl;
+                       QTextStream out1(&file1);
+                       out1 <<endl<<"---"<<endl;
                        while (contador2!=19) {
-                           out1 << "1"<<endl;
+                           out1 << "---"<<endl;
                            contador2++;
                        }
 
