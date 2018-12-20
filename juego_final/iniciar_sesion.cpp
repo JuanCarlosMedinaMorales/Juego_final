@@ -21,7 +21,7 @@ iniciar_sesion::~iniciar_sesion()
 
 void iniciar_sesion::on_pushButton_clicked()
 {
-    QFile file(ui->plainTextEdit_2->toPlainText());
+    QFile file(ui->lineEdit->text());
        if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
            return;
 
@@ -32,15 +32,16 @@ void iniciar_sesion::on_pushButton_clicked()
               if(line==ui->plainTextEdit->toPlainText()){
                  flaguser=1;
              }
-             if(line==ui->plainTextEdit_2->toPlainText()){
+             if(line==ui->lineEdit->text()){
                  flagpass=1;
+
              }
 
 
           }
        if(flaguser==1 && flagpass==1){
            close();
-           PARTIDAS *partida= new PARTIDAS(ui->plainTextEdit_2->toPlainText()); partida->show();
+           PARTIDAS *partida= new PARTIDAS(ui->lineEdit->text()); partida->show();
 
        }
        else{

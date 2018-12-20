@@ -12,14 +12,22 @@ class selecp2 : public QDialog
     Q_OBJECT
 
 public:
-    explicit selecp2(QWidget *parent = nullptr);
+    explicit selecp2(int jugador1,QWidget *parent = nullptr);
     ~selecp2();
 
 private slots:
     void on_pushButton_clicked();
 
+    void on_radioButton_clicked();
+
+    void on_radioButton_3_clicked();
+
+    void on_radioButton_5_clicked();
+
 private:
     Ui::selecp2 *ui;
+    int jugador2=0;
+    int jugador=0;
 };
 
 #endif // SELECP2_H

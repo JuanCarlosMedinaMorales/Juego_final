@@ -46,12 +46,12 @@ public:
         graphicsView = new QGraphicsView(centralWidget);
         graphicsView->setObjectName(QStringLiteral("graphicsView"));
         graphicsView->setGeometry(QRect(0, 0, 581, 426));
-        graphicsView->setStyleSheet(QStringLiteral("background-image: url(:/PORTADA.gif);"));
+        graphicsView->setStyleSheet(QStringLiteral(""));
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(220, 240, 121, 101));
+        pushButton->setGeometry(QRect(200, 230, 161, 141));
         pushButton->setCursor(QCursor(Qt::OpenHandCursor));
-        pushButton->setStyleSheet(QStringLiteral("background-image: url(:/6282614902_ded28303e1_b.jpg);"));
+        pushButton->setStyleSheet(QStringLiteral("border-image: url(:/START.png);"));
         QIcon icon;
         icon.addFile(QStringLiteral(":/START.png"), QSize(), QIcon::Normal, QIcon::Off);
         pushButton->setIcon(icon);

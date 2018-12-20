@@ -24,23 +24,23 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-image: url(:/PORTADA.gif);</string>
+     <string notr="true"/>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>240</y>
-      <width>121</width>
-      <height>101</height>
+      <x>200</x>
+      <y>230</y>
+      <width>161</width>
+      <height>141</height>
      </rect>
     </property>
     <property name="cursor">
      <cursorShape>OpenHandCursor</cursorShape>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-image: url(:/6282614902_ded28303e1_b.jpg);</string>
+     <string notr="true">border-image: url(:/START.png);</string>
     </property>
     <property name="text">
      <string/>

@@ -21,7 +21,7 @@ class iniciar_juego : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit iniciar_juego(QWidget *parent = 0);
+    explicit iniciar_juego(int jugador1,int jugador2,QWidget *parent = 0);
     ~iniciar_juego();
 
 private slots:
@@ -31,6 +31,7 @@ private slots:
     void par();
     void pegar();
     void salto();
+    void grav();
 
     void on_actiongo_triggered();
 
@@ -48,14 +49,18 @@ private:
     int flag=1;
     int cont;
     float posi;
+    int u=1;
+    int tie=0;
     QTimer *timer_mov;
     QTimer *timer_par;
     QTimer *timer_pel;
     QTimer *timer_salt;
+    QTimer *timer_grav;
     QGraphicsScene *scene;
     grafica *c;
     grafica *d;
     grafica *lacr;
+    grafica *nube;
     int sp=0.0;
     char recuerdo='-';
     char recuerdo2='-';

@@ -12,6 +12,7 @@ class selecP : public QDialog
     Q_OBJECT
 
 public:
+
     explicit selecP(QWidget *parent = nullptr);
     ~selecP();
 
@@ -28,6 +29,7 @@ private slots:
 
 private:
     Ui::selecP *ui;
+    int jugador=0;
 };
 
 #endif // SELECP_H

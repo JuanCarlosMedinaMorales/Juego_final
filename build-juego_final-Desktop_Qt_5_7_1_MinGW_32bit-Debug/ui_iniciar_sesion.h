@@ -17,6 +17,7 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
 
@@ -26,10 +27,10 @@ class Ui_iniciar_sesion
 {
 public:
     QPlainTextEdit *plainTextEdit;
-    QPlainTextEdit *plainTextEdit_2;
     QPushButton *pushButton;
     QLabel *label_4;
     QCheckBox *checkBox;
+    QLineEdit *lineEdit;
 
     void setupUi(QDialog *iniciar_sesion)
     {
@@ -39,18 +40,14 @@ public:
         iniciar_sesion->setStyleSheet(QStringLiteral("background-image: url(:/inicioSesion.png);"));
         plainTextEdit = new QPlainTextEdit(iniciar_sesion);
         plainTextEdit->setObjectName(QStringLiteral("plainTextEdit"));
-        plainTextEdit->setGeometry(QRect(100, 390, 251, 41));
+        plainTextEdit->setGeometry(QRect(100, 400, 241, 31));
         QFont font;
         font.setFamily(QStringLiteral("Arial"));
         font.setPointSize(12);
         plainTextEdit->setFont(font);
         plainTextEdit->viewport()->setProperty("cursor", QVariant(QCursor(Qt::IBeamCursor)));
-        plainTextEdit_2 = new QPlainTextEdit(iniciar_sesion);
-        plainTextEdit_2->setObjectName(QStringLiteral("plainTextEdit_2"));
-        plainTextEdit_2->setGeometry(QRect(100, 480, 251, 41));
-        plainTextEdit_2->setFont(font);
-        plainTextEdit_2->viewport()->setProperty("cursor", QVariant(QCursor(Qt::IBeamCursor)));
-        plainTextEdit_2->setStyleSheet(QStringLiteral("selection-color: qconicalgradient(cx:0.5, cy:0.5, angle:0, stop:0 rgba(35, 40, 3, 255), stop:0.16 rgba(136, 106, 22, 255), stop:0.225 rgba(166, 140, 41, 255), stop:0.285 rgba(204, 181, 74, 255), stop:0.345 rgba(235, 219, 102, 255), stop:0.415 rgba(245, 236, 112, 255), stop:0.52 rgba(209, 190, 76, 255), stop:0.57 rgba(187, 156, 51, 255), stop:0.635 rgba(168, 142, 42, 255), stop:0.695 rgba(202, 174, 68, 255), stop:0.75 rgba(218, 202, 86, 255), stop:0.815 rgba(208, 187, 73, 255), stop:0.88 rgba(187, 156, 51, 255), stop:0.935 rgba(137, 108, 26, 255), stop:1 rgba(35, 40, 3, 255));"));
+        plainTextEdit->setStyleSheet(QLatin1String("background-color: rgb(255, 255, 255);\n"
+""));
         pushButton = new QPushButton(iniciar_sesion);
         pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(100, 640, 131, 41));
@@ -67,11 +64,14 @@ public:
         label_4->setEnabled(true);
         label_4->setGeometry(QRect(380, 420, 241, 61));
         label_4->setStyleSheet(QLatin1String("color: rgb(85, 0, 0);\n"
-"background-image: url(:/5b734c53396e3_opt.jpg);\n"
-""));
+"background-image: url(:/5b734c53396e3_opt.jpg);"));
         checkBox = new QCheckBox(iniciar_sesion);
         checkBox->setObjectName(QStringLiteral("checkBox"));
         checkBox->setGeometry(QRect(120, 560, 31, 31));
+        lineEdit = new QLineEdit(iniciar_sesion);
+        lineEdit->setObjectName(QStringLiteral("lineEdit"));
+        lineEdit->setGeometry(QRect(100, 480, 241, 41));
+        lineEdit->setEchoMode(QLineEdit::Password);
 
         retranslateUi(iniciar_sesion);
 

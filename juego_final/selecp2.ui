@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/esmadEntero.png);</string>
+    <string notr="true">image: url(:/esmad.png);</string>
    </property>
    <property name="text">
     <string>esmad</string>
@@ -39,7 +39,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/artesEntero.png);</string>
+    <string notr="true">image: url(:/arte.png);</string>
    </property>
    <property name="text">
     <string>artes</string>
@@ -55,7 +55,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>TextLabe</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">
@@ -81,7 +81,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/capuchoEntero.png);</string>
+    <string notr="true">image: url(:/oie_transparent.png);</string>
    </property>
    <property name="text">
     <string>capucho</string>
@@ -100,6 +100,26 @@
     <string>siguiente</string>
    </property>
   </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>311</width>
+     <height>441</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <zorder>label_3</zorder>
+  <zorder>radioButton_5</zorder>
+  <zorder>radioButton_3</zorder>
+  <zorder>label</zorder>
+  <zorder>label_2</zorder>
+  <zorder>radioButton</zorder>
+  <zorder>pushButton</zorder>
  </widget>
  <resources/>
  <connections/>
