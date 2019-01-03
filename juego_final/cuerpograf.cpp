@@ -4,6 +4,20 @@
 grafica::grafica(QGraphicsItem* carr):QGraphicsPixmapItem(carr)
 {
     setPixmap(QPixmap(c));
+    cap.append(":/CCD1.png");
+    cap.append(":/CCD2.png");
+    cap.append(":/CCD3.png");
+    cap.append(":/CCD4.png");
+    cap.append(":/CCD1.png");
+    cap.append(":/CCD2.png");
+    cap.append(":/CCV1.png");
+    cap.append(":/CCV2.png");
+    cap.append(":/CCV3.png");
+    cap.append(":/CCV4.png");
+    cap.append(":/CCV5.png");
+    cap.append(":/CCV6.png");
+
+    f.append(cap);
     n.append(":/caminar1.png");
     n.append(":/caminar2.png");
     n.append(":/caminar3.png");
@@ -16,46 +30,82 @@ grafica::grafica(QGraphicsItem* carr):QGraphicsPixmapItem(carr)
     n.append(":/caminar4v.png");
 
     f.append(n);
-    cap.append(":/CCV1.png");
-    cap.append(":/CCV2.png");
-    cap.append(":/CCV3.png");
-    cap.append(":/CCV4.png");
-    cap.append(":/CCV5.png");
-    cap.append(":/CCV6.png");
 
-    f.append(cap);
+    esmad.append(":/smadC1.png");
+    esmad.append(":/esmadC2.png");
+    esmad.append(":/esmadC3.png");
+    esmad.append(":/esmadC4.png");
+    esmad.append(":/esmadC5.png");
+    esmad.append(":/esmadC6.png");
+    esmad.append(":/esmadC1V.png");
+    esmad.append(":/esmadC2V.png");
+    esmad.append(":/esmadC3V.png");
+    esmad.append(":/esmadC4V.png");
 
+    f.append(esmad);
     car=new Cuerpo;
 
 }
 
 void grafica::mov(int seleccion,char direccion)
 {
-   // int contador=0;
     if (contador==0 && cont<4)
     {
-        setPixmap(QPixmap(f.at(seleccion).at(0)));
-        contador=1;
+        if(direccion=='A'||direccion=='4'){
+            setPixmap(QPixmap(f.at(seleccion).at(6)));
+            contador=1;
+
+        }
+        else{
+            setPixmap(QPixmap(f.at(seleccion).at(0)));
+            contador=1;
+        }
+
 
         flag=0;
     }
     else if (contador==1&& cont >4)
     {
-        setPixmap(QPixmap(f.at(seleccion).at(1)));
-        flag=2;
-        contador=2;
+        if(direccion=='A'||direccion=='4'){
+            setPixmap(QPixmap(f.at(seleccion).at(7)));
+            contador=2;
+
+        }
+        else {
+            setPixmap(QPixmap(f.at(seleccion).at(1)));
+            flag=2;
+            contador=2;
+        }
+
     }
     else if (contador==2&& cont >8)
     {
-        setPixmap(QPixmap(f.at(seleccion).at(2)));
-        flag=1;
-        contador=3;
-    }
+        if(direccion=='A'||direccion=='4'){
+            setPixmap(QPixmap(f.at(seleccion).at(8)));
+            contador=3;
+
+        }
+        else{
+            setPixmap(QPixmap(f.at(seleccion).at(2)));
+            flag=1;
+            contador=3;
+
+        }
+            }
     else if (contador==3&& cont >12)
     {
-        setPixmap(QPixmap(f.at(seleccion).at(3)));
-        flag=1;
-        contador=4;
+        if(direccion=='A'||direccion=='4'){
+            setPixmap(QPixmap(f.at(seleccion).at(9)));
+            contador=1;
+            cont=0;
+
+        }
+        else{
+            setPixmap(QPixmap(f.at(seleccion).at(3)));
+            flag=1;
+            contador=4;
+        }
+
     }
     else if (contador==4&& cont >16)
     {

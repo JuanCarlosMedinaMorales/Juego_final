@@ -16,7 +16,7 @@ selecP::~selecP()
 
 void selecP::on_pushButton_clicked()
 {
-    if(jugador==0){
+    if(jugador==9){
 
     }
     else{
@@ -31,7 +31,7 @@ void selecP::on_radioButton_clicked()
 {
     ui->label->setPixmap(QPixmap(":/capuchoEntero.png"));
     ui->label_3->setPixmap(QPixmap(":/1. Tropel Ut - Noviembre 27 de 2014.jpg"));
-    jugador=1;
+    jugador=0;
 
 }
 
@@ -39,7 +39,7 @@ void selecP::on_radioButton_3_clicked()
 {
     ui->label->setPixmap(QPixmap(":/artesEntero.png"));
     ui->label_3->setPixmap(QPixmap(":/facultad de artes udea.jpg"));
-    jugador=2;
+    jugador=1;
 }
 
 
@@ -47,7 +47,7 @@ void selecP::on_radioButton_5_clicked()
 {
     ui->label->setPixmap(QPixmap(":/esmadEntero.png"));
     ui->label_3->setPixmap(QPixmap(":/3822176_n_vir6.jpg"));
-    jugador=3;
+    jugador=2;
 
 }
 

@@ -51,6 +51,7 @@ private:
     float posi;
     int u=1;
     int tie=0;
+    int Rgolpe=0;
     QTimer *timer_mov;
     QTimer *timer_par;
     QTimer *timer_pel;
@@ -61,6 +62,7 @@ private:
     grafica *d;
     grafica *lacr;
     grafica *nube;
+    grafica *porro;
     int sp=0.0;
     char recuerdo='-';
     char recuerdo2='-';
@@ -69,7 +71,10 @@ private:
     QList<grafica*> lista;
 
     int vida=100;
+    int vida2=100;
     int puntaje=0;
+    int p1;
+    int P2;
 };
 
 #endif // INICIAR_JUEGO_H

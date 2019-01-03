@@ -27,6 +27,7 @@ private:
     QString c=":/caminar1.png";
     QList<QString>n;
     QList<QString>cap;
+    QList<QString>esmad;
     QList<QList<QString>>f;
 public:
     grafica(QGraphicsItem* carr = 0);

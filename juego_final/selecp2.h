@@ -26,8 +26,8 @@ private slots:
 
 private:
     Ui::selecp2 *ui;
-    int jugador2=0;
-    int jugador=0;
+    int jugador2=9;
+    int jugador=9;
 };
 
 #endif // SELECP2_H

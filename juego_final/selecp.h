@@ -29,7 +29,7 @@ private slots:
 
 private:
     Ui::selecP *ui;
-    int jugador=0;
+    int jugador=9;
 };
 
 #endif // SELECP_H

@@ -36,30 +36,34 @@ iniciar_juego::iniciar_juego(int jugador1,int jugador2,QWidget *parent) :
      mMediaPlayer->setVolume(100);
      mMediaPlayer->play();
 
+     p1=jugador1;
+     P2=jugador2;
     c=new grafica();
     d=new grafica();
     lacr=new grafica();
     nube=new grafica();
+    porro=new grafica();
+    porro->setPixmap(QPixmap(":/porro.png"));
     scene->addEllipse(0,0,1,1);
     lacr->setPixmap(QPixmap(":/oie_wjRyGB5Cadu8.png"));
     if(jugador1!=4){
-        if(jugador1==1){
+        if(jugador1==0){
             c->setPixmap(QPixmap(":/CCD1.png"));
         }
-        if(jugador1==2){
+        if(jugador1==1){
             c->setPixmap(QPixmap(":/caminar1.png"));
         }
-        if(jugador1==3){
+        if(jugador1==2){
             c->setPixmap(QPixmap(":/esmadEntero.png"));
         }
-        if(jugador2==1){
+        if(jugador2==0){
             d->setPixmap(QPixmap(":/CCV1.png"));
         }
-        if(jugador2==2){
+        if(jugador2==1){
             d->setPixmap(QPixmap(":/caminar1V.png"));
         }
-        if(jugador2==3){
-            d->setPixmap(QPixmap(":/esmadEntero.png"));
+        if(jugador2==2){
+            d->setPixmap(QPixmap(":/esmadC1V.png"));
         }
     }
     else{
@@ -78,6 +82,11 @@ iniciar_juego::iniciar_juego(int jugador1,int jugador2,QWidget *parent) :
         }
     }
 
+    porro->get_carro()->set_valores(500,500,100,100);
+    porro->get_carro()->SetVx(porro->get_carro()->GetVx()+1000);
+    porro->get_carro()->SetVy(porro->get_carro()->GetVy()+1000);
+    porro->posicion(v_limit);
+    scene->addItem(porro);
     c->get_carro()->set_valores(0,-450,450,450);
     c->posicion(v_limit);
     scene->addItem(c);
@@ -85,6 +94,7 @@ iniciar_juego::iniciar_juego(int jugador1,int jugador2,QWidget *parent) :
     d->get_carro()->set_valores(600,-450,450,450);
     d->posicion(v_limit);
     scene->addItem(d);
+
     //scene->setFocusItem(d);
     vel=3;
     i=0;
@@ -103,23 +113,98 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
     if(event->key()==Qt::Key_P)on_actionstop_triggered();
     if(event->key()==Qt::Key_F4) close();
     if(event->key()==Qt::Key_Z){
-       //on_actionStop_triggered();
-        on_pegar();
         event->accept();
-        c->pelea();
-        d-> setPixmap(QPixmap(":/saltar2.png"));;
+        if(p1==0&&recuerdo=='D'){
+            c->setPixmap(QPixmap(":/capucho golpe2.png"));
+        }
+        else if(p1==0&&recuerdo=='A'){
+            c->setPixmap(QPixmap(":/capucho golpe.png"));
+        }
+        else if(p1==1&&recuerdo=='D'){
+            c->setPixmap(QPixmap(":/pegar7.png"));
+        }
+        else if(p1==1&&recuerdo=='A'){
+            c->setPixmap(QPixmap(":/pegarV.png"));
+        }
+        else if(p1==2&&recuerdo=='D'){
+            c->setPixmap(QPixmap(":/esmadG.png"));
+        }
+        else if(p1==2&&recuerdo=='A'){
+            c->setPixmap(QPixmap(":/esmadGV.png"));
+        }
+
+
         if(c->collidesWithItem(d)==true)
         {
+            if(P2==0){
+                d-> setPixmap(QPixmap(":/capucho golpeadoV.png"));
+            }
+            else if(P2==1){
+                d-> setPixmap(QPixmap(":/artes golpeadoV.png"));
+            }
+            else if(P2==2){
+                d-> setPixmap(QPixmap(":/esmad golpeado.png"));
+            }
+
             ui->progressBar_2->setValue(vida-20);
             vida-=20;
             d->get_carro()->SetVy(1000);
             d->get_carro()->SetVx(5000);
             ui->lcdNumber->display(puntaje+50);
             puntaje+=50;
+            timer_salt->start(25);
         }
 
 
     }
+    if(event->key()==Qt::Key_U){
+       //on_actionStop_triggered();
+        //on_pegar();
+        event->accept();
+        if(P2==0&&recuerdo2=='6'){
+            d->setPixmap(QPixmap(":/capucho golpe2.png"));
+        }
+        else if(P2==0&&recuerdo2=='4'){
+            d->setPixmap(QPixmap(":/capucho golpe.png"));
+        }
+        else if(P2==1&&recuerdo2=='6'){
+            d->setPixmap(QPixmap(":/pegar7.png"));
+        }
+        else if(P2==1&&recuerdo2=='4'){
+            d->setPixmap(QPixmap(":/pegarV.png"));
+        }
+        else if(P2==2&&recuerdo2=='6'){
+            d->setPixmap(QPixmap(":/esmadG.png"));
+        }
+        else if(P2==2&&recuerdo2=='4'){
+            d->setPixmap(QPixmap(":/esmadGV.png"));
+        }
+
+        //c->pelea();
+        if(d->collidesWithItem(c)==true)
+        {
+            if(p1==0){
+                c-> setPixmap(QPixmap(":/capucho golpeadoV.png"));
+            }
+            else if(p1==1){
+                c-> setPixmap(QPixmap(":/artes golpeadoV.png"));
+            }
+            else if(p1==2){
+                c-> setPixmap(QPixmap(":/esmad golpeado.png"));
+            }
+
+            ui->progressBar->setValue(vida2-20);
+            vida2-=20;
+            c->get_carro()->SetVy(1000);
+            c->get_carro()->SetVx(5000);
+            ui->lcdNumber->display(puntaje-50);
+            puntaje-=50;
+            timer_salt->start(25);
+        }
+
+
+    }
+
 
     if(event->key()== Qt::Key_D && c->get_carro()->get_px()<950)
     {
@@ -129,7 +214,7 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
         on_actionstop_triggered();
         event->accept();
         recuerdo='D';
-        c->mov(0,recuerdo);
+        c->mov(p1,recuerdo);
 
     }
     if(event->key()== Qt::Key_6 && c->get_carro()->get_px()<950)
@@ -140,7 +225,7 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
         on_actionstop_triggered();
         event->accept();
          recuerdo2='6';
-        d->mov(1,recuerdo2);
+        d->mov(P2,recuerdo2);
 
     }
    if(event->key()== Qt::Key_A&& c->get_carro()->get_px()>0 && flag==1)
@@ -151,7 +236,7 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
         on_actionstop_triggered();
         event->accept();
         recuerdo='A';
-        c->mov(0,recuerdo);
+        c->mov(p1,recuerdo);
 
     }
     if(event->key()== Qt::Key_W && c->get_carro()->get_py()<200 )
@@ -177,6 +262,25 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
             timer_salt->stop();
             event->accept();
             recor_salto='8';
+            if(P2==0&&recuerdo2=='6'){
+                d->setPixmap(QPixmap(":/capu_saltandoV2.png"));
+            }
+            else if(P2==0&&recuerdo2=='4'){
+                d->setPixmap(QPixmap(":/capu_saltando2.png"));
+            }
+            else if(P2==1&&recuerdo2=='6'){
+                d->setPixmap(QPixmap(":/saltar5.png"));
+            }
+            else if(P2==1&&recuerdo2=='4'){
+                d->setPixmap(QPixmap(":/arsaltV.png"));
+            }
+            else if(P2==2&&recuerdo2=='6'){
+                d->setPixmap(QPixmap(":/esmadS1.png"));
+            }
+            else if(P2==2&&recuerdo2=='4'){
+                d->setPixmap(QPixmap(":/esmadS1V.png"));
+            }
+
             timer_salt->start(25);
 
 
@@ -198,7 +302,7 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
         on_actionstop_triggered();
         event->accept();
         recuerdo2='4';
-        d->mov(1,recuerdo2);
+        d->mov(P2,recuerdo2);
    }
    if (event->key()==Qt::Key_O ){
        timer_pel->stop();
@@ -258,6 +362,7 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
 c->posicion(v_limit);
 d->posicion(v_limit);
 lacr->posicion(v_limit);
+porro->posicion(v_limit);
 if(tie==10){
     scene->removeItem(nube);
     tie=0;
@@ -279,7 +384,7 @@ void iniciar_juego::mov()
         sp=c->get_carro()->GetVy();
     }
     else{
-        c->mov(0,recuerdo);
+        c->mov(p1,recuerdo);
         cont=0;
     }
     if(d->get_carro()->GetVy()>sp){
@@ -287,7 +392,7 @@ void iniciar_juego::mov()
         sp=d->get_carro()->GetVy();
     }
     else{
-        d->mov(1,recuerdo2);
+        d->mov(P2,recuerdo2);
         cont=0;
     }
 }
@@ -439,9 +544,20 @@ void iniciar_juego::salto()
             flag=1;
         }
     }
+//    porro->get_carro()->SetVx(porro->get_carro()->GetVx()+1000);
+//    porro->get_carro()->SetVy(porro->get_carro()->GetVy()+1000);
+    if(porro->get_carro()->get_px()>700||porro->get_carro()->get_px()<500){
+        porro->get_carro()->SetVx(porro->get_carro()->GetVx()*-1);
 
+    }
+    if(porro->get_carro()->get_py()<0||porro->get_carro()->get_py()>200){
+        porro->get_carro()->SetVy(porro->get_carro()->GetVy()*-1);
+
+    }
     c->posicion(v_limit);
     d->posicion(v_limit);
+    porro->posicion(v_limit);
+
 
 }
 
