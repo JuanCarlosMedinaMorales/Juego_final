@@ -34,9 +34,10 @@ public:
     void mov(int seleccion,char direccion);
     void par(float v_limit);
     void pelea();
-    void salto(int vec);
+    void salto(int vec,char direccion,int seleccion,int P);
     Cuerpo* get_carro();
     void posicion(float v_lim);
+    void porro(float vlim);
     ~grafica();
     float get_escala();
     float get_contador();

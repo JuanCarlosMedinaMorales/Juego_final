@@ -32,6 +32,7 @@ private slots:
     void pegar();
     void salto();
     void grav();
+    void mov_proyectil();
 
     void on_actiongo_triggered();
 
@@ -39,12 +40,14 @@ private slots:
 
     void on_progressBar_valueChanged(int value);
 
+    void on_pushButton_clicked();
+
 private:
     Ui::iniciar_juego *ui;
     QMediaPlayer *mMediaPlayer;
     int h_limit;                //longitud en X del mundo
     int v_limit;                //longitud en Y del mundo
-    int vel;
+    int vel=1000;
     bool i=0;
     int flag=1;
     int cont;
@@ -52,11 +55,13 @@ private:
     int u=1;
     int tie=0;
     int Rgolpe=0;
+    int conta_proyectil=0;
     QTimer *timer_mov;
     QTimer *timer_par;
     QTimer *timer_pel;
     QTimer *timer_salt;
     QTimer *timer_grav;
+    QTimer *timer_proy;
     QGraphicsScene *scene;
     grafica *c;
     grafica *d;
@@ -72,9 +77,14 @@ private:
 
     int vida=100;
     int vida2=100;
+    int poder1_1=0;
+    int poder2_1=0;
+    int poder1_2=0;
+    int poder2_2=0;
     int puntaje=0;
     int p1;
     int P2;
+    bool bloqueo=false;
 };
 
 #endif // INICIAR_JUEGO_H

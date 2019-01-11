@@ -78,10 +78,48 @@ void Cuerpo::CalcularPosicion()
 
 
     }
+    if(px<=0){
+        px=0;
+    }
     if (py<=-200){
         py=-200;
         //vy*=-1;
     }
+
+}
+
+void Cuerpo::posicionporro()
+{
+    if(py<300){
+        px-=vx;
+    }
+    else{
+        px+=vx;
+    }
+
+    circun=(px-500)*(px-500);
+    circun=40000-circun;
+    circun=sqrt(circun);
+    circun+=300;
+    py=circun;
+
+
+//    if(py>=500){
+//        py=500;
+//        vy=vy*-1;
+//    }
+//    if(px>=900){
+//        px=700;
+//        vx=vx*-1;
+//    }
+//    if(px<=200){
+//        px=300;
+//        vx=vx*-1;
+//    }
+//    if(py<=0){
+//        py=0;
+//        vy=vy*-1;
+//    }
 
 }
 void Cuerpo::set_px(float x)

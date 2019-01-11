@@ -14,10 +14,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    QMediaPlayer *musica=new QMediaPlayer();
-    musica->setMedia(QUrl("qrc:/Amon_Amarth_-_Victorious_March_[Fanvideo].mp3"));
-    musica->setVolume(50);
-    musica->play();
+//    QMediaPlayer *musica=new QMediaPlayer();
+//    musica->setMedia(QUrl("qrc:/Amon_Amarth_-_Victorious_March_[Fanvideo].mp3"));
+//    musica->setVolume(50);
+//    musica->play();
 
     QSize size(578,423);
     QMovie *mov=new QMovie(":/PORTADA.gif");

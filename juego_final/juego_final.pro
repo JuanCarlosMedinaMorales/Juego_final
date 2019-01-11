@@ -38,7 +38,8 @@ SOURCES += \
     cuerpo.cpp \
     cuerpograf.cpp \
     instrucciones.cpp \
-    cargar_partidas.cpp
+    cargar_partidas.cpp \
+    pausa.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -54,7 +55,8 @@ HEADERS += \
     cuerpo.h \
     cuerpograf.h \
     instrucciones.h \
-    cargar_partidas.h
+    cargar_partidas.h \
+    pausa.h
 
 FORMS += \
         mainwindow.ui \
@@ -68,7 +70,8 @@ FORMS += \
     juego.ui \
     iniciar_juego.ui \
     instrucciones.ui \
-    cargar_partidas.ui
+    cargar_partidas.ui \
+    pausa.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -65,7 +65,6 @@
         <file>CCD4.png</file>
         <file>PORTADA.gif</file>
         <file>calav.png</file>
-        <file>Amon_Amarth_-_Victorious_March_[Fanvideo].mp3</file>
         <file>nube gas.png</file>
         <file>oie_1505059khu9Pumk.gif</file>
         <file>41.gif</file>
@@ -120,5 +119,11 @@
         <file>pegarV.png</file>
         <file>arsaltV.png</file>
         <file>capu_saltando2.png</file>
+        <file>escudo A.png</file>
+        <file>escudo C.png</file>
+        <file>escudo E.png</file>
+        <file>hongo A.png</file>
+        <file>molotov C.png</file>
+        <file>fuego.png</file>
     </qresource>
 </RCC>

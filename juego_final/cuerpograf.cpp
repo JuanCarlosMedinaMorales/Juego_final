@@ -171,78 +171,144 @@ void grafica::pelea()
 
 }
 
-void grafica::salto(int vec)
+void grafica::salto(int vec,char direccion,int seleccion,int P)
 {
-    if(vec==1){
-        if (contador2==0 && cont<4)
+    if(vec==1&&P==1){
+        if (direccion=='D')
         {
-            setPixmap(QPixmap(":/saltar1.png"));
-            contador2=1;
-            flag=0;
+            if(seleccion==1){
+                setPixmap(QPixmap(":/saltar2.png"));
+                flag=1;
+            }
+            if(seleccion==0){
+                setPixmap(QPixmap(":/capu_saltando2.png"));
+                flag=1;
+            }
+            if(seleccion==2){
+                setPixmap(QPixmap(":/esmadS1.png"));
+                flag=1;
+            }
         }
-        else if (contador2==1&& cont >4)
+        if (direccion=='A')
         {
-            setPixmap(QPixmap(":/saltar2.png"));
-            flag=2;
-            contador2=2;
+            if(seleccion==1){
+                setPixmap(QPixmap(":/arsaltV.png"));
+                flag=1;
+            }
+            if(seleccion==0){
+                setPixmap(QPixmap(":/capu_saltandoV1.png"));
+                flag=1;
+            }
+            if(seleccion==2){
+                setPixmap(QPixmap(":/esmadS1V.png"));
+                flag=1;
+            }
         }
-        else if (contador2==2&& cont >8)
-        {
-            setPixmap(QPixmap(":/saltar3.png"));
-            flag=1;
-            contador2=3;
-        }
-        else if (contador2==3&& cont >12)
-        {
-            setPixmap(QPixmap(":/saltar4.png"));
-            flag=1;
-            contador2=4;
-        }
-        else if (contador2==4&& cont >16)
-        {
-            setPixmap(QPixmap(":/saltar5.png"));
-            flag=1;
-            contador2=5;
-        }
+
         get_carro()->CalcularPosicion();
     }
-    else if(vec==2){
-        if (contador2==5 && cont<4)
+    else if(vec==1&&P==2){
+        if (direccion=='6')
         {
-            setPixmap(QPixmap(":/saltar6.png"));
-            contador2=1;
-            flag=0;
+            if(seleccion==1){
+                setPixmap(QPixmap(":/saltar2.png"));
+                flag=1;
+            }
+            if(seleccion==0){
+                setPixmap(QPixmap(":/capu_saltando2.png"));
+                flag=1;
+            }
+            if(seleccion==2){
+                setPixmap(QPixmap(":/esmadS1.png"));
+                flag=1;
+            }
         }
-        else if (contador2==1&& cont >4)
+        if (direccion=='4')
         {
-            setPixmap(QPixmap(":/salta6.png"));
-            flag=2;
-            contador2=2;
+            if(seleccion==1){
+                setPixmap(QPixmap(":/arsaltV.png"));
+                flag=1;
+            }
+            if(seleccion==0){
+                setPixmap(QPixmap(":/capu_saltandoV1.png"));
+                flag=1;
+            }
+            if(seleccion==2){
+                setPixmap(QPixmap(":/esmadS1V.png"));
+                flag=1;
+            }
         }
-        else if (contador2==2&& cont >8)
-        {
-            setPixmap(QPixmap(":/saltar6.png"));
-            flag=1;
-            contador2=3;
-        }
-        else if (contador2==3&& cont >12)
-        {
-            setPixmap(QPixmap(":/saltar7.png"));
-            flag=1;
-            contador2=4;
-        }
-        else if (contador2==4&& cont >16)
-        {
-            setPixmap(QPixmap(":/saltar8.png"));
-            flag=1;
-            contador2=0;
-        }
+
         get_carro()->CalcularPosicion();
     }
+    else if(vec==2&&P==1){
+        if (direccion=='D')
+        {
+            if(seleccion==1){
+                setPixmap(QPixmap(":/saltar6.png"));
+                flag=0;
+            }
+            if(seleccion==0){
+                setPixmap(QPixmap(":/capu_saltando2.png"));
+                flag=0;
+            }
+            if(seleccion==2){
+                setPixmap(QPixmap(":/esmadS2.png"));
+                flag=0;
+            }
+        }
+        if (direccion=='A')
+        {
+            if(seleccion==1){
+                setPixmap(QPixmap(":/arsaltV.png"));
+                flag=0;
+            }
+            if(seleccion==0){
+                setPixmap(QPixmap(":/capu_saltandoV2.png"));
+                flag=0;
+            }
+            if(seleccion==2){
+                setPixmap(QPixmap(":/esmadS2V.png"));
+                flag=0;
+            }
+        }
 
-    if (cont==20)cont=0;
+        get_carro()->CalcularPosicion();
+    }
+    else if(vec==2&&P==2){
+        if (direccion=='6')
+        {
+            if(seleccion==1){
+                setPixmap(QPixmap(":/saltar6.png"));
+                flag=0;
+            }
+            if(seleccion==0){
+                setPixmap(QPixmap(":/capu_saltando2.png"));
+                flag=0;
+            }
+            if(seleccion==2){
+                setPixmap(QPixmap(":/esmadS2.png"));
+                flag=0;
+            }
+        }
+        if (direccion=='4')
+        {
+            if(seleccion==1){
+                setPixmap(QPixmap(":/arsaltV.png"));
+                flag=0;
+            }
+            if(seleccion==0){
+                setPixmap(QPixmap(":/capu_saltandoV2.png"));
+                flag=0;
+            }
+            if(seleccion==2){
+                setPixmap(QPixmap(":/esmadS2V.png"));
+                flag=0;
+            }
+        }
 
-    cont++;
+        get_carro()->CalcularPosicion();
+    }
     get_carro()->CalcularPosicion();
 
 }
@@ -259,6 +325,12 @@ void grafica::posicion(float v_lim){
     car->CalcularPosicion();
     setPos(car->get_px(),(v_lim-car->get_py()-((car->get_h())*escala)));
 
+}
+
+void grafica::porro(float v_lim)
+{
+ car->posicionporro();
+ setPos(car->get_px(),(v_lim-car->get_py()-((car->get_h())*escala)));
 }
 void grafica::par(float v_lim){
 
