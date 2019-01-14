@@ -12,7 +12,12 @@ private:
     float h=40;
     float w=40;
     float dt=0.1;
-    float vx,vy,rad,angulom,V,ax=0,ay=0,A,K,cd=0.01,p=1.225,masa=100,u,circun;
+    float vx,vy,rad,V,ax=0,ay=0,A,K,cd=0.01,p=1.225,masa=100,u;
+    int angulom=0;
+    int circun=20;//radio de la circunfeerencia
+
+
+    bool rectificar=false;
 
 public:
     Cuerpo();

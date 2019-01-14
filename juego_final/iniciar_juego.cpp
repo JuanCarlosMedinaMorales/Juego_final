@@ -147,11 +147,14 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
         }
         QSize size(1114,597);
         QMovie *mov=new QMovie(":/41.gif");
-        mov->setSpeed(200);
+        mov->setSpeed(300);
         mov->setScaledSize(size);
         ui->label->setMovie(mov);
         mov->start();
          bloqueo=true;
+         timer_salt->stop();
+         timer_grav->stop();
+         timer_proy->stop();
     }
     if(event->key()==Qt::Key_C&&bloqueo==false)on_actiongo_triggered();
     if(event->key()==Qt::Key_P&&bloqueo==false){
@@ -197,7 +200,7 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
                 d-> setPixmap(QPixmap(":/esmad golpeado.png"));
             }
 
-            ui->progressBar_2->setValue(vida-20);
+            ui->progressBar_2->setValue(vida-5);
             vida-=5;
             if(poder1_1!=100){
                 if(poder1_1<100){
@@ -299,8 +302,14 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
     if(event->key()== Qt::Key_D && c->get_carro()->get_px()<950&&bloqueo==false)
     {
         timer_pel->stop();
-        timer_salt->stop();
-        c->get_carro()->set_px(c->get_carro()->get_px()+vel+5);
+        //timer_salt->stop();
+        if(c->collidesWithItem(nube)==true&&lacrimogena==true){
+             c->get_carro()->set_px(c->get_carro()->get_px()+vel);
+        }
+        else{
+          c->get_carro()->set_px(c->get_carro()->get_px()+vel+5);
+        }
+
         on_actionstop_triggered();
         event->accept();
         recuerdo='D';
@@ -310,8 +319,15 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
     if(event->key()== Qt::Key_6 && c->get_carro()->get_px()<950&&bloqueo==false)
     {
         timer_pel->stop();
-        timer_salt->stop();
-        d->get_carro()->set_px(d->get_carro()->get_px()+vel+5);
+        //timer_salt->stop();
+        if(d->collidesWithItem(nube)==true&&lacrimogena==true){
+             d->get_carro()->SetVx(d->get_carro()->GetVx()/2);
+             d->get_carro()->set_px(d->get_carro()->get_px()+vel-10);
+        }
+        else{
+          d->get_carro()->set_px(d->get_carro()->get_px()+vel+5);
+        }
+
         on_actionstop_triggered();
         event->accept();
          recuerdo2='6';
@@ -321,8 +337,13 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
    if(event->key()== Qt::Key_A&& c->get_carro()->get_px()>0 && flag==1&&bloqueo==false)
     {
        timer_pel->stop();
-       timer_salt->stop();
-        c->get_carro()->set_px(c->get_carro()->get_px()-vel-5) ;
+       //timer_salt->stop();
+       if(c->collidesWithItem(nube)==true&&lacrimogena==true){
+            c->get_carro()->set_px(c->get_carro()->get_px()-vel);
+       }
+       else{
+         c->get_carro()->set_px(c->get_carro()->get_px()-vel-5);
+       }
         on_actionstop_triggered();
         event->accept();
         recuerdo='A';
@@ -367,9 +388,16 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
 
    if (event->key()==Qt::Key_4&&bloqueo==false ){
        timer_pel->stop();
-       timer_salt->stop();
-        d->get_carro()->set_px(d->get_carro()->get_px()-vel-5) ;
-        //d->get_carro()->SetVx(-50);
+       //timer_salt->stop();
+       if(c->collidesWithItem(nube)==true&&lacrimogena==true){
+           d->get_carro()->SetVx(d->get_carro()->GetVx()/2);
+            d->get_carro()->set_px(d->get_carro()->get_px()-vel+10);
+       }
+       else{
+         d->get_carro()->set_px(d->get_carro()->get_px()-vel-5);
+       }
+
+
         on_actionstop_triggered();
         event->accept();
         recuerdo2='4';
@@ -386,6 +414,8 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
         d->get_carro()->SetVx(d->get_carro()->GetVx()+10);
    }
    if (event->key()==Qt::Key_V&&bloqueo==false ){
+        S_lanzador=1;
+        eliminado=false;
        float x=500;
        float y=1000;
        float px=c->get_carro()->get_px();
@@ -396,7 +426,7 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
        lacr->get_carro()->set_py(py*-1);
        nube->get_carro()->SetVx(0);
        nube->get_carro()->SetVy(0);
-       nube->get_carro()->set_valores(500,500,100,100);
+       nube->get_carro()->set_valores(500,100,100,100);
        if(p1==0){
            lacr->setPixmap(QPixmap(":/molotov C.png"));
            nube->setPixmap(QPixmap(":/fuego.png"));
@@ -405,15 +435,21 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
                u=1;
            }
            timer_proy->start(50);
+
        }
        if(p1==1){
+           S_lanzador=1;
            lacr->setPixmap(QPixmap(":/hongo A.png"));
            nube->setPixmap(QPixmap(":/porro.png"));
            timer_grav->start(25);
            if(lacr->get_carro()->get_py()<200){
-               u=1;
+               u=0;
+           }
+           if(nube_activa==true){
+               nube->porro(v_limit);
            }
            timer_proy->start(50);
+
 
        }
        if(p1==2){
@@ -423,7 +459,10 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
            if(lacr->get_carro()->get_py()<200){
                u=1;
            }
+
            timer_proy->start(50);
+
+
        }
 
 
@@ -457,8 +496,8 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
 
 c->posicion(v_limit);
 d->posicion(v_limit);
-lacr->posicion(v_limit);
-porro->posicion(v_limit);
+//lacr->posicion(v_limit);
+//porro->posicion(v_limit);
 //if(tie==10){
 //    scene->removeItem(nube);
 //    tie=0;
@@ -657,9 +696,9 @@ void iniciar_juego::salto()
 void iniciar_juego::grav()
 {
  lacr->posicion(v_limit);
- if(lacr->get_carro()->get_py()>200&&u==1){
+ if(lacr->get_carro()->get_py()>200&&u==0){
    scene->addItem(lacr);
-
+    u++;
  }
 
  if(lacr->get_carro()->get_py()<200&&u==1){
@@ -667,37 +706,153 @@ void iniciar_juego::grav()
          nube->get_carro()->set_px(lacr->get_carro()->get_px());
          nube->get_carro()->set_py(lacr->get_carro()->get_py());
          scene->addItem(nube);
+         nube_activa=true;
          nube->posicion(v_limit);
+         scene->removeItem(lacr);
+         u++;
+
+
      }
      else{
          //nube->get_carro()->set_valores(500,500,100,100);
          nube->get_carro()->SetVx(10);
          nube->get_carro()->SetVy(10);
-         scene->addItem(nube);
-         nube->porro(v_limit);
+         lacr->get_carro()->set_py(200);
+         lacr->get_carro()->SetVy(lacr->get_carro()->GetVy()*-1);
+
+
+
+
+
          //nube->posicion(v_limit);
 
      }
+ }
+ if(lacr->get_carro()->get_px()>900||lacr->get_carro()->get_px()<10){
+     lacr->get_carro()->SetVx(lacr->get_carro()->GetVx()*-1);
+ }
+ if(p1==1){
+     if(S_lanzador==1){
+         if(lacr->collidesWithItem(d)){
+             if(eliminado==false){
+                 scene->removeItem(lacr);
+                 scene->addItem(nube);
+                 eliminado=true;
+                 u++;
+                 nube_activa=true;
+             }
 
 
-     scene->removeItem(lacr);
-     u++;
+             nube->porro(v_limit);
+             u++;
 
+
+         }
+         else if(nube_activa==true&&eliminado==true){
+             nube->porro(v_limit);
+         }
+     }
+     if(S_lanzador==2){
+         if(lacr->collidesWithItem(c)){
+             if(eliminado==false){
+                 scene->removeItem(lacr);
+                 scene->addItem(nube);
+                 eliminado=true;
+                 u++;
+             }
+
+             nube_activa=true;
+             //nube->porro(v_limit);
+
+             u++;
+
+         }
+     }
  }
 
 }
 
 void iniciar_juego::mov_proyectil()
 {
-    conta_proyectil++;
+    if(nube_activa==true){
+        conta_proyectil++;
+    }
+
+
+    if(S_lanzador==1){
+
+        if(p1==0){
+            if(nube->collidesWithItem(d)==true&&nube_activa==true){
+                ui->progressBar_2->setValue(vida-20);
+                vida-=20;
+            }
+        }
+        if(p1==1){
+            //nube->porro(v_limit);
+            if(nube->collidesWithItem(d)==true&&nube_activa==true){
+                ui->progressBar_2->setValue(vida-20);
+                vida-=20;
+                if(c->get_carro()->get_px()<=d->get_carro()->get_px()){
+                    d->get_carro()->SetVy(1000);
+                    d->get_carro()->SetVx(5000);
+                }
+                if(c->get_carro()->get_px()>d->get_carro()->get_px()){
+                    d->get_carro()->SetVy(1000);
+                    d->get_carro()->SetVx(-5000);
+                }
+                timer_salt->start(25);
+            }
+        }
+        if(p1==2){
+            if(nube->collidesWithItem(d)==true&&nube_activa==true){
+               lacrimogena==true;
+            }
+
+        }
+    }
+    if(S_lanzador==2){
+
+        if(p1==0){
+            if(nube->collidesWithItem(c)==true&&nube_activa==true){
+                ui->progressBar->setValue(vida2-20);
+                vida2-=20;
+            }
+        }
+        if(p1==1){
+            nube->porro(v_limit);
+            if(nube->collidesWithItem(c)==true&&nube_activa==true){
+                ui->progressBar->setValue(vida2-20);
+                vida2-=20;
+                if(c->get_carro()->get_px()<=d->get_carro()->get_px()){
+                    c->get_carro()->SetVy(1000);
+                    c->get_carro()->SetVx(5000);
+                }
+                if(c->get_carro()->get_px()>d->get_carro()->get_px()){
+                    c->get_carro()->SetVy(1000);
+                    c->get_carro()->SetVx(-5000);
+                }
+                timer_salt->start(25);
+            }
+        }
+        if(p1==2){
+            if(nube->collidesWithItem(c)==true&&nube_activa==true){
+               lacrimogena=true;
+            }
+
+        }
+    }
+
     if(conta_proyectil==200){
         scene->removeItem(nube);
         conta_proyectil=0;
+        nube_activa=false;
+        u=0;
+        //lacrimogena=false;
     }
-    if(p1==1){
-        nube->porro(v_limit);
-    }
+
 }
+
+
 
 
 

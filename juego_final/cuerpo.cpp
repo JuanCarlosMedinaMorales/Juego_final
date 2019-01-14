@@ -90,36 +90,13 @@ void Cuerpo::CalcularPosicion()
 
 void Cuerpo::posicionporro()
 {
-    if(py<300){
-        px-=vx;
+    rad=angulom*3.14/180;
+    px=px+circun*cos(rad);
+    py=py+circun*sin(rad);
+    angulom+=5;
+    if(angulom>=360){
+        angulom=0;
     }
-    else{
-        px+=vx;
-    }
-
-    circun=(px-500)*(px-500);
-    circun=40000-circun;
-    circun=sqrt(circun);
-    circun+=300;
-    py=circun;
-
-
-//    if(py>=500){
-//        py=500;
-//        vy=vy*-1;
-//    }
-//    if(px>=900){
-//        px=700;
-//        vx=vx*-1;
-//    }
-//    if(px<=200){
-//        px=300;
-//        vx=vx*-1;
-//    }
-//    if(py<=0){
-//        py=0;
-//        vy=vy*-1;
-//    }
 
 }
 void Cuerpo::set_px(float x)

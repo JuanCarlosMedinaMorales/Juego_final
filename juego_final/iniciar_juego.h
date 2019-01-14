@@ -52,7 +52,11 @@ private:
     int flag=1;
     int cont;
     float posi;
-    int u=1;
+    int S_lanzador;
+    bool nube_activa=false;
+    bool lacrimogena=false;
+    bool eliminado=false;
+    int u=0;
     int tie=0;
     int Rgolpe=0;
     int conta_proyectil=0;
