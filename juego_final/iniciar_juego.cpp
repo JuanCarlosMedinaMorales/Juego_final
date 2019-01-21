@@ -18,6 +18,8 @@ iniciar_juego::iniciar_juego(int jugador1,int jugador2,QWidget *parent) :
     timer_salt= new QTimer(this);
     timer_grav= new QTimer(this);
     timer_proy=new QTimer(this);
+    timer_escudo=new QTimer(this);
+
     scene=new QGraphicsScene(this);         //crea la scene
     scene->setSceneRect(0,0,h_limit,v_limit);     //asigna el rectangulo que encierra la scene, determinado por h_limit y v_limit
     ui->graphicsView->setScene(scene);
@@ -38,6 +40,7 @@ iniciar_juego::iniciar_juego(int jugador1,int jugador2,QWidget *parent) :
     connect(timer_salt,SIGNAL(timeout()),this,SLOT(salto()));
     connect(timer_grav,SIGNAL(timeout()),this,SLOT(grav()));
     connect(timer_proy,SIGNAL(timeout()),this,SLOT(mov_proyectil()));
+    connect(timer_escudo,SIGNAL(timeout()),this,SLOT(duracion_escudo()));
      ui->graphicsView->setBackgroundBrush(QImage(":/5b734c53396e3_opt.jpg"));
 
 //     mMediaPlayer->setMedia(QUrl::fromLocalFile(":/Amon_Amarth_-_Victorious_March_[Fanvideo].mp3"));
@@ -50,8 +53,9 @@ iniciar_juego::iniciar_juego(int jugador1,int jugador2,QWidget *parent) :
     d=new grafica();
     lacr=new grafica();
     nube=new grafica();
-    porro=new grafica();
-    porro->setPixmap(QPixmap(":/porro.png"));
+    escudo_objet=new grafica();
+    escudo_objet->setPixmap(QPixmap(":/porro.png"));
+    escudo_objet2=new grafica();
     scene->addEllipse(0,0,1,1);
     lacr->setPixmap(QPixmap(":/oie_wjRyGB5Cadu8.png"));
     if(jugador1!=4){
@@ -129,10 +133,11 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
         }
         QSize size(1114,597);
         QMovie *mov=new QMovie(":/41.gif");
-        mov->setSpeed(150);
+        mov->setSpeed(200);
         mov->setScaledSize(size);
         ui->label->setMovie(mov);
         mov->start();
+
          bloqueo=true;
     }
     if(vida<=0){
@@ -203,15 +208,13 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
             ui->progressBar_2->setValue(vida-5);
             vida-=5;
             if(poder1_1!=100){
-                if(poder1_1<100){
-                  poder1_1+=20;
+                if(poder1_1!=100){
+                  poder1_1+=50;
                 }
                 ui->progressBar_3->setValue(poder1_1);
             }
             if(poder1_1==100){
-                if(poder2_1<100){
-                  poder2_1+=20;
-                }
+                  poder2_1+=50;
                 ui->progressBar_4->setValue(poder2_1);
             }
             if(c->get_carro()->get_px()<=d->get_carro()->get_px()){
@@ -267,7 +270,7 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
                 c-> setPixmap(QPixmap(":/esmad golpeado.png"));
             }
 
-            ui->progressBar->setValue(vida2-20);
+            ui->progressBar->setValue(vida2-5);
             vida2-=5;
             if(poder1_2!=100){
                 if(poder1_2<100){
@@ -294,6 +297,16 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
             puntaje-=50;
             timer_salt->start(25);
         }
+        if(d->collidesWithItem(escudo_objet)==true && escudo==true){
+            if(c->get_carro()->get_px()>=d->get_carro()->get_px()){
+                c->get_carro()->SetVy(1000);
+                c->get_carro()->SetVx(5000);
+            }
+            if(c->get_carro()->get_px()<d->get_carro()->get_px()){
+                c->get_carro()->SetVy(1000);
+                c->get_carro()->SetVx(-5000);
+            }
+        }
 
 
     }
@@ -303,11 +316,15 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
     {
         timer_pel->stop();
         //timer_salt->stop();
-        if(c->collidesWithItem(nube)==true&&lacrimogena==true){
+        if(c->collidesWithItem(escudo_objet2)==true&&escudo2==true){
+             c->get_carro()->SetVx(c->get_carro()->GetVx()/2);
+             c->get_carro()->set_px(c->get_carro()->get_px()+vel-vel);
+        }
+        else if(c->collidesWithItem(nube)==true&&lacrimogena==true){
              c->get_carro()->set_px(c->get_carro()->get_px()+vel);
         }
         else{
-          c->get_carro()->set_px(c->get_carro()->get_px()+vel+5);
+          c->get_carro()->set_px(c->get_carro()->get_px()+vel+10);
         }
 
         on_actionstop_triggered();
@@ -320,12 +337,16 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
     {
         timer_pel->stop();
         //timer_salt->stop();
+        if(d->collidesWithItem(escudo_objet)==true&&escudo==true){
+             d->get_carro()->SetVx(d->get_carro()->GetVx()/2);
+             d->get_carro()->set_px(d->get_carro()->get_px()+vel-vel);
+        }
         if(d->collidesWithItem(nube)==true&&lacrimogena==true){
              d->get_carro()->SetVx(d->get_carro()->GetVx()/2);
-             d->get_carro()->set_px(d->get_carro()->get_px()+vel-10);
+             d->get_carro()->set_px(d->get_carro()->get_px()+vel);
         }
         else{
-          d->get_carro()->set_px(d->get_carro()->get_px()+vel+5);
+          d->get_carro()->set_px(d->get_carro()->get_px()+vel+10);
         }
 
         on_actionstop_triggered();
@@ -338,11 +359,15 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
     {
        timer_pel->stop();
        //timer_salt->stop();
+       if(c->collidesWithItem(escudo_objet2)==true&&escudo2==true){
+            c->get_carro()->SetVx(c->get_carro()->GetVx()/2);
+            c->get_carro()->set_px(c->get_carro()->get_px()+vel-vel);
+       }
        if(c->collidesWithItem(nube)==true&&lacrimogena==true){
             c->get_carro()->set_px(c->get_carro()->get_px()-vel);
        }
        else{
-         c->get_carro()->set_px(c->get_carro()->get_px()-vel-5);
+         c->get_carro()->set_px(c->get_carro()->get_px()-vel-10);
        }
         on_actionstop_triggered();
         event->accept();
@@ -389,12 +414,17 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
    if (event->key()==Qt::Key_4&&bloqueo==false ){
        timer_pel->stop();
        //timer_salt->stop();
-       if(c->collidesWithItem(nube)==true&&lacrimogena==true){
+
+       if(d->collidesWithItem(escudo_objet)==true&&escudo==true){
+            d->get_carro()->SetVx(d->get_carro()->GetVx()/2);
+            d->get_carro()->set_px(d->get_carro()->get_px()+vel-vel);
+       }
+       if(d->collidesWithItem(nube)==true&&lacrimogena==true){
            d->get_carro()->SetVx(d->get_carro()->GetVx()/2);
-            d->get_carro()->set_px(d->get_carro()->get_px()-vel+10);
+            d->get_carro()->set_px(d->get_carro()->get_px()-vel);
        }
        else{
-         d->get_carro()->set_px(d->get_carro()->get_px()-vel-5);
+         d->get_carro()->set_px(d->get_carro()->get_px()-vel-10);
        }
 
 
@@ -416,76 +446,186 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
    if (event->key()==Qt::Key_V&&bloqueo==false ){
         S_lanzador=1;
         eliminado=false;
-       float x=500;
-       float y=1000;
+       float x=400;
+       float y=800;
        float px=c->get_carro()->get_px();
        float py=c->get_carro()->get_py();
-       lacr->get_carro()->SetVx(x);
-       lacr->get_carro()->SetVy(y);
+       if(recuerdo=='D'){
+           lacr->get_carro()->SetVx(x);
+           lacr->get_carro()->SetVy(y);
+       }
+       if(recuerdo=='A'){
+           lacr->get_carro()->SetVx(x*-1);
+           lacr->get_carro()->SetVy(y*-1);
+       }
+
        lacr->get_carro()->set_px(px);
        lacr->get_carro()->set_py(py*-1);
        nube->get_carro()->SetVx(0);
        nube->get_carro()->SetVy(0);
        nube->get_carro()->set_valores(500,100,100,100);
-       if(p1==0){
-           lacr->setPixmap(QPixmap(":/molotov C.png"));
-           nube->setPixmap(QPixmap(":/fuego.png"));
-           timer_grav->start(25);
-           if(lacr->get_carro()->get_py()<200){
-               u=1;
+       if(poder2_1>=100){
+           if(p1==0){
+               lacr->setPixmap(QPixmap(":/molotov C.png"));
+               nube->setPixmap(QPixmap(":/fuego.png"));
+               timer_grav->start(25);
+               if(lacr->get_carro()->get_py()<200){
+                   u=1;
+               }
+               timer_proy->start(50);
+
            }
-           timer_proy->start(50);
+           if(p1==1){
+               S_lanzador=1;
+               lacr->setPixmap(QPixmap(":/hongo A.png"));
+               nube->setPixmap(QPixmap(":/porro.png"));
+               timer_grav->start(25);
+
+               if(nube_activa==true){
+                   nube->porro(v_limit);
+               }
+               timer_proy->start(50);
+
+
+           }
+           if(p1==2){
+               lacr->setPixmap(QPixmap(":/oie_wjRyGB5Cadu8.png"));
+               nube->setPixmap(QPixmap(":/nube gas.png"));
+               timer_grav->start(25);
+               if(lacr->get_carro()->get_py()<200){
+                   u=1;
+               }
+
+               timer_proy->start(50);
+
+
+           }
+           poder2_1=0;
+           poder1_1=0;
+           ui->progressBar_4->setValue(poder2_1);
+           ui->progressBar_3->setValue(poder1_1);
 
        }
-       if(p1==1){
-           S_lanzador=1;
-           lacr->setPixmap(QPixmap(":/hongo A.png"));
-           nube->setPixmap(QPixmap(":/porro.png"));
-           timer_grav->start(25);
-           if(lacr->get_carro()->get_py()<200){
-               u=0;
+       if(poder1_1==100&&poder2_1<100){
+           if(p1==0){
+               escudo_objet->setPixmap(QPixmap(":/escudo C.png"));
            }
-           if(nube_activa==true){
-               nube->porro(v_limit);
+           if(p1==1){
+               escudo_objet->setPixmap(QPixmap(":/escudo A.png"));
            }
-           timer_proy->start(50);
-
-
-       }
-       if(p1==2){
-           lacr->setPixmap(QPixmap(":/oie_wjRyGB5Cadu8.png"));
-           nube->setPixmap(QPixmap(":/nube gas.png"));
-           timer_grav->start(25);
-           if(lacr->get_carro()->get_py()<200){
-               u=1;
+           if(p1==2){
+               escudo_objet->setPixmap(QPixmap(":/escudo E.png"));
            }
-
-           timer_proy->start(50);
-
-
+           escudo_objet->get_carro()->set_px(lacr->get_carro()->get_px());
+           escudo_objet->get_carro()->set_py(lacr->get_carro()->get_py()-5);
+           scene->addItem(escudo_objet);
+           escudo=true;
+           escudo_objet->posicion(v_limit);
+           timer_escudo->start(50);
+           conta_escudo=0;
+           poder1_1=0;
+           poder2_1=0;
+           poder1_2=0;
+           poder2_2=0;
+           ui->progressBar_3->setValue(poder1_1);
+           ui->progressBar_6->setValue(poder1_2);
+           ui->progressBar_4->setValue(poder2_1);
+           ui->progressBar_5->setValue(poder2_2);
        }
 
 
 
    }
 
-   if (event->key()==Qt::Key_X&&bloqueo==false ){
-       float x=500;
-       float y=1000;
-       float px=d->get_carro()->get_px();
-       float py=d->get_carro()->get_py();
-       lacr->setPixmap(QPixmap(":/porro.png"));
-       lacr->get_carro()->SetVx(x);
-       lacr->get_carro()->SetVy(y);
-       lacr->get_carro()->set_px(px);
-       lacr->get_carro()->set_py(py*-1);
-       nube->setPixmap(QPixmap(":/nube gas.png"));
-       nube->get_carro()->SetVx(0);
-       nube->get_carro()->SetVy(0);
-       timer_grav->start(25);
-       if(lacr->get_carro()->get_py()<200){
-           u=1;
-       }
+   if (event->key()==Qt::Key_L&&bloqueo==false ){
+       S_lanzador=2;
+       eliminado=false;
+      float x=400;
+      float y=800;
+      float px=d->get_carro()->get_px();
+      float py=d->get_carro()->get_py();
+      if(recuerdo=='6'){
+          lacr->get_carro()->SetVx(x);
+          lacr->get_carro()->SetVy(y);
+      }
+      if(recuerdo=='4'){
+          lacr->get_carro()->SetVx(x*-1);
+          lacr->get_carro()->SetVy(y*-1);
+      }
+
+      lacr->get_carro()->set_px(px);
+      lacr->get_carro()->set_py(py*-1);
+      nube->get_carro()->SetVx(0);
+      nube->get_carro()->SetVy(0);
+      nube->get_carro()->set_valores(500,100,100,100);
+      if(poder1_2>=100){
+          if(P2==0){
+              lacr->setPixmap(QPixmap(":/molotov C.png"));
+              nube->setPixmap(QPixmap(":/fuego.png"));
+              timer_grav->start(25);
+              if(lacr->get_carro()->get_py()<200){
+                  u=1;
+              }
+              timer_proy->start(50);
+
+          }
+          if(P2==1){
+              S_lanzador=1;
+              lacr->setPixmap(QPixmap(":/hongo A.png"));
+              nube->setPixmap(QPixmap(":/porro.png"));
+              timer_grav->start(25);
+
+              if(nube_activa==true){
+                  nube->porro(v_limit);
+              }
+              timer_proy->start(50);
+
+
+          }
+          if(P2==2){
+              lacr->setPixmap(QPixmap(":/oie_wjRyGB5Cadu8.png"));
+              nube->setPixmap(QPixmap(":/nube gas.png"));
+              timer_grav->start(25);
+              if(lacr->get_carro()->get_py()<200){
+                  u=1;
+              }
+
+              timer_proy->start(50);
+
+
+          }
+          poder1_2=0;
+          poder2_2=0;
+          ui->progressBar_4->setValue(poder2_2);
+          ui->progressBar_3->setValue(poder1_2);
+
+      }
+      if(poder2_2==100&&poder1_2<100){
+          if(P2==0){
+              escudo_objet2->setPixmap(QPixmap(":/escudo C.png"));
+          }
+          if(P2==1){
+              escudo_objet2->setPixmap(QPixmap(":/escudo A.png"));
+          }
+          if(P2==2){
+              escudo_objet2->setPixmap(QPixmap(":/escudo E.png"));
+          }
+          escudo_objet2->get_carro()->set_px(lacr->get_carro()->get_px());
+          escudo_objet2->get_carro()->set_py(lacr->get_carro()->get_py()-5);
+          scene->addItem(escudo_objet2);
+          escudo2=true;
+          escudo_objet2->posicion(v_limit);
+          timer_escudo->start(50);
+          conta_escudo2=0;
+          poder1_1=0;
+          poder2_1=0;
+          poder1_2=0;
+          poder2_2=0;
+          ui->progressBar_3->setValue(poder1_1);
+          ui->progressBar_6->setValue(poder1_2);
+          ui->progressBar_4->setValue(poder2_1);
+          ui->progressBar_5->setValue(poder2_2);
+      }
 
    }
 
@@ -702,23 +842,37 @@ void iniciar_juego::grav()
  }
 
  if(lacr->get_carro()->get_py()<200&&u==1){
-     if(p1!=1){
+     if(p1!=1&&S_lanzador==1){
          nube->get_carro()->set_px(lacr->get_carro()->get_px());
          nube->get_carro()->set_py(lacr->get_carro()->get_py());
          scene->addItem(nube);
          nube_activa=true;
          nube->posicion(v_limit);
          scene->removeItem(lacr);
-         u++;
+         u=0;
 
 
      }
+     if(P2!=1&&S_lanzador==2){
+         nube->get_carro()->set_px(lacr->get_carro()->get_px());
+         nube->get_carro()->set_py(lacr->get_carro()->get_py());
+         scene->addItem(nube);
+         nube_activa=true;
+         nube->posicion(v_limit);
+         scene->removeItem(lacr);
+         u=0;
+
+
+     }
+
      else{
          //nube->get_carro()->set_valores(500,500,100,100);
          nube->get_carro()->SetVx(10);
          nube->get_carro()->SetVy(10);
          lacr->get_carro()->set_py(200);
          lacr->get_carro()->SetVy(lacr->get_carro()->GetVy()*-1);
+         lacr->get_carro()->SetVy(lacr->get_carro()->GetVy()+incremento);
+         incremento=incremento*2;
 
 
 
@@ -731,20 +885,23 @@ void iniciar_juego::grav()
  if(lacr->get_carro()->get_px()>900||lacr->get_carro()->get_px()<10){
      lacr->get_carro()->SetVx(lacr->get_carro()->GetVx()*-1);
  }
- if(p1==1){
+ if(p1==1||P2==1){
      if(S_lanzador==1){
          if(lacr->collidesWithItem(d)){
+             u=1;
              if(eliminado==false){
                  scene->removeItem(lacr);
                  scene->addItem(nube);
                  eliminado=true;
-                 u++;
                  nube_activa=true;
+                 ui->graphicsView->setBackgroundBrush(QImage(":/droga orgins.jpg"));
+
+
              }
 
 
              nube->porro(v_limit);
-             u++;
+
 
 
          }
@@ -758,14 +915,19 @@ void iniciar_juego::grav()
                  scene->removeItem(lacr);
                  scene->addItem(nube);
                  eliminado=true;
-                 u++;
+                 u=0;
+                 nube_activa2=true;
+                 ui->graphicsView->setBackgroundBrush(QImage(":/droga orgins.jpg"));
              }
 
-             nube_activa=true;
-             //nube->porro(v_limit);
 
-             u++;
+             nube->porro(v_limit);
 
+
+
+         }
+         else if(nube_activa==true&&eliminado==true){
+             nube->porro(v_limit);
          }
      }
  }
@@ -776,6 +938,9 @@ void iniciar_juego::mov_proyectil()
 {
     if(nube_activa==true){
         conta_proyectil++;
+    }
+    if(nube_activa2==true){
+        conta_proyectil2++;
     }
 
 
@@ -805,7 +970,10 @@ void iniciar_juego::mov_proyectil()
         }
         if(p1==2){
             if(nube->collidesWithItem(d)==true&&nube_activa==true){
-               lacrimogena==true;
+               lacrimogena=true;
+            }
+            else{
+                lacrimogena=false;
             }
 
         }
@@ -844,12 +1012,53 @@ void iniciar_juego::mov_proyectil()
 
     if(conta_proyectil==200){
         scene->removeItem(nube);
+        scene->removeItem(lacr);
         conta_proyectil=0;
         nube_activa=false;
+        ui->graphicsView->setBackgroundBrush(QImage(":/5b734c53396e3_opt.jpg"));
+        u=0;
+        //lacrimogena=false;
+    }
+    if(conta_proyectil2==200){
+        scene->removeItem(nube);
+        scene->removeItem(lacr);
+        conta_proyectil=0;
+        nube_activa=false;
+        ui->graphicsView->setBackgroundBrush(QImage(":/5b734c53396e3_opt.jpg"));
         u=0;
         //lacrimogena=false;
     }
 
+}
+
+void iniciar_juego::duracion_escudo()
+{
+    if(S_lanzador==1){
+       conta_escudo++;
+    }
+    if(S_lanzador==2){
+       conta_escudo2++;
+    }
+    if(conta_escudo==200){
+        if(S_lanzador==1){
+          scene->removeItem(escudo_objet);
+        }
+
+
+        conta_escudo=0;
+        escudo=false;
+
+    }
+    if(conta_escudo2==200){
+
+        if(S_lanzador==2){
+            scene->removeItem(escudo_objet2);
+        }
+
+        conta_escudo2=0;
+        escudo2=false;
+
+    }
 }
 
 

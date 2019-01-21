@@ -33,6 +33,7 @@ private slots:
     void salto();
     void grav();
     void mov_proyectil();
+    void duracion_escudo();
 
     void on_actiongo_triggered();
 
@@ -54,24 +55,30 @@ private:
     float posi;
     int S_lanzador;
     bool nube_activa=false;
+     bool nube_activa2=false;
     bool lacrimogena=false;
     bool eliminado=false;
     int u=0;
     int tie=0;
     int Rgolpe=0;
     int conta_proyectil=0;
+    int conta_proyectil2=0;
+    int conta_escudo=0;
+    int conta_escudo2=0;
     QTimer *timer_mov;
     QTimer *timer_par;
     QTimer *timer_pel;
     QTimer *timer_salt;
     QTimer *timer_grav;
     QTimer *timer_proy;
+    QTimer *timer_escudo;
     QGraphicsScene *scene;
     grafica *c;
     grafica *d;
     grafica *lacr;
     grafica *nube;
-    grafica *porro;
+    grafica *escudo_objet;
+    grafica *escudo_objet2;
     int sp=0.0;
     char recuerdo='-';
     char recuerdo2='-';
@@ -88,7 +95,10 @@ private:
     int puntaje=0;
     int p1;
     int P2;
+    int incremento=2;
     bool bloqueo=false;
+    bool escudo=false;
+    bool escudo2=false;
 };
 
 #endif // INICIAR_JUEGO_H
