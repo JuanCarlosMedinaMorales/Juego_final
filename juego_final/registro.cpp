@@ -33,6 +33,8 @@ void Registro::on_pushButton_clicked()
         out << "partidas"<<ui->plainTextEdit_4->toPlainText()<<endl;
 
         pal=ui->label_4->text();//clave
+
+
         file.close();
         if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
             return;

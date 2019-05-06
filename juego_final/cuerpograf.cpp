@@ -49,7 +49,7 @@ grafica::grafica(QGraphicsItem* carr):QGraphicsPixmapItem(carr)
 
 void grafica::mov(int seleccion,char direccion)
 {
-    if (contador==0 && cont<4)
+    if (contador==0 && cont<2)
     {
         if(direccion=='A'||direccion=='4'){
             setPixmap(QPixmap(f.at(seleccion).at(6)));
@@ -64,7 +64,7 @@ void grafica::mov(int seleccion,char direccion)
 
         flag=0;
     }
-    else if (contador==1&& cont >4)
+    else if (contador==1&& cont >2)
     {
         if(direccion=='A'||direccion=='4'){
             setPixmap(QPixmap(f.at(seleccion).at(7)));
@@ -78,7 +78,7 @@ void grafica::mov(int seleccion,char direccion)
         }
 
     }
-    else if (contador==2&& cont >8)
+    else if (contador==2&& cont >4)
     {
         if(direccion=='A'||direccion=='4'){
             setPixmap(QPixmap(f.at(seleccion).at(8)));
@@ -92,7 +92,7 @@ void grafica::mov(int seleccion,char direccion)
 
         }
             }
-    else if (contador==3&& cont >12)
+    else if (contador==3&& cont >6)
     {
         if(direccion=='A'||direccion=='4'){
             setPixmap(QPixmap(f.at(seleccion).at(9)));
@@ -107,22 +107,23 @@ void grafica::mov(int seleccion,char direccion)
         }
 
     }
-    else if (contador==4&& cont >16)
+    else if (contador==4&& cont >8)
     {
         setPixmap(QPixmap(f.at(seleccion).at(4)));
         flag=1;
         contador=5;
     }
-    else if (contador==5&& cont >20)
+    else if (contador==5&& cont >10)
     {
         setPixmap(QPixmap(f.at(seleccion).at(5)));
         flag=1;
         contador=0;
     }
 
-    if (cont==24)cont=0;
+    if (cont==12)cont=0;
 
     cont++;
+
 
 }
 void grafica::pelea()
@@ -353,8 +354,8 @@ float grafica::get_contador()
     return contador;
 }
 
-void grafica::set_c(QString co)
-{
-    c=co;
-}
+//void grafica::set_c(QString co)
+//{
+//    c=co;
+//}
 

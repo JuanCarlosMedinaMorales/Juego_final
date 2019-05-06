@@ -54,10 +54,8 @@ void Cuerpo::CalcularPosicion()
 //    vx+=ax*0.02;
 //    u=vx;
 //    vy+=ay*0.02;
-    px+=vx*0.02+((ax*(0.02*0.02))/2);
+   px+=vx*0.02+((ax*(0.02*0.02))/2);
     py+=vy*0.02+((ay*(0.02*0.02))/2);
-
-
     if(py>-200){
         vy-=50;
 
@@ -124,4 +122,18 @@ void Cuerpo::par()
         px=px+dt;
         py=py+dt-0.2;
 
+}
+
+void Cuerpo::salto()
+{
+    if(py<=500&&altura==false){
+        py+=20;
+    }
+    else{
+        py-=20;
+        altura=true;
+    }
+    if(py==0){
+        altura=false;
+    }
 }

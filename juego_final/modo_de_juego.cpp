@@ -19,7 +19,7 @@ Modo_de_juego::~Modo_de_juego()
 void Modo_de_juego::on_pushButton_2_clicked()
 {
     close();
-    selecP *seleccion= new selecP(); seleccion->show();
+    selecP *seleccion= new selecP(0); seleccion->show();
 }
 
 void Modo_de_juego::on_pushButton_3_clicked()
@@ -30,5 +30,5 @@ void Modo_de_juego::on_pushButton_3_clicked()
 void Modo_de_juego::on_pushButton_clicked()
 {
     close();
-    selecp2 *seleccion2= new selecp2(4); seleccion2->show();
+    selecP *seleccion= new selecP(1); seleccion->show();
 }

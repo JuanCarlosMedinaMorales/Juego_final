@@ -10,13 +10,14 @@
 #include <QKeyEvent>
 #include <QFileDialog>
 #include "QList"
+#include "iniciar_sesion.h"//para heredar los atributos privados
 
 
 namespace Ui {
 class iniciar_juego;
 }
 class QMediaPlayer;
-class iniciar_juego : public QMainWindow
+class iniciar_juego : public QMainWindow//heredo los atributos privados
 {
     Q_OBJECT
 
@@ -26,6 +27,7 @@ public:
 
 private slots:
     void keyPressEvent(QKeyEvent *event);
+    void keyReleaseEvent(QKeyEvent *event);
     void on_pegar();
     void mov();
     void par();
@@ -34,7 +36,10 @@ private slots:
     void grav();
     void mov_proyectil();
     void duracion_escudo();
-
+    void movimiento_bot();
+    void poderes_bot();
+    void golpear(int peleador);
+    void mover(char movida_player);
     void on_actiongo_triggered();
 
     void on_actionstop_triggered();
@@ -48,7 +53,8 @@ private:
     QMediaPlayer *mMediaPlayer;
     int h_limit;                //longitud en X del mundo
     int v_limit;                //longitud en Y del mundo
-    int vel=1000;
+    int diferencia_dista_bot;
+    int vel=10000;
     bool i=0;
     int flag=1;
     int cont;
@@ -58,6 +64,9 @@ private:
      bool nube_activa2=false;
     bool lacrimogena=false;
     bool eliminado=false;
+    bool eliminado2=false;
+    int podeselec;
+    int ganaste=0;
     int u=0;
     int tie=0;
     int Rgolpe=0;
@@ -65,6 +74,9 @@ private:
     int conta_proyectil2=0;
     int conta_escudo=0;
     int conta_escudo2=0;
+    int seleccion_de_seleccion_de_personaje=0;
+    int tiempordesalto=0;
+
     QTimer *timer_mov;
     QTimer *timer_par;
     QTimer *timer_pel;
@@ -72,6 +84,7 @@ private:
     QTimer *timer_grav;
     QTimer *timer_proy;
     QTimer *timer_escudo;
+    QTimer *timer_jugador_auto;
     QGraphicsScene *scene;
     grafica *c;
     grafica *d;
@@ -79,7 +92,9 @@ private:
     grafica *nube;
     grafica *escudo_objet;
     grafica *escudo_objet2;
-    int sp=0.0;
+    grafica *lacr2;
+    grafica *nube2;
+    float sp=0.0;
     char recuerdo='-';
     char recuerdo2='-';
     char recor_salto='-';
@@ -96,9 +111,16 @@ private:
     int p1;
     int P2;
     int incremento=2;
+    int accion_player=0;
+    int tiempo_mov_bot=0;
     bool bloqueo=false;
     bool escudo=false;
     bool escudo2=false;
+    bool tecla_presionada_p1=false;
+    bool tecla_presionada_p2=false;
+    bool bot=false;
+    bool tiempo_de_mov=false;
+
 };
 
 #endif // INICIAR_JUEGO_H

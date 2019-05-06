@@ -41,7 +41,7 @@ public:
     ~grafica();
     float get_escala();
     float get_contador();
-    void set_c(QString co);
+    //void set_c(QString co);
 };
 #endif // CUERPOGRAF_H
 

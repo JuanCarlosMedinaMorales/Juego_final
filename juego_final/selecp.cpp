@@ -1,12 +1,14 @@
 #include "selecp.h"
 #include "ui_selecp.h"
 #include "selecp2.h"
+#include "iniciar_juego.h"
 
-selecP::selecP(QWidget *parent) :
+selecP::selecP(int seleccionJ,QWidget *parent) :
     QDialog(parent),
     ui(new Ui::selecP)
 {
     ui->setupUi(this);
+    seleccionJu=seleccionJ;
 }
 
 selecP::~selecP()
@@ -21,7 +23,13 @@ void selecP::on_pushButton_clicked()
     }
     else{
         close();
-        selecp2 *seleccion2= new selecp2(jugador); seleccion2->show();
+        if(seleccionJu==0){
+          selecp2 *seleccion2= new selecp2(jugador); seleccion2->show();
+        }
+        else{
+          iniciar_juego *juego= new iniciar_juego(jugador,4); juego->show();
+        }
+
 
     }
 

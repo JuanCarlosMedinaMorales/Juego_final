@@ -81,6 +81,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 RESOURCES += \
     resources.qrc
 
-DISTFILES += \
-    6282614902_ded28303e1_b.jpg
+DISTFILES +=
 QMAKE_CXXFLAGS += -std=gnu++11

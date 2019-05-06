@@ -38,5 +38,6 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_clicked()
 {
   Menu *MyDialog = new Menu(); MyDialog->show();
+  delete ui->label;
   close();
 }

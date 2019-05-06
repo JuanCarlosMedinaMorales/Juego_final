@@ -51,6 +51,7 @@ public:
     QProgressBar *progressBar_4;
     QProgressBar *progressBar_5;
     QProgressBar *progressBar_6;
+    QLabel *label_3;
     QMenuBar *menubar;
     QMenu *menuOpciones;
     QMenu *menuPausar;
@@ -169,6 +170,9 @@ public:
         progressBar_6->setValue(0);
         progressBar_6->setTextVisible(false);
         progressBar_6->setInvertedAppearance(true);
+        label_3 = new QLabel(centralwidget);
+        label_3->setObjectName(QStringLiteral("label_3"));
+        label_3->setGeometry(QRect(860, 170, 251, 321));
         iniciar_juego->setCentralWidget(centralwidget);
         menubar = new QMenuBar(iniciar_juego);
         menubar->setObjectName(QStringLiteral("menubar"));
@@ -206,6 +210,7 @@ public:
         pushButton->setText(QApplication::translate("iniciar_juego", "Continue", Q_NULLPTR));
         pushButton_2->setText(QApplication::translate("iniciar_juego", "Guardar", Q_NULLPTR));
         pushButton_3->setText(QApplication::translate("iniciar_juego", "Salir", Q_NULLPTR));
+        label_3->setText(QString());
         menuOpciones->setTitle(QApplication::translate("iniciar_juego", "Opciones", Q_NULLPTR));
         menuPausar->setTitle(QApplication::translate("iniciar_juego", "Pausar", Q_NULLPTR));
     } // retranslateUi

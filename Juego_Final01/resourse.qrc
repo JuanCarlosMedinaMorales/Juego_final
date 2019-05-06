@@ -1,0 +1,133 @@
+<RCC>
+    <qresource prefix="/">
+        <file>START.png</file>
+        <file>PORTADA.gif</file>
+        <file>FB_IMG_1543031202147.jpg</file>
+        <file>3ba683339f59abc.png</file>
+        <file>f956bbddf912427 (1).png</file>
+        <file>back1.png</file>
+        <file>inicioSesion.png</file>
+        <file>transparnt.png</file>
+        <file>LOGIN.png</file>
+        <file>REGISTROO.png</file>
+        <file>rebellion-wallpapers-2.jpg</file>
+        <file>button_reg.png</file>
+        <file>1865661-0 (1).png</file>
+        <file>warning.png</file>
+        <file>Riot-Wallpaper-Gallery.jpg</file>
+        <file>image.png</file>
+        <file>iconp1.png</file>
+        <file>iconp2.png</file>
+        <file>p1contro.png</file>
+        <file>p2esp1.png</file>
+        <file>arsaltV.png</file>
+        <file>arte.png</file>
+        <file>artes gas.png</file>
+        <file>artes gas2.png</file>
+        <file>artes golpeado.png</file>
+        <file>artes golpeadoV.png</file>
+        <file>artes lanzando.png</file>
+        <file>artes lanzando1.png</file>
+        <file>artes lanzando2.png</file>
+        <file>artes lanzando2V.png</file>
+        <file>artes morir 1.png</file>
+        <file>artes morir 2.png</file>
+        <file>artes morir 3s.png</file>
+        <file>artesEntero.png</file>
+        <file>caminar1.png</file>
+        <file>caminar1V.png</file>
+        <file>caminar2.png</file>
+        <file>caminar2V.png</file>
+        <file>caminar3.png</file>
+        <file>caminar3v.png</file>
+        <file>caminar4.png</file>
+        <file>caminar4v.png</file>
+        <file>caminar5.png</file>
+        <file>caminar5v.png</file>
+        <file>caminar6.png</file>
+        <file>caminar6v.png</file>
+        <file>capu_saltando1.png</file>
+        <file>capu_saltando2.png</file>
+        <file>capu_saltandoV1.png</file>
+        <file>capu_saltandoV2.png</file>
+        <file>capucho golpe.png</file>
+        <file>capucho golpe2.png</file>
+        <file>capucho golpeado.png</file>
+        <file>capucho golpeadoV.png</file>
+        <file>capucho lanzamiento1.png</file>
+        <file>capucho lanzamiento2.png</file>
+        <file>capucho lanzamiento2V.png</file>
+        <file>capucho morir 1.png</file>
+        <file>capucho morir 2.png</file>
+        <file>capucho morir 3.png</file>
+        <file>capuchoEntero.png</file>
+        <file>CCD1.png</file>
+        <file>CCD2.png</file>
+        <file>CCD3.png</file>
+        <file>CCD4.png</file>
+        <file>CCV1.png</file>
+        <file>CCV2.png</file>
+        <file>CCV3.png</file>
+        <file>CCV4.png</file>
+        <file>CCV5.png</file>
+        <file>CCV6.png</file>
+        <file>esmad golpeado.png</file>
+        <file>esmad.png</file>
+        <file>esmadC1V.png</file>
+        <file>esmadC2.png</file>
+        <file>esmadC2V.png</file>
+        <file>esmadC3.png</file>
+        <file>esmadC3V.png</file>
+        <file>esmadC4.png</file>
+        <file>esmadC4V.png</file>
+        <file>esmadC5.png</file>
+        <file>esmadC5V.png</file>
+        <file>esmadC6.png</file>
+        <file>esmadC6V.png</file>
+        <file>esmadEntero.png</file>
+        <file>esmadG.png</file>
+        <file>esmadGV.png</file>
+        <file>esmadL1.png</file>
+        <file>esmadL2.png</file>
+        <file>esmadL2V.png</file>
+        <file>esmadLV.png</file>
+        <file>esmadM1.png</file>
+        <file>esmadM2.png</file>
+        <file>esmadM3.png</file>
+        <file>esmadS1.png</file>
+        <file>esmadS1V.png</file>
+        <file>esmadS2.png</file>
+        <file>esmadS2V.png</file>
+        <file>oie_transparent.png</file>
+        <file>pegar1.png</file>
+        <file>pegar3.png</file>
+        <file>pegar4.png</file>
+        <file>pegar5.png</file>
+        <file>pegar6.png</file>
+        <file>pegar7.png</file>
+        <file>pegarV.png</file>
+        <file>saltar1.png</file>
+        <file>saltar2.png</file>
+        <file>saltar3.png</file>
+        <file>saltar4.png</file>
+        <file>saltar5.png</file>
+        <file>saltar6.png</file>
+        <file>saltar7.png</file>
+        <file>saltar8.png</file>
+        <file>smadC1.png</file>
+        <file>universidad_de_antioquia_2_0.jpg</file>
+        <file>5b734c53396e3_opt.jpg</file>
+        <file>droga orgins.jpg</file>
+        <file>escudopo.png</file>
+        <file>fantasmosn.png</file>
+        <file>fuego.png</file>
+        <file>hongo A.png</file>
+        <file>molotov C.png</file>
+        <file>nube gas.png</file>
+        <file>oie_Cgi6vpj3EWZU.jpg</file>
+        <file>oie_MULiyVysWllZ.png</file>
+        <file>oie_wjRyGB5Cadu8.png</file>
+        <file>porro.png</file>
+        <file>GameOver.png</file>
+    </qresource>
+</RCC>

@@ -4,6 +4,7 @@
 #include "QTextStream"
 #include "QString"
 #include "partidas.h"
+#include "registro.h"
 
 cargar_partidas::cargar_partidas(QString ca,QWidget *parent) :
     QDialog(parent),
@@ -11,6 +12,8 @@ cargar_partidas::cargar_partidas(QString ca,QWidget *parent) :
 {
     ui->setupUi(this);
     cla=ca;
+
+
     QFile file(ca);
        if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
            return;

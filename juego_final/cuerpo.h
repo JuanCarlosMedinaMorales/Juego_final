@@ -15,7 +15,7 @@ private:
     float vx,vy,rad,V,ax=0,ay=0,A,K,cd=0.01,p=1.225,masa=100,u;
     int angulom=0;
     int circun=20;//radio de la circunfeerencia
-
+    bool altura=false;
 
     bool rectificar=false;
 
@@ -25,6 +25,7 @@ public:
     void set_valores(float x, float y, float a, float n);
 
     void par();
+    void salto();
     float get_px();
 
     float get_py();
