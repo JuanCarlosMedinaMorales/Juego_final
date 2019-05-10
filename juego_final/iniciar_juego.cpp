@@ -915,6 +915,7 @@ void iniciar_juego::mov_proyectil()
         //scene->removeItem(lacr);
         conta_proyectil=0;
         nube_activa=false;
+        eliminado=false;
         ui->graphicsView->setBackgroundBrush(QImage(":/5b734c53396e3_opt.jpg"));
         u=0;
         timer_grav->stop();
@@ -925,6 +926,7 @@ void iniciar_juego::mov_proyectil()
         scene->removeItem(nube2);
         //scene->removeItem(lacr);
         conta_proyectil2=0;
+        eliminado2=false;
         nube_activa=false;
         ui->graphicsView->setBackgroundBrush(QImage(":/5b734c53396e3_opt.jpg"));
         u=0;

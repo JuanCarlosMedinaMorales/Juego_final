@@ -15,6 +15,7 @@
 #include "qmediaplayer.h"
 #include <QFileDialog>
 #include <time.h>
+#include <mainwindow.h>
 
 
 namespace Ui {
@@ -29,6 +30,8 @@ class iniciar_juego : public iniciar_sesion
 
 public:
     explicit iniciar_juego(int score,int jugador1,int jugador2,QWidget *parent = 0);
+    void on_actiongo_triggered();
+    void on_actionstop_triggered();
     ~iniciar_juego();
 private slots:
     void keyPressEvent(QKeyEvent *event);//indica la acccion queusa el personaje cuando se presiona una tecla
@@ -42,12 +45,20 @@ private slots:
     void mov_proyectil();
     void duracion_escudo();
     void movimiento_bot();
+    void gravedadt();
     void poderes_J(int lanzador,int poder);//contiene todas las acciones de los poderes, los parametros de entrada son el jugador que la ejecuta y el poder que quiere utilizar
     void golpear(int peleador);//en esta funcion se realiza la accion de pegar de los dos jugadores
     void mover(char movida_player);//mueve a los personajes dependiendo de la entrada que le envien, la entrada es la tecla presionada
-    void on_actiongo_triggered();
-    void on_actionstop_triggered();
 
+
+
+    void on_pushButton_5_clicked();
+
+    void on_pushButton_6_clicked();
+
+    void on_pushButton_clicked();
+
+    void on_pushButton_3_clicked();
 
 private:
     Ui::iniciar_juego *ui;
@@ -55,7 +66,7 @@ private:
     int h_limit;                //longitud en X de la escena
     int v_limit;                //longitud en Y de laescena
     int diferencia_dista_bot;//distancia entre los dos personajes
-    int vel=10000;//velocidad de los personajes
+    int vel=1000;//velocidad de los personajes
     bool i=0;
     int flag=1;//bandera usada para saber si el personaje esta en el aire
     int cont;
@@ -68,7 +79,8 @@ private:
     bool eliminado2=false;
     int podeselec;//el poder seleccionado
     int ganaste=0;//contador de el tiempo que pasa despues de la muerte de un personaje
-    int u=0;
+    int u=20;//indica la accion en la que se encuentra la granada lacrimogena
+    int u2=20;
     int tie=0;
     int Rgolpe=0;
     int conta_proyectil=0;
@@ -85,6 +97,7 @@ private:
     QTimer *timer_proy;
     QTimer *timer_escudo;// duracion y acciones de el escudo
     QTimer *timer_jugador_auto;
+    QTimer *gravedad;
     QGraphicsScene *scene;
     grafica *c;//jugador 1
     grafica *d;//jugador2
@@ -94,7 +107,8 @@ private:
     grafica *escudo_objet2;//es escudo de el segundo jugador
     grafica *lacr2;//la granada lacrimogena de el segundo jugador
     grafica *nube2;//la nube generada por la granada lacrimogena de el segundo jugador
-    float sp=0.0;
+    float sp=0.0;//la velocidad permitida para el ccambio de imagen de el primer jugador
+    float sp2=0.0;//la velocidad permitida para el cambio de imagen de el degundo jugador
     char recuerdo='-';//mustra la tecla que uso el usuario1 para saber que accion tomar
     char recuerdo2='-';//mustra la tecla que uso el usuario2 para saber que accion tomar
     char recor_salto='-';
@@ -108,12 +122,14 @@ private:
     int puntaje=0;
     int p1;//primer jugador
     int P2;
-    int incremento=2;
+    int incremento=20;// es lo que reduce en velocidad
     int accion_player=0;
     int tiempo_mov_bot=0;
     bool bloqueo=false;//bandera usada para bloquear las teclas cuando se necesite
     bool escudo=false;//avisa que el jugador uno lanzo el escudo
     bool escudo2=false;//avisa que el jugador dos lanzo el escudo
+    bool tecla_golpe1=false;//indica cuando se suelta la tecla de golpear
+    bool tecla_golpe2=false;
     bool tecla_presionada_p1=false;//indica si la tecla esta siendo presionada en ese momento
     bool tecla_presionada_p2=false;
     bool bot=false;//indica si el usuario esta jugando con un bot

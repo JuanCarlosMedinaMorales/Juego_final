@@ -42,7 +42,7 @@ void selecp2::on_pushButton_clicked()
 void selecp2::on_radioButton_clicked()
 {
     contador=0;//reestablece el contador en cero para poder ejecutar de una forma correcta la funcion
-    jugadordos=1;//jugador seleccionado
+    jugadordos=0;//jugador seleccionado
     if(mov->isActive()){//rectifica que el timer esta activo, ya que si ya esta activo se produce un error
       mov->stop();
     }
@@ -53,7 +53,7 @@ void selecp2::on_radioButton_clicked()
 void selecp2::on_radioButton_2_clicked()
 {
     contador=0;
-    jugadordos=2;
+    jugadordos=1;
     mov->stop();
     animar(jugadordos);
 }
@@ -61,7 +61,7 @@ void selecp2::on_radioButton_2_clicked()
 void selecp2::on_radioButton_3_clicked()
 {
     contador=0;
-    jugadordos=3;
+    jugadordos=2;
     mov->stop();
     animar(jugadordos);
 }
@@ -69,7 +69,7 @@ void selecp2::on_radioButton_3_clicked()
 void selecp2::labelm()
 {
     contador++;//para saber que imagen poner en un tiempo determinado
-    if(jugadordos==1){//si el jugador es 1 coloca una secuencia de imagenes correspondientes al personaje seleccionado
+    if(jugadordos==0){//si el jugador es 1 coloca una secuencia de imagenes correspondientes al personaje seleccionado
         if(contador==1){
             ui->label->setPixmap(QPixmap(":/CCV1.png"));
         }
@@ -90,7 +90,7 @@ void selecp2::labelm()
             contador=0;
         }
     }
-    if(jugadordos==2){
+    if(jugadordos==1){
         if(contador==1){
             ui->label->setPixmap(QPixmap(":/caminar1.png"));
         }
@@ -111,7 +111,7 @@ void selecp2::labelm()
             contador=0;
         }
     }
-    if(jugadordos==3){
+    if(jugadordos==2){
         if(contador==1){
             ui->label->setPixmap(QPixmap(":/esmadC1V.png"));
         }

@@ -106,6 +106,9 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/transparnt.png);</string>
+   </property>
   </widget>
   <widget class="QProgressBar" name="progressBar">
    <property name="geometry">
@@ -126,7 +129,7 @@
     <bool>false</bool>
    </property>
    <property name="orientation">
-    <enum>Qt::Vertical</enum>
+    <enum>Qt::Horizontal</enum>
    </property>
    <property name="invertedAppearance">
     <bool>false</bool>
@@ -166,8 +169,17 @@
      <height>611</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>21</width>
+     <height>611</height>
+    </size>
+   </property>
    <property name="value">
     <number>0</number>
+   </property>
+   <property name="textVisible">
+    <bool>false</bool>
    </property>
    <property name="orientation">
     <enum>Qt::Vertical</enum>
@@ -185,6 +197,9 @@
    <property name="value">
     <number>0</number>
    </property>
+   <property name="textVisible">
+    <bool>false</bool>
+   </property>
    <property name="orientation">
     <enum>Qt::Vertical</enum>
    </property>
@@ -197,6 +212,9 @@
      <width>80</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>Conectar</string>

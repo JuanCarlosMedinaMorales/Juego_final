@@ -64,19 +64,24 @@ float cuerpo::GetRad()
 void cuerpo::CalcularPosicion()
 {
     angulom=atan2(vy,vx);
-    px+=vx*0.02+((ax*(0.02*0.02))/2);//calcula la posicion en x segun la velocidad y aceleracion de el objeto
-     py+=vy*0.02+((ay*(0.02*0.02))/2);//clcula la posicionen y segun la velocidad y la aeleracion
+    px+=vx*0.02+((ax*(0.02*0.02))/2);
+     py+=vy*0.02+((ay*(0.02*0.02))/2);
+//    px+=vx*0.02+((ax*0.02)/2);//calcula la posicion en x segun la velocidad y aceleracion de el objeto
+//     py+=vy*0.02+((ay*(0.02))/2);//clcula la posicionen y segun la velocidad y la aeleracion
      if(py>-200){//si la altura exede el limite la velocidad dismnuye
          vy-=50;
 
          ax=0;
          ay=1;
      }
+     else if(py<-200){
+         py=-200;
+     }
      else{
          vy=0;
          vx=0;
          ax=0;
-         ay=1;
+         ay=0;
      }
 }
 
@@ -119,4 +124,14 @@ void cuerpo::SetRad(float r)
 void cuerpo::Setmasa(float m)
 {
     masa=m;
+}
+
+void cuerpo::setax(float Ax)
+{
+    ax=Ax;
+}
+
+void cuerpo::setay(float Ay)
+{
+    ay=Ay;
 }

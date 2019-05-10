@@ -31,13 +31,14 @@ public:
     QLineEdit *lineEdit;
     QPlainTextEdit *plainTextEdit;
     QPushButton *pushButton;
+    QLabel *label_2;
 
     void setupUi(QDialog *iniciar_sesion)
     {
         if (iniciar_sesion->objectName().isEmpty())
             iniciar_sesion->setObjectName(QStringLiteral("iniciar_sesion"));
         iniciar_sesion->resize(655, 496);
-        iniciar_sesion->setStyleSheet(QStringLiteral("border-image: url(:/inicioSesion.png);"));
+        iniciar_sesion->setStyleSheet(QStringLiteral(""));
         checkBox = new QCheckBox(iniciar_sesion);
         checkBox->setObjectName(QStringLiteral("checkBox"));
         checkBox->setGeometry(QRect(80, 410, 16, 16));
@@ -59,6 +60,16 @@ public:
         pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(70, 470, 91, 21));
         pushButton->setStyleSheet(QStringLiteral("border-image: url(:/transparnt.png);"));
+        label_2 = new QLabel(iniciar_sesion);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setGeometry(QRect(0, 0, 655, 496));
+        label_2->setStyleSheet(QStringLiteral("border-image: url(:/inicioSesion.png);"));
+        label_2->raise();
+        checkBox->raise();
+        label->raise();
+        lineEdit->raise();
+        plainTextEdit->raise();
+        pushButton->raise();
 
         retranslateUi(iniciar_sesion);
 
@@ -71,6 +82,7 @@ public:
         checkBox->setText(QString());
         label->setText(QApplication::translate("iniciar_sesion", "Error en contrase\303\261a \303\263 usuario", Q_NULLPTR));
         pushButton->setText(QString());
+        label_2->setText(QString());
     } // retranslateUi
 
 };

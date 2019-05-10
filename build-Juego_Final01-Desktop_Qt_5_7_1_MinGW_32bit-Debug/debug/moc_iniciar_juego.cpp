@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_iniciar_juego_t {
-    QByteArrayData data[24];
-    char stringdata0[249];
+    QByteArrayData data[27];
+    char stringdata0[307];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -44,24 +44,28 @@ QT_MOC_LITERAL(11, 91, 4), // "grav"
 QT_MOC_LITERAL(12, 96, 13), // "mov_proyectil"
 QT_MOC_LITERAL(13, 110, 15), // "duracion_escudo"
 QT_MOC_LITERAL(14, 126, 14), // "movimiento_bot"
-QT_MOC_LITERAL(15, 141, 9), // "poderes_J"
-QT_MOC_LITERAL(16, 151, 8), // "lanzador"
-QT_MOC_LITERAL(17, 160, 5), // "poder"
-QT_MOC_LITERAL(18, 166, 7), // "golpear"
-QT_MOC_LITERAL(19, 174, 8), // "peleador"
-QT_MOC_LITERAL(20, 183, 5), // "mover"
-QT_MOC_LITERAL(21, 189, 13), // "movida_player"
-QT_MOC_LITERAL(22, 203, 21), // "on_actiongo_triggered"
-QT_MOC_LITERAL(23, 225, 23) // "on_actionstop_triggered"
+QT_MOC_LITERAL(15, 141, 9), // "gravedadt"
+QT_MOC_LITERAL(16, 151, 9), // "poderes_J"
+QT_MOC_LITERAL(17, 161, 8), // "lanzador"
+QT_MOC_LITERAL(18, 170, 5), // "poder"
+QT_MOC_LITERAL(19, 176, 7), // "golpear"
+QT_MOC_LITERAL(20, 184, 8), // "peleador"
+QT_MOC_LITERAL(21, 193, 5), // "mover"
+QT_MOC_LITERAL(22, 199, 13), // "movida_player"
+QT_MOC_LITERAL(23, 213, 23), // "on_pushButton_5_clicked"
+QT_MOC_LITERAL(24, 237, 23), // "on_pushButton_6_clicked"
+QT_MOC_LITERAL(25, 261, 21), // "on_pushButton_clicked"
+QT_MOC_LITERAL(26, 283, 23) // "on_pushButton_3_clicked"
 
     },
     "iniciar_juego\0keyPressEvent\0\0QKeyEvent*\0"
     "event\0keyReleaseEvent\0on_pegar\0mov\0"
     "par\0pegar\0salto\0grav\0mov_proyectil\0"
-    "duracion_escudo\0movimiento_bot\0poderes_J\0"
-    "lanzador\0poder\0golpear\0peleador\0mover\0"
-    "movida_player\0on_actiongo_triggered\0"
-    "on_actionstop_triggered"
+    "duracion_escudo\0movimiento_bot\0gravedadt\0"
+    "poderes_J\0lanzador\0poder\0golpear\0"
+    "peleador\0mover\0movida_player\0"
+    "on_pushButton_5_clicked\0on_pushButton_6_clicked\0"
+    "on_pushButton_clicked\0on_pushButton_3_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -71,7 +75,7 @@ static const uint qt_meta_data_iniciar_juego[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      16,   14, // methods
+      19,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -79,22 +83,25 @@ static const uint qt_meta_data_iniciar_juego[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,   94,    2, 0x08 /* Private */,
-       5,    1,   97,    2, 0x08 /* Private */,
-       6,    0,  100,    2, 0x08 /* Private */,
-       7,    0,  101,    2, 0x08 /* Private */,
-       8,    0,  102,    2, 0x08 /* Private */,
-       9,    0,  103,    2, 0x08 /* Private */,
-      10,    0,  104,    2, 0x08 /* Private */,
-      11,    0,  105,    2, 0x08 /* Private */,
-      12,    0,  106,    2, 0x08 /* Private */,
-      13,    0,  107,    2, 0x08 /* Private */,
-      14,    0,  108,    2, 0x08 /* Private */,
-      15,    2,  109,    2, 0x08 /* Private */,
-      18,    1,  114,    2, 0x08 /* Private */,
-      20,    1,  117,    2, 0x08 /* Private */,
-      22,    0,  120,    2, 0x08 /* Private */,
-      23,    0,  121,    2, 0x08 /* Private */,
+       1,    1,  109,    2, 0x08 /* Private */,
+       5,    1,  112,    2, 0x08 /* Private */,
+       6,    0,  115,    2, 0x08 /* Private */,
+       7,    0,  116,    2, 0x08 /* Private */,
+       8,    0,  117,    2, 0x08 /* Private */,
+       9,    0,  118,    2, 0x08 /* Private */,
+      10,    0,  119,    2, 0x08 /* Private */,
+      11,    0,  120,    2, 0x08 /* Private */,
+      12,    0,  121,    2, 0x08 /* Private */,
+      13,    0,  122,    2, 0x08 /* Private */,
+      14,    0,  123,    2, 0x08 /* Private */,
+      15,    0,  124,    2, 0x08 /* Private */,
+      16,    2,  125,    2, 0x08 /* Private */,
+      19,    1,  130,    2, 0x08 /* Private */,
+      21,    1,  133,    2, 0x08 /* Private */,
+      23,    0,  136,    2, 0x08 /* Private */,
+      24,    0,  137,    2, 0x08 /* Private */,
+      25,    0,  138,    2, 0x08 /* Private */,
+      26,    0,  139,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
@@ -108,9 +115,12 @@ static const uint qt_meta_data_iniciar_juego[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int, QMetaType::Int,   16,   17,
-    QMetaType::Void, QMetaType::Int,   19,
-    QMetaType::Void, QMetaType::Char,   21,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int,   17,   18,
+    QMetaType::Void, QMetaType::Int,   20,
+    QMetaType::Void, QMetaType::Char,   22,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -134,11 +144,14 @@ void iniciar_juego::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 8: _t->mov_proyectil(); break;
         case 9: _t->duracion_escudo(); break;
         case 10: _t->movimiento_bot(); break;
-        case 11: _t->poderes_J((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 12: _t->golpear((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 13: _t->mover((*reinterpret_cast< char(*)>(_a[1]))); break;
-        case 14: _t->on_actiongo_triggered(); break;
-        case 15: _t->on_actionstop_triggered(); break;
+        case 11: _t->gravedadt(); break;
+        case 12: _t->poderes_J((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 13: _t->golpear((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 14: _t->mover((*reinterpret_cast< char(*)>(_a[1]))); break;
+        case 15: _t->on_pushButton_5_clicked(); break;
+        case 16: _t->on_pushButton_6_clicked(); break;
+        case 17: _t->on_pushButton_clicked(); break;
+        case 18: _t->on_pushButton_3_clicked(); break;
         default: ;
         }
     }
@@ -169,13 +182,13 @@ int iniciar_juego::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 16)
+        if (_id < 19)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 16;
+        _id -= 19;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 16)
+        if (_id < 19)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 16;
+        _id -= 19;
     }
     return _id;
 }
