@@ -15,7 +15,7 @@ class selecp : public QDialog
     Q_OBJECT
 
 public:
-    explicit selecp(int seleccion_j,QWidget *parent = nullptr);
+    explicit selecp(QString C,int seleccion_j,QWidget *parent = nullptr);
     ~selecp();
     void animar(int opcion);
 
@@ -38,6 +38,7 @@ private:
     int seleccionJu;//Modo de juego
     QTimer *mov;
     int contador=0;
+    QString texto;
 };
 
 #endif // SELECP_H

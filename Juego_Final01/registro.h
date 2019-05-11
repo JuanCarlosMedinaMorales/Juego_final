@@ -6,7 +6,8 @@
 #include "QFile"
 #include "QTextStream"
 #include "menu.h"
-
+#include<string.h>
+using namespace std;
 namespace Ui {
 class registro;
 }
@@ -28,7 +29,7 @@ private slots:
 
 private:
     Ui::registro *ui;
-    QString pal;
+    string pal;
     int contador=0;
     int contador2=0;
 

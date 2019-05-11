@@ -13,7 +13,7 @@ class selecp2 : public QDialog
     Q_OBJECT
 
 public:
-    explicit selecp2(int primer_jugador,QWidget *parent = nullptr);//el constructor nesecita el numero de jugadr seleccionado por el jugador uno para iniciar el juego
+    explicit selecp2(QString C,int primer_jugador,QWidget *parent = nullptr);//el constructor nesecita el numero de jugadr seleccionado por el jugador uno para iniciar el juego
     ~selecp2();
      void animar(int opcion);
 
@@ -35,6 +35,7 @@ private:
     QTimer *mov;//timer para generar el movimiento
     int contador=0;
     int p1=0;//personaje seleccionado por jugador1
+    QString texto;
 };
 
 #endif // SELECP2_H

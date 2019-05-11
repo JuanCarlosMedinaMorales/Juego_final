@@ -24,6 +24,13 @@ private slots:
 private:
     Ui::partidas *ui;
     QString nombre_text;//nombre del archivo de texto donde se guarda la informacion
+    QString lineaC,partidaC;
+    int auxC=0;
+    int aux2C=0;
+    int contador=0;
+    int contador2=0;
+    QString nom;
+    QString cla;
 
 };
 

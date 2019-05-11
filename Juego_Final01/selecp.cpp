@@ -1,7 +1,7 @@
 #include "selecp.h"
 #include "ui_selecp.h"
 #include <modo_de_juego.h>
-selecp::selecp(int j,QWidget *parent) :
+selecp::selecp(QString C,int j,QWidget *parent) :
     QDialog(parent),
     ui(new Ui::selecp)
 {
@@ -9,7 +9,7 @@ selecp::selecp(int j,QWidget *parent) :
     seleccionJu=j;//modo de juego elegido por el usuario
     mov = new QTimer(this);//se crea el timer
     connect(mov,SIGNAL(timeout()),this,SLOT(labelm()));//se conecta el timer a la funcion que proboca el movimiento
-
+    texto=C;
 }
 
 selecp::~selecp()
@@ -121,7 +121,7 @@ void selecp::on_radioButton_3_clicked()
 
 void selecp::on_pushButton_2_clicked()
 {
-    modo_de_juego *menu=new modo_de_juego(); menu->show();//regresa a la pagina anterior
+    modo_de_juego *menu=new modo_de_juego(texto); menu->show();//regresa a la pagina anterior
     close();//cierra esta ventana
 }
 
@@ -134,11 +134,11 @@ void selecp::on_pushButton_clicked()
 
     else{
         if(seleccionJu==0){//se abre la ventana del juego
-            iniciar_juego *Game = new iniciar_juego(0,jugador,4);Game->show();
+            iniciar_juego *Game = new iniciar_juego(100,100,0,0,texto,0,jugador,4);Game->show();
             close();
         }
         else if(seleccionJu==1){//se abre la ventana de seeccionar el segundo personaje
-            selecp2 *seg_ju = new selecp2(jugador);seg_ju->show();
+            selecp2 *seg_ju = new selecp2(texto,jugador);seg_ju->show();
             close();
         }
         else{

@@ -1,16 +1,22 @@
 #include "iniciar_juego.h"
 #include "ui_iniciar_juego.h"
 #include "modo_de_juego.h"
+#include "iniciar_sesion.h"
 
 
-iniciar_juego::iniciar_juego(int score,int jugador1,int jugador2,QWidget *parent) :
+iniciar_juego::iniciar_juego(int vidapj1,int vidapj2,int poderjp1,int poderjp2,QString C,int score,int jugador1,int jugador2,QWidget *parent) :
     iniciar_sesion(parent),
     ui(new Ui::iniciar_juego)
 {
     ui->setupUi(this);
     mMediaPlayer = new QMediaPlayer(this);//se inicialza el puntero media player para poder ejecutar tanto los gifs como la musica
+    nombre_archivo_texto=C;//nombre de el archivo
     h_limit=1000;                  //el tamañode la escena en x
     v_limit=593;                   //el tamañode la escena en y
+    vida2=vidapj1;
+    vida=vidapj2;
+    poderJ1=poderjp1;
+    poderJ2=poderjp2;
     timer_mov = new QTimer(this);   //se inicializan los timers
     gravedad=new QTimer(this);
     timer_par = new QTimer(this);
@@ -37,6 +43,7 @@ iniciar_juego::iniciar_juego(int score,int jugador1,int jugador2,QWidget *parent
     ui->label_7->setVisible(false);
     ui->pushButton_5->setVisible(false);
     ui->pushButton_6->setVisible(false);
+
     if(P2!=6){
       ui->label_2->setVisible(false);
     }
@@ -78,21 +85,21 @@ iniciar_juego::iniciar_juego(int score,int jugador1,int jugador2,QWidget *parent
         if(jugador2==0||jugador2==4){// se asigna la imagen que el segundo jugador selecciono o del bot dependiendo de el nivel en que se encuentre
             d->setPixmap(QPixmap(":/CCV1.png"));
             if(jugador2==4){
-                vida=100;
+                vida=vidapj2;
                 ui->progressBar_2->setValue(vida);
             }
         }
         if(jugador2==1||jugador2==5){
             d->setPixmap(QPixmap(":/caminar1V.png"));
             if(jugador2==5){
-                vida=100;
+                vida=vidapj2;
                 ui->progressBar_2->setValue(vida);
             }
         }
         if(jugador2==2||jugador2==6){
             d->setPixmap(QPixmap(":/esmadC1V.png"));
             if(jugador2==6){
-                vida=100;
+                vida=vidapj2;
                 ui->progressBar_2->setValue(vida);
             }
         }
@@ -132,7 +139,11 @@ iniciar_juego::iniciar_juego(int score,int jugador1,int jugador2,QWidget *parent
       timer_jugador_auto->start(50);
       tiempo_de_mov=false;
     }
-
+    ui->progressBar->setValue(vida2);
+    ui->progressBar_2->setValue(vida);
+    ui->progressBar_3->setValue(poderJ1);
+    ui->progressBar_4->setValue(poderJ2);
+    ui->lcdNumber->display(puntaje);
     scene->setFocusItem(d);// se coloca el focus en un personaje
     vel=3;
     i=0;
@@ -200,11 +211,14 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
         else if(P2==2||P2==6){
             d-> setPixmap(QPixmap(":/esmadM3.png"));
         }
-        if(P2>2&&P2!=6){
-            if(ganaste==200){//si ya han pasado 200 milisegundos despues de la muerte de el jugador se inicia el siguiente nivel
+        if(P2>2){
+            if(ganaste==100){//si ya han pasado 200 milisegundos despues de la muerte de el jugador se inicia el siguiente nivel
                 P2++;// se configura otro personaje para el otro nivel
+                if(P2==7){
+                    P2=0;
+                }
                 close();//se cierra la ventana
-                iniciar_juego *juego= new iniciar_juego(puntaje,p1,P2); juego->show();//se abre el siguiente nivel
+                iniciar_juego *juego= new iniciar_juego(100,100,0,0,nombre_archivo_texto,puntaje,p1,P2); juego->show();//se abre el siguiente nivel
             }
             else{
                 ganaste++;//contabiliza el tiempo transcurrido
@@ -329,9 +343,11 @@ void iniciar_juego::keyReleaseEvent(QKeyEvent *event)//indica cuando el usuario 
     }
     if(event->key()==Qt::Key_C){
         tecla_golpe1=false;
+        c->mov(p1,recuerdo);
     }
     if(event->key()==Qt::Key_K){
         tecla_golpe2=false;
+        d->mov(P2,recuerdo2);
     }
 
 }
@@ -511,7 +527,7 @@ void iniciar_juego::grav()
     }
     if(u2==0){
       scene->addItem(lacr2);
-       u++;
+       u2++;
     }
     lacr->posicion(v_limit);//actualizalas posiciones de las granadas o proyectiles
     lacr2->posicion(v_limit);
@@ -530,16 +546,15 @@ void iniciar_juego::grav()
             nube->get_personaje()->SetVx(10);//se le da valores a x e y
             nube->get_personaje()->SetVy(10);
             lacr->get_personaje()->set_py(200);// se le da una nuva posicion a el proyectil
-            lacr->get_personaje()->SetVy(lacr->get_personaje()->GetVy()*-1);//cambia el sentido de la velocidad de el proyactil
-            if(lacr->get_personaje()->GetVy()<0){//disminulle la velocidad de el proyectil
-              lacr->get_personaje()->SetVy(lacr->get_personaje()->GetVy()-incremento);
-              lacr->get_personaje()->SetVx(lacr->get_personaje()->GetVx()+-incremento);
+            lacr->get_personaje()->SetVy(lacr->get_personaje()->GetVy()+incremento);
+            if(lacr->get_personaje()->GetVx()<0){//disminulle la velocidad de el proyectil
+              lacr->get_personaje()->SetVx(lacr->get_personaje()->GetVx()+incremento);
             }
-            else if(lacr->get_personaje()->GetVy()==0){}
+            else if(lacr->get_personaje()->GetVx()==0){}
             else{
-                lacr->get_personaje()->SetVy(lacr->get_personaje()->GetVy()+incremento);
-                lacr->get_personaje()->SetVx(lacr->get_personaje()->GetVx()+incremento);
+                lacr->get_personaje()->SetVx(lacr->get_personaje()->GetVx()-incremento);
             }
+            lacr->get_personaje()->SetVy(lacr->get_personaje()->GetVy()*-1);//cambia el sentido de la velocidad de el proyactil
         }
     }
     if(lacr->get_personaje()->get_px()>950||lacr->get_personaje()->get_px()<0){//cambia la velocidad con respecto a x cuando el proyectil llega al limite de la escena
@@ -560,14 +575,15 @@ void iniciar_juego::grav()
             nube2->get_personaje()->SetVx(10);//se le da valores a x e y
             nube2->get_personaje()->SetVy(10);
             lacr2->get_personaje()->set_py(200);// se le da una nuva posicion a el proyectil
-            lacr2->get_personaje()->SetVy(lacr2->get_personaje()->GetVy()*-1);//cambia el sentido de la velocidad de el proyactil
-            if(lacr2->get_personaje()->GetVy()<0){//disminulle la velocidad de el proyectil
-              lacr2->get_personaje()->SetVy(lacr2->get_personaje()->GetVy()+incremento);
+            lacr2->get_personaje()->SetVy(lacr2->get_personaje()->GetVy()+incremento);
+            if(lacr2->get_personaje()->GetVx()<0){//disminulle la velocidad de el proyectil
+              lacr2->get_personaje()->SetVx(lacr2->get_personaje()->GetVx()+incremento);
             }
-            else if(lacr2->get_personaje()->GetVy()==0){}
+            else if(lacr2->get_personaje()->GetVx()==0){}
             else{
-                lacr2->get_personaje()->SetVy(lacr2->get_personaje()->GetVy()-incremento);
+                lacr2->get_personaje()->SetVx(lacr2->get_personaje()->GetVx()-incremento);
             }
+             lacr2->get_personaje()->SetVy(lacr2->get_personaje()->GetVy()*-1);//cambia el sentido de la velocidad de el proyactil
         }
     }
     if(lacr2->get_personaje()->get_px()>950||lacr2->get_personaje()->get_px()<0){//cambia la velocidad con respecto a x cuando el proyectil llega al limite de la escena
@@ -817,7 +833,6 @@ void iniciar_juego::movimiento_bot()
 
 void iniciar_juego::gravedadt()
 {
-    ui->lcdNumber->display(lacr->get_personaje()->GetVy());
     c->posicion(v_limit);//actualizaa las posiciones de todos los objetos en el escenario
     d->posicion(v_limit);
     lacr->posicion(v_limit);
@@ -923,7 +938,7 @@ void iniciar_juego::poderes_J(int lanzador,int poder)
                escudo=true;//se le dice al programa que el escudo esta activo
                if(timer_escudo->isActive()){}//si el timer esta encendido no lo vuelve a encender
                else{
-                   timer_escudo->start(50);//corre una funcion donde se determina la duracion de el escudo
+                   timer_escudo->start(100);//corre una funcion donde se determina la duracion de el escudo
                }
             }
 
@@ -1150,7 +1165,7 @@ void iniciar_juego::golpear(int peleador)
                 d->get_personaje()->SetVx(-200);
             }
 
-            //ui->lcdNumber->display(puntaje+50);//aumenta el puntaje de el jugador
+            ui->lcdNumber->display(puntaje+50);//aumenta el puntaje de el jugador
             puntaje+=50;
             if(timer_salt->isActive()){}//si el timer de gravedad esta desactivado se activa
             else{
@@ -1234,16 +1249,17 @@ void iniciar_juego::mover(char movida_player)
              c->get_personaje()->SetVx(0);
         }
         if(c->collidesWithItem(nube)==true&&lacrimogena==true){//la accion de el personaje al interactuar con la nube de gas
-            c->get_personaje()->SetVx(0);
-            c->get_personaje()->setax(0);
-            c->get_personaje()->set_px(c->get_personaje()->get_px()-3);//mueve el personaje a la izquierda
+            c->get_personaje()->SetVx(c->get_personaje()->GetVx()-vel);
+            //c->get_personaje()->setax(0);
+            //c->get_personaje()->set_px(c->get_personaje()->get_px()-3);//mueve el personaje a la izquierda
 //             c->get_personaje()->set_px(c->get_personaje()->get_px()-vel);
 //             c->get_personaje()->SetVx(c->get_personaje()->GetVx()-(vel/2));
         }
         else{
+            c->get_personaje()->SetVx(0);
+            c->get_personaje()->setax(0);
           c->get_personaje()->set_px(c->get_personaje()->get_px()-15);//mueve el personaje a la izquierda
-          c->get_personaje()->SetVx(0);
-          c->get_personaje()->setax(0);
+
         }
          on_actionstop_triggered();
          recuerdo='A';
@@ -1256,14 +1272,16 @@ void iniciar_juego::mover(char movida_player)
              c->get_personaje()->SetVx(0);
         }
         else if(c->collidesWithItem(nube)==true&&lacrimogena==true){
-             c->get_personaje()->SetVx(0);
-             c->get_personaje()->setax(0);
-             c->get_personaje()->set_px(c->get_personaje()->get_px()+3);
+            c->get_personaje()->SetVx(c->get_personaje()->GetVx()+vel);
+//             c->get_personaje()->SetVx(0);
+//             c->get_personaje()->setax(0);
+//             c->get_personaje()->set_px(c->get_personaje()->get_px()+3);
         }
         else{
+            c->get_personaje()->SetVx(0);
+            c->get_personaje()->setax(0);
           c->get_personaje()->set_px(c->get_personaje()->get_px()+15);
-          c->get_personaje()->SetVx(0);
-          c->get_personaje()->setax(0);
+
           //c->get_personaje()->SetVx(100);
           //c->get_personaje()->SetVx(c->get_personaje()->GetVx()+vel);
         }
@@ -1301,9 +1319,10 @@ void iniciar_juego::mover(char movida_player)
              d->get_personaje()->SetVx(0);
         }
         else if(d->collidesWithItem(nube)==true&&lacrimogena==true){
-            d->get_personaje()->SetVx(1);
-            d->get_personaje()->setax(0);
-            d->get_personaje()->set_px(d->get_personaje()->get_px()-3);
+            d->get_personaje()->SetVx(d->get_personaje()->GetVx()-vel);//coeficiente de friccion
+//            d->get_personaje()->SetVx(1);
+//            d->get_personaje()->setax(0);
+//            d->get_personaje()->set_px(d->get_personaje()->get_px()-3);
         }
         else{
             d->get_personaje()->set_px(d->get_personaje()->get_px()-15);
@@ -1371,7 +1390,8 @@ void iniciar_juego::mover(char movida_player)
         if(d->collidesWithItem(nube)==true&&lacrimogena==true){
 //             d->get_personaje()->SetVx(1);
 //             d->get_personaje()->setax(0);
-            d->get_personaje()->set_px(d->get_personaje()->get_px()+3);
+//            d->get_personaje()->set_px(d->get_personaje()->get_px()+3);
+            d->get_personaje()->SetVx(d->get_personaje()->GetVx()+vel);
         }
         else{
           d->get_personaje()->set_px(d->get_personaje()->get_px()+15);
@@ -1412,10 +1432,38 @@ void iniciar_juego::on_actionstop_triggered()//detiene los timers de movimiento
     i=0;
 }
 
+void iniciar_juego::guardar()
+{
+    QFile file(nombre_archivo_texto);
+       if (!file.open(QIODevice::ReadOnly | QIODevice::Text))//se abre el .txt donde se guarda el usuario y la contraseña en modo de lectura
+           return;
+
+       QTextStream in(&file);
+
+       while (!in.atEnd()) {//Recorre el .txt
+              linea = in.readLine();
+              partida+=linea+"\n";
+              QString vidaA,vidaB,Per1,Per2,Poder1,Poder2,score;
+
+              if(aux==3){
+                  QFile file1(linea);
+
+                      if ((!file1.open((QIODevice::WriteOnly  | QIODevice::Text))
+                          ))
+                          return;
+                      QTextStream out1(&file1);
+                      out1 <<vida2<<endl<<vida<<endl<<p1<<endl<<P2<<endl<<poderJ1<<endl<<poderJ2<<endl<<puntaje<<endl;//ingresa los valores por defecto que tiene el archivo de guardado
+              }
+              aux++;
+
+          }
+       file.close();
+}
+
 void iniciar_juego::on_pushButton_5_clicked()
 {
     close();//se cierra la ventana
-    modo_de_juego *menu = new modo_de_juego();menu->show();//abre el menu
+    modo_de_juego *menu = new modo_de_juego(nombre_archivo_texto);menu->show();//abre el menu
 }
 
 void iniciar_juego::on_pushButton_6_clicked()
@@ -1435,4 +1483,9 @@ void iniciar_juego::on_pushButton_clicked()//quita la pausa para poder seguir ju
 void iniciar_juego::on_pushButton_3_clicked()
 {
     close();
+}
+
+void iniciar_juego::on_pushButton_2_clicked()//guardar
+{
+    guardar();
 }

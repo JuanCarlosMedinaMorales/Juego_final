@@ -252,6 +252,7 @@ debug/qrc_resourse.cpp: ../Juego_Final01/resourse.qrc \
 		../Juego_Final01/esmadEntero.png \
 		../Juego_Final01/esmadS2V.png \
 		../Juego_Final01/esmadS1.png \
+		../Juego_Final01/payaso.png \
 		../Juego_Final01/pegar1.png \
 		../Juego_Final01/3ba683339f59abc.png \
 		../Juego_Final01/saltar3.png \
@@ -773,6 +774,11 @@ debug/moc_iniciar_juego.cpp: ../../../../qt/5.7/mingw53_32/include/QtWidgets/QDi
 		../../../../qt/5.7/mingw53_32/include/QtCore/qmetaobject.h \
 		../../../../qt/5.7/mingw53_32/include/QtMultimedia/qaudio.h \
 		../../../../qt/5.7/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
+		../Juego_Final01/mainwindow.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/QMainWindow \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qmainwindow.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qtabwidget.h \
+		../../../../qt/5.7/mingw53_32/include/QtGui/qicon.h \
 		../Juego_Final01/iniciar_juego.h \
 		../../../../qt/5.7/mingw53_32/bin/moc.exe
 	C:\UDEA\qt\5.7\mingw53_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/UDEA/qt/5.7/mingw53_32/mkspecs/win32-g++ -I"C:/UDEA/final/practca 6/Nueva carpeta/Juego_Final01" -IC:/UDEA/qt/5.7/mingw53_32/include -IC:/UDEA/qt/5.7/mingw53_32/include/QtWidgets -IC:/UDEA/qt/5.7/mingw53_32/include/QtMultimedia -IC:/UDEA/qt/5.7/mingw53_32/include/QtGui -IC:/UDEA/qt/5.7/mingw53_32/include/QtANGLE -IC:/UDEA/qt/5.7/mingw53_32/include/QtNetwork -IC:/UDEA/qt/5.7/mingw53_32/include/QtCore -I. -IC:/UDEA/qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/UDEA/qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/UDEA/qt/Tools/mingw530_32/i686-w64-mingw32/include -IC:/UDEA/qt/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/UDEA/qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/UDEA/qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\Juego_Final01\iniciar_juego.h -o debug\moc_iniciar_juego.cpp
@@ -1240,6 +1246,11 @@ debug/moc_modo_de_juego.cpp: ../../../../qt/5.7/mingw53_32/include/QtWidgets/QDi
 		../../../../qt/5.7/mingw53_32/include/QtCore/qmetaobject.h \
 		../../../../qt/5.7/mingw53_32/include/QtMultimedia/qaudio.h \
 		../../../../qt/5.7/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
+		../Juego_Final01/mainwindow.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/QMainWindow \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qmainwindow.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qtabwidget.h \
+		../../../../qt/5.7/mingw53_32/include/QtGui/qicon.h \
 		../Juego_Final01/instrucciones.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/QWidget \
 		../Juego_Final01/modo_de_juego.h \
@@ -1609,6 +1620,11 @@ debug/moc_selecp.cpp: ../../../../qt/5.7/mingw53_32/include/QtWidgets/QDialog \
 		../../../../qt/5.7/mingw53_32/include/QtCore/qmetaobject.h \
 		../../../../qt/5.7/mingw53_32/include/QtMultimedia/qaudio.h \
 		../../../../qt/5.7/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
+		../Juego_Final01/mainwindow.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/QMainWindow \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qmainwindow.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qtabwidget.h \
+		../../../../qt/5.7/mingw53_32/include/QtGui/qicon.h \
 		../Juego_Final01/selecp.h \
 		../../../../qt/5.7/mingw53_32/bin/moc.exe
 	C:\UDEA\qt\5.7\mingw53_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/UDEA/qt/5.7/mingw53_32/mkspecs/win32-g++ -I"C:/UDEA/final/practca 6/Nueva carpeta/Juego_Final01" -IC:/UDEA/qt/5.7/mingw53_32/include -IC:/UDEA/qt/5.7/mingw53_32/include/QtWidgets -IC:/UDEA/qt/5.7/mingw53_32/include/QtMultimedia -IC:/UDEA/qt/5.7/mingw53_32/include/QtGui -IC:/UDEA/qt/5.7/mingw53_32/include/QtANGLE -IC:/UDEA/qt/5.7/mingw53_32/include/QtNetwork -IC:/UDEA/qt/5.7/mingw53_32/include/QtCore -I. -IC:/UDEA/qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/UDEA/qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/UDEA/qt/Tools/mingw530_32/i686-w64-mingw32/include -IC:/UDEA/qt/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/UDEA/qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/UDEA/qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\Juego_Final01\selecp.h -o debug\moc_selecp.cpp
@@ -2585,10 +2601,14 @@ debug/iniciar_juego.o: ../Juego_Final01/iniciar_juego.cpp ../Juego_Final01/inici
 		../../../../qt/5.7/mingw53_32/include/QtCore/qmetaobject.h \
 		../../../../qt/5.7/mingw53_32/include/QtMultimedia/qaudio.h \
 		../../../../qt/5.7/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
+		../Juego_Final01/mainwindow.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/QMainWindow \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qmainwindow.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qtabwidget.h \
+		../../../../qt/5.7/mingw53_32/include/QtGui/qicon.h \
 		ui_iniciar_juego.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/QAction \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qaction.h \
-		../../../../qt/5.7/mingw53_32/include/QtGui/qicon.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qactiongroup.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/QApplication \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qapplication.h \
@@ -2616,7 +2636,6 @@ debug/iniciar_juego.o: ../Juego_Final01/iniciar_juego.cpp ../Juego_Final01/inici
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qabstractslider.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qstyle.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qtabbar.h \
-		../../../../qt/5.7/mingw53_32/include/QtWidgets/qtabwidget.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qrubberband.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/QLCDNumber \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qlcdnumber.h \
@@ -2626,7 +2645,13 @@ debug/iniciar_juego.o: ../Juego_Final01/iniciar_juego.cpp ../Juego_Final01/inici
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qprogressbar.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/QPushButton \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qpushbutton.h \
-		../../../../qt/5.7/mingw53_32/include/QtWidgets/qabstractbutton.h
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qabstractbutton.h \
+		../Juego_Final01/modo_de_juego.h \
+		../../../../qt/5.7/mingw53_32/include/QtCore/QPoint \
+		../Juego_Final01/selecp.h \
+		../Juego_Final01/selecp2.h \
+		../Juego_Final01/instrucciones.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\iniciar_juego.o ..\Juego_Final01\iniciar_juego.cpp
 
 debug/iniciar_sesion.o: ../Juego_Final01/iniciar_sesion.cpp ../Juego_Final01/iniciar_sesion.h \
@@ -3211,12 +3236,16 @@ debug/modo_de_juego.o: ../Juego_Final01/modo_de_juego.cpp ../Juego_Final01/modo_
 		../../../../qt/5.7/mingw53_32/include/QtCore/qmetaobject.h \
 		../../../../qt/5.7/mingw53_32/include/QtMultimedia/qaudio.h \
 		../../../../qt/5.7/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
+		../Juego_Final01/mainwindow.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/QMainWindow \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qmainwindow.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qtabwidget.h \
+		../../../../qt/5.7/mingw53_32/include/QtGui/qicon.h \
 		../Juego_Final01/instrucciones.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/QWidget \
 		ui_modo_de_juego.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/QAction \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qaction.h \
-		../../../../qt/5.7/mingw53_32/include/QtGui/qicon.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qactiongroup.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/QApplication \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qapplication.h \
@@ -3241,7 +3270,6 @@ debug/modo_de_juego.o: ../Juego_Final01/modo_de_juego.cpp ../Juego_Final01/modo_
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qabstractslider.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qstyle.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qtabbar.h \
-		../../../../qt/5.7/mingw53_32/include/QtWidgets/qtabwidget.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qrubberband.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/QLabel \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qlabel.h \
@@ -3439,6 +3467,9 @@ debug/partidas.o: ../Juego_Final01/partidas.cpp ../Juego_Final01/partidas.h \
 		../../../../qt/5.7/mingw53_32/include/QtCore/qmetaobject.h \
 		../../../../qt/5.7/mingw53_32/include/QtMultimedia/qaudio.h \
 		../../../../qt/5.7/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
+		../Juego_Final01/mainwindow.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/QMainWindow \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qmainwindow.h \
 		../Juego_Final01/instrucciones.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\partidas.o ..\Juego_Final01\partidas.cpp
@@ -3754,10 +3785,14 @@ debug/selecp.o: ../Juego_Final01/selecp.cpp ../Juego_Final01/selecp.h \
 		../../../../qt/5.7/mingw53_32/include/QtCore/qmetaobject.h \
 		../../../../qt/5.7/mingw53_32/include/QtMultimedia/qaudio.h \
 		../../../../qt/5.7/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
+		../Juego_Final01/mainwindow.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/QMainWindow \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qmainwindow.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qtabwidget.h \
+		../../../../qt/5.7/mingw53_32/include/QtGui/qicon.h \
 		ui_selecp.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/QAction \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qaction.h \
-		../../../../qt/5.7/mingw53_32/include/QtGui/qicon.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qactiongroup.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/QApplication \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qapplication.h \
@@ -3782,7 +3817,6 @@ debug/selecp.o: ../Juego_Final01/selecp.cpp ../Juego_Final01/selecp.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qabstractslider.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qstyle.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qtabbar.h \
-		../../../../qt/5.7/mingw53_32/include/QtWidgets/qtabwidget.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qrubberband.h \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/QLabel \
 		../../../../qt/5.7/mingw53_32/include/QtWidgets/qlabel.h \
@@ -3985,6 +4019,9 @@ debug/selecp2.o: ../Juego_Final01/selecp2.cpp ../Juego_Final01/selecp2.h \
 		../../../../qt/5.7/mingw53_32/include/QtCore/qmetaobject.h \
 		../../../../qt/5.7/mingw53_32/include/QtMultimedia/qaudio.h \
 		../../../../qt/5.7/mingw53_32/include/QtNetwork/qnetworkconfiguration.h \
+		../Juego_Final01/mainwindow.h \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/QMainWindow \
+		../../../../qt/5.7/mingw53_32/include/QtWidgets/qmainwindow.h \
 		../Juego_Final01/modo_de_juego.h \
 		../../../../qt/5.7/mingw53_32/include/QtCore/QPoint \
 		../Juego_Final01/selecp.h \

@@ -3,7 +3,7 @@
 #include "iniciar_juego.h"
 #include "modo_de_juego.h"
 
-selecp2::selecp2(int un_jugador,QWidget *parent) :
+selecp2::selecp2(QString C,int un_jugador,QWidget *parent) :
     QDialog(parent),
     ui(new Ui::selecp2)
 {
@@ -11,6 +11,7 @@ selecp2::selecp2(int un_jugador,QWidget *parent) :
     ui->setupUi(this);
     mov = new QTimer(this);//se crea el timer
     connect(mov,SIGNAL(timeout()),this,SLOT(labelm()));//se conecta el timer a la funcion que proboca el movimiento
+    texto=C;
 
 }
 
@@ -26,7 +27,7 @@ void selecp2::animar(int opcion)
 
 void selecp2::on_pushButton_2_clicked()
 {
-    modo_de_juego *menu=new modo_de_juego(); menu->show();//regresa a la pagina anterior
+    modo_de_juego *menu=new modo_de_juego(texto); menu->show();//regresa a la pagina anterior
     close();//cierra esta ventana
 }
 
@@ -34,7 +35,7 @@ void selecp2::on_pushButton_clicked()
 {
     if(jugadordos==9){}//rectifica si el usuario ya selecciono un personaje
     else{
-        iniciar_juego *Game = new iniciar_juego(0,p1,jugadordos);Game->show();
+        iniciar_juego *Game = new iniciar_juego(100,100,0,0,texto,0,p1,jugadordos);Game->show();
         close();
     }
 }

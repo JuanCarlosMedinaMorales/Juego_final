@@ -3,7 +3,7 @@
 #include <QMouseEvent>
 
 
-modo_de_juego::modo_de_juego(QWidget *parent) :
+modo_de_juego::modo_de_juego(QString C,QWidget *parent) :
     QDialog(parent),
     ui(new Ui::modo_de_juego)
 {
@@ -13,6 +13,7 @@ modo_de_juego::modo_de_juego(QWidget *parent) :
     timer->start(25);//Se inicia el timer
     ui->label->setVisible(false);//Se esconde las imagenes
     ui->label_2->setVisible(false);
+    texto=C;
 }
 
 modo_de_juego::~modo_de_juego()
@@ -31,13 +32,13 @@ void modo_de_juego::mouseMoveEvent(QMouseEvent *event)
 
 void modo_de_juego::on_pushButton_clicked()//un jugador
 {
-    selecp *un_j=new selecp(0); un_j->show();
+    selecp *un_j=new selecp(texto,0); un_j->show();
     close();
 }
 
 void modo_de_juego::on_pushButton_2_clicked()//Dos jugadores
 {
-    selecp *dos_j = new selecp(1);dos_j->show();
+    selecp *dos_j = new selecp(texto,1);dos_j->show();
     close();
 }
 

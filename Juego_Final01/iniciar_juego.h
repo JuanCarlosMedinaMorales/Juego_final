@@ -16,6 +16,9 @@
 #include <QFileDialog>
 #include <time.h>
 #include <mainwindow.h>
+#include <fstream>
+#include <iostream>
+using namespace std;
 
 
 namespace Ui {
@@ -29,9 +32,10 @@ class iniciar_juego : public iniciar_sesion
     Q_OBJECT
 
 public:
-    explicit iniciar_juego(int score,int jugador1,int jugador2,QWidget *parent = 0);
+    explicit iniciar_juego(int vidapj1,int vidapj2,int poderjp1,int poderjp2,QString C,int score,int jugador1,int jugador2,QWidget *parent = 0);
     void on_actiongo_triggered();
     void on_actionstop_triggered();
+    void guardar();
     ~iniciar_juego();
 private slots:
     void keyPressEvent(QKeyEvent *event);//indica la acccion queusa el personaje cuando se presiona una tecla
@@ -60,13 +64,22 @@ private slots:
 
     void on_pushButton_3_clicked();
 
+    void on_pushButton_2_clicked();
+
 private:
+
+    int aux=0;
+    QString nombre_archivo_texto;
+    QString partida;
+    QString linea;
+    QTimer* timeOs;
+
     Ui::iniciar_juego *ui;
     QMediaPlayer *mMediaPlayer;
     int h_limit;                //longitud en X de la escena
     int v_limit;                //longitud en Y de laescena
     int diferencia_dista_bot;//distancia entre los dos personajes
-    int vel=1000;//velocidad de los personajes
+    int vel=100;//velocidad de los personajes
     bool i=0;
     int flag=1;//bandera usada para saber si el personaje esta en el aire
     int cont;
@@ -122,7 +135,7 @@ private:
     int puntaje=0;
     int p1;//primer jugador
     int P2;
-    int incremento=20;// es lo que reduce en velocidad
+    int incremento=200;// es lo que reduce en velocidad
     int accion_player=0;
     int tiempo_mov_bot=0;
     bool bloqueo=false;//bandera usada para bloquear las teclas cuando se necesite

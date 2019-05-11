@@ -30,7 +30,7 @@ private:
     float py;//posicion en y
     float h=40;//altura
     float w=40;//ancho
-    float dt=0.1;//constante
+    float dt=0.02;//constante
     float vx=0,vy=0,rad,V,ax=0,ay=0,A,K,cd=0.01,p=1.225,masa=100,u;
     int angulom=0;//es el angulo de el movimiento circular de el porro lanzado por el de artes
     int circun=20;//radio de la circunferencia

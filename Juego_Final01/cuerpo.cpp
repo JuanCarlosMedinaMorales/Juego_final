@@ -61,16 +61,15 @@ float cuerpo::GetRad()
     return  rad;
 }
 
-void cuerpo::CalcularPosicion()
+void cuerpo::CalcularPosicion()//con esta ecuacion se aplica el movimiento parabolico al lanzar el proyectil
 {
     angulom=atan2(vy,vx);
-    px+=vx*0.02+((ax*(0.02*0.02))/2);
-     py+=vy*0.02+((ay*(0.02*0.02))/2);
+    px+=vx*dt+((ax*(dt*dt))/2);//0.02es delta dt
+     py+=vy*dt+((ay*(dt*dt))/2);
 //    px+=vx*0.02+((ax*0.02)/2);//calcula la posicion en x segun la velocidad y aceleracion de el objeto
 //     py+=vy*0.02+((ay*(0.02))/2);//clcula la posicionen y segun la velocidad y la aeleracion
      if(py>-200){//si la altura exede el limite la velocidad dismnuye
          vy-=50;
-
          ax=0;
          ay=1;
      }
@@ -85,7 +84,7 @@ void cuerpo::CalcularPosicion()
      }
 }
 
-void cuerpo::posicionporro()
+void cuerpo::posicionporro()//con esta ecuacion se genera el movimiento circular
 {
     rad=angulom*3.14/180;//se obtiene el radio de el movimiento circular de el porro
     px=px+circun*cos(rad);//se calcula la posicion de el porro en tiempo

@@ -18,7 +18,7 @@ class modo_de_juego : public QDialog
     Q_OBJECT
 
 public:
-    explicit modo_de_juego(QWidget *parent = nullptr);
+    explicit modo_de_juego(QString C,QWidget *parent = nullptr);
     ~modo_de_juego();
     void mouseMoveEvent(QMouseEvent *event);
 
@@ -31,6 +31,7 @@ private slots:
     void acr();
 private:
     Ui::modo_de_juego *ui;
+    QString texto;
     int posx;//posicion de el cursor en x
     int posy;//posicion de el cursor en y
     QTimer *timer;//rectifica la posicion del cursor y muestra las imagenes
