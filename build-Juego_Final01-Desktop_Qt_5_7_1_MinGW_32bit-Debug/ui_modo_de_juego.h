@@ -39,15 +39,19 @@ public:
         pushButton = new QPushButton(modo_de_juego);
         pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(400, 0, 131, 111));
+        pushButton->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton->setStyleSheet(QLatin1String("border-image: url(:/iconp1.png);\n"
 ""));
         pushButton_2 = new QPushButton(modo_de_juego);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
         pushButton_2->setGeometry(QRect(400, 110, 141, 111));
+        pushButton_2->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton_2->setStyleSheet(QStringLiteral("border-image: url(:/iconp2.png);"));
         pushButton_3 = new QPushButton(modo_de_juego);
         pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
-        pushButton_3->setGeometry(QRect(370, 290, 181, 61));
+        pushButton_3->setGeometry(QRect(400, 270, 141, 51));
+        pushButton_3->setCursor(QCursor(Qt::PointingHandCursor));
+        pushButton_3->setStyleSheet(QStringLiteral("border-image: url(:/5ec3a229d482e70.png);"));
         label = new QLabel(modo_de_juego);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(160, 50, 211, 161));
@@ -59,6 +63,7 @@ public:
         pushButton_4 = new QPushButton(modo_de_juego);
         pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
         pushButton_4->setGeometry(QRect(30, 370, 71, 51));
+        pushButton_4->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton_4->setStyleSheet(QStringLiteral("border-image: url(:/back1.png);"));
 
         retranslateUi(modo_de_juego);

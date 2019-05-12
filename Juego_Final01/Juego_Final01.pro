@@ -4,7 +4,8 @@
 #
 #-------------------------------------------------
 
-QT       += core gui widgets \
+QT       += core gui widgets\
+         serialport\
          multimedia
 
 TARGET = Juego_Final01

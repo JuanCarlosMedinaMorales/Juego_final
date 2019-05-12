@@ -60,6 +60,7 @@ public:
         pushButton_2 = new QPushButton(selecp);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
         pushButton_2->setGeometry(QRect(30, 380, 71, 51));
+        pushButton_2->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton_2->setStyleSheet(QStringLiteral("border-image: url(:/back1.png);"));
         pushButton_2->setFlat(false);
         label = new QLabel(selecp);

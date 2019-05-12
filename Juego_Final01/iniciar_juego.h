@@ -18,6 +18,11 @@
 #include <mainwindow.h>
 #include <fstream>
 #include <iostream>
+#include <QtSerialPort/QSerialPort>
+#include <QtSerialPort/QSerialPortInfo>
+#include <QtDebug>
+#include <QTextStream>
+
 using namespace std;
 
 
@@ -46,6 +51,7 @@ private slots:
     void pegar();
     void salto();
     void grav();
+    void joy();//control
     void mov_proyectil();
     void duracion_escudo();
     void movimiento_bot();
@@ -54,17 +60,17 @@ private slots:
     void golpear(int peleador);//en esta funcion se realiza la accion de pegar de los dos jugadores
     void mover(char movida_player);//mueve a los personajes dependiendo de la entrada que le envien, la entrada es la tecla presionada
 
-
-
     void on_pushButton_5_clicked();
 
     void on_pushButton_6_clicked();
 
-    void on_pushButton_clicked();
-
     void on_pushButton_3_clicked();
 
     void on_pushButton_2_clicked();
+
+    void on_pushButton_7_clicked();
+
+    void on_pushButton_4_clicked();
 
 private:
 
@@ -102,6 +108,7 @@ private:
     int conta_escudo2=0;
     int seleccion_de_seleccion_de_personaje=0;
     int tiempordesalto=0;
+    QSerialPort *control;
     QTimer *timer_mov;
     QTimer *timer_par;
     QTimer *timer_pel;
@@ -111,6 +118,7 @@ private:
     QTimer *timer_escudo;// duracion y acciones de el escudo
     QTimer *timer_jugador_auto;
     QTimer *gravedad;
+    QTimer *timer_control;
     QGraphicsScene *scene;
     grafica *c;//jugador 1
     grafica *d;//jugador2
@@ -147,6 +155,7 @@ private:
     bool tecla_presionada_p2=false;
     bool bot=false;//indica si el usuario esta jugando con un bot
     bool tiempo_de_mov=false;
+    bool control_activo=false;
 };
 
 #endif // INICIAR_JUEGO_H

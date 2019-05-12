@@ -29,7 +29,6 @@ public:
     QGraphicsView *graphicsView;
     QLabel *label;
     QLabel *label_2;
-    QPushButton *pushButton;
     QPushButton *pushButton_2;
     QPushButton *pushButton_3;
     QLCDNumber *lcdNumber;
@@ -45,6 +44,9 @@ public:
     QLabel *label_7;
     QPushButton *pushButton_5;
     QPushButton *pushButton_6;
+    QPushButton *pushButton_7;
+    QLabel *label_8;
+    QLabel *label_9;
 
     void setupUi(QDialog *iniciar_juego)
     {
@@ -62,10 +64,6 @@ public:
         label_2 = new QLabel(iniciar_juego);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setGeometry(QRect(880, 380, 241, 211));
-        pushButton = new QPushButton(iniciar_juego);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(500, 210, 121, 41));
-        pushButton->setLayoutDirection(Qt::RightToLeft);
         pushButton_2 = new QPushButton(iniciar_juego);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
         pushButton_2->setGeometry(QRect(500, 250, 121, 41));
@@ -128,6 +126,7 @@ public:
         label_7 = new QLabel(iniciar_juego);
         label_7->setObjectName(QStringLiteral("label_7"));
         label_7->setGeometry(QRect(0, 0, 1136, 700));
+        label_7->setCursor(QCursor(Qt::ForbiddenCursor));
         label_7->setStyleSheet(QStringLiteral("border-image: url(:/GameOver.png);"));
         pushButton_5 = new QPushButton(iniciar_juego);
         pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
@@ -135,6 +134,38 @@ public:
         pushButton_6 = new QPushButton(iniciar_juego);
         pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
         pushButton_6->setGeometry(QRect(630, 450, 111, 51));
+        pushButton_7 = new QPushButton(iniciar_juego);
+        pushButton_7->setObjectName(QStringLiteral("pushButton_7"));
+        pushButton_7->setGeometry(QRect(500, 210, 121, 41));
+        label_8 = new QLabel(iniciar_juego);
+        label_8->setObjectName(QStringLiteral("label_8"));
+        label_8->setGeometry(QRect(0, 0, 1136, 700));
+        label_8->setStyleSheet(QStringLiteral("border-image: url(:/ganador.png);"));
+        label_9 = new QLabel(iniciar_juego);
+        label_9->setObjectName(QStringLiteral("label_9"));
+        label_9->setGeometry(QRect(0, 0, 1136, 700));
+        label_9->setStyleSheet(QStringLiteral("border-image: url(:/ready.png);"));
+        graphicsView->raise();
+        label->raise();
+        label_2->raise();
+        pushButton_3->raise();
+        lcdNumber->raise();
+        progressBar->raise();
+        progressBar_2->raise();
+        progressBar_3->raise();
+        progressBar_4->raise();
+        pushButton_4->raise();
+        label_3->raise();
+        label_4->raise();
+        label_5->raise();
+        label_6->raise();
+        label_7->raise();
+        pushButton_5->raise();
+        pushButton_6->raise();
+        pushButton_2->raise();
+        pushButton_7->raise();
+        label_8->raise();
+        label_9->raise();
 
         retranslateUi(iniciar_juego);
 
@@ -146,7 +177,6 @@ public:
         iniciar_juego->setWindowTitle(QApplication::translate("iniciar_juego", "Dialog", Q_NULLPTR));
         label->setText(QString());
         label_2->setText(QString());
-        pushButton->setText(QApplication::translate("iniciar_juego", "Continue", Q_NULLPTR));
         pushButton_2->setText(QApplication::translate("iniciar_juego", "Guardar", Q_NULLPTR));
         pushButton_3->setText(QApplication::translate("iniciar_juego", "Salir", Q_NULLPTR));
         pushButton_4->setText(QApplication::translate("iniciar_juego", "Conectar", Q_NULLPTR));
@@ -157,6 +187,9 @@ public:
         label_7->setText(QString());
         pushButton_5->setText(QApplication::translate("iniciar_juego", "Regresar a menu", Q_NULLPTR));
         pushButton_6->setText(QApplication::translate("iniciar_juego", "Salir", Q_NULLPTR));
+        pushButton_7->setText(QApplication::translate("iniciar_juego", "Continuar", Q_NULLPTR));
+        label_8->setText(QString());
+        label_9->setText(QString());
     } // retranslateUi
 
 };

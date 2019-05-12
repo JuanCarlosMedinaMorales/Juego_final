@@ -43,15 +43,18 @@ public:
         pushButton = new QPushButton(menu);
         pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(320, 70, 181, 111));
+        pushButton->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton->setStyleSheet(QStringLiteral("border-image: url(:/LOGIN.png);"));
         pushButton_2 = new QPushButton(menu);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
         pushButton_2->setGeometry(QRect(330, 200, 171, 71));
+        pushButton_2->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton_2->setStyleSheet(QLatin1String("\n"
 "border-image: url(:/REGISTROO.png);"));
         pushButton_3 = new QPushButton(menu);
         pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
         pushButton_3->setGeometry(QRect(510, 380, 61, 51));
+        pushButton_3->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton_3->setStyleSheet(QStringLiteral("border-image: url(:/back1.png);"));
 
         retranslateUi(menu);

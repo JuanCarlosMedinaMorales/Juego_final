@@ -34,6 +34,7 @@ public:
         pushButton = new QPushButton(partidas);
         pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(30, 70, 161, 81));
+        pushButton->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton->setStyleSheet(QLatin1String("border-image: url(:/f956bbddf912427 (1).png);\n"
 "image: url(:/transparnt.png);\n"
 "background-image: url(:/transparnt.png);\n"
@@ -41,6 +42,7 @@ public:
         pushButton_2 = new QPushButton(partidas);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
         pushButton_2->setGeometry(QRect(400, 73, 161, 81));
+        pushButton_2->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton_2->setStyleSheet(QLatin1String("image: url(:/3ba683339f59abc.png);\n"
 "border-image: url(:/transparnt.png);\n"
 "background-image: url(:/transparnt.png);"));

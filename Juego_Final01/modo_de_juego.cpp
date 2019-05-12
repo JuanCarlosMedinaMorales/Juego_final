@@ -44,7 +44,7 @@ void modo_de_juego::on_pushButton_2_clicked()//Dos jugadores
 
 void modo_de_juego::on_pushButton_3_clicked()//Instrucciones
 {
-    instrucciones *teclas =new instrucciones(this);teclas->show();
+    instrucciones *teclas =new instrucciones(texto,this);teclas->show();
 }
 
 void modo_de_juego::acr()

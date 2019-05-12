@@ -101,6 +101,9 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
     <string notr="true">border-image: url(:/back1.png);</string>
    </property>

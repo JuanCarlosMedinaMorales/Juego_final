@@ -76,11 +76,13 @@ public:
         pushButton = new QPushButton(registro);
         pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(100, 350, 171, 71));
+        pushButton->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton->setStyleSheet(QLatin1String("border-image: url(:/button_reg.png);\n"
 "background-image: url(:/transparnt.png);"));
         label = new QLabel(registro);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(350, 30, 191, 101));
+        label->setCursor(QCursor(Qt::BusyCursor));
         label->setStyleSheet(QStringLiteral("border-image: url(:/1865661-0 (1).png);"));
         label_2 = new QLabel(registro);
         label_2->setObjectName(QStringLiteral("label_2"));
@@ -95,6 +97,7 @@ public:
         pushButton_2 = new QPushButton(registro);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
         pushButton_2->setGeometry(QRect(490, 380, 71, 51));
+        pushButton_2->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton_2->setStyleSheet(QLatin1String("border-image: url(:/back1.png);\n"
 "background-image: url(:/transparnt.png);"));
 

@@ -26,13 +26,15 @@ iniciar_juego::iniciar_juego(int vidapj1,int vidapj2,int poderjp1,int poderjp2,Q
     timer_proy=new QTimer(this);
     timer_escudo=new QTimer(this);
     timer_jugador_auto=new QTimer(this);
+    timer_control=new QTimer(this);
+    control=new QSerialPort(this);
     srand(time(NULL));              //se usa srand para que no se repita ningun numero aleatorio
     puntaje=score;//se atribuye el puntaje de el nivel anterior
     scene=new QGraphicsScene(this);         //crea la scene
     scene->setSceneRect(0,0,h_limit,v_limit);     //asigna el rectangulo que encierra la scene, determinado por h_limit y v_limit
     ui->graphicsView->setScene(scene);      // se le otorga la escena a el graphics view
     ui->label->setVisible(false);           //se esconde las imagenes que no se nesecitan por el momento
-    ui->pushButton->setVisible(false);
+    ui->pushButton_7->setVisible(false);
     ui->pushButton_2->setVisible(false);
     ui->pushButton_3->setVisible(false);
     ui->label_2->setPixmap(QPixmap(":/tanketa.png"));
@@ -41,6 +43,8 @@ iniciar_juego::iniciar_juego(int vidapj1,int vidapj2,int poderjp1,int poderjp2,Q
     ui->label_5->setVisible(false);
     ui->label_6->setVisible(false);
     ui->label_7->setVisible(false);
+    ui->label_9->setVisible(false);
+    ui->label_8->setVisible(false);
     ui->pushButton_5->setVisible(false);
     ui->pushButton_6->setVisible(false);
 
@@ -52,6 +56,7 @@ iniciar_juego::iniciar_juego(int vidapj1,int vidapj2,int poderjp1,int poderjp2,Q
     timer_pel->stop();
     timer_par->stop();
     timer_proy->stop();
+    connect(timer_control,SIGNAL(timeout()),this,SLOT(joy()));
     connect(gravedad,SIGNAL(timeout()),this,SLOT(gravedadt()));
     connect(timer_mov,SIGNAL(timeout()),this,SLOT(mov()));//se conectan los timers a las respectivas funciones
     connect(timer_pel,SIGNAL(timeout()),this,SLOT(pegar()));//
@@ -148,6 +153,7 @@ iniciar_juego::iniciar_juego(int vidapj1,int vidapj2,int poderjp1,int poderjp2,Q
     vel=3;
     i=0;
     gravedad->start(50);
+    timer_control->start(20);
 
 }
 
@@ -175,84 +181,28 @@ iniciar_juego::~iniciar_juego()// se eliminan todos los punteros
 
 void iniciar_juego::keyPressEvent(QKeyEvent *event)
 {
-
-    if(vida2<=0){//si la vida de el primer personaje es menor a cero el programa coloca la imagen de el personaje muerto y bloque todas las teclas
-        if(p1==0){//rectifica el personaje seleccionado por el usuario
-            c-> setPixmap(QPixmap(":/capucho morir 3.png"));
-            ui->graphicsView->showMaximized();
-        }
-        else if(p1==1){
-            c-> setPixmap(QPixmap(":/artes morir 3s.png"));
-        }
-        else if(p1==2){
-            c-> setPixmap(QPixmap(":/esmadM3.png"));
-        }
-        bloqueo=true;//bloquea las acciones de las teclas
-        timer_grav->stop();//detiene todos los timers para asegurar que ya no se mueve nada
-       // timer_salt->stop();
-        timer_proy->stop();
-        ui->label_7->setVisible(true);
-        ui->pushButton_5->setVisible(true);
-        ui->pushButton_6->setVisible(true);
-//        QSize size(1114,597);//establece una escala al gif
-//        QMovie *mov=new QMovie(":/41.gif");//se le da la direccion de donde esta el gif
-//        mov->setSpeed(100000);// se le da la velocidad a ala que se reproduce el gif
-//        mov->setScaledSize(size);//pone el gif a un tamaño escala
-//        ui->label->setMovie(mov);//reproduce el gif dentro de un label
-//        mov->start();//inicia la reproduccion de el gif
-    }
-    if(vida<=0){////si la vida de el segundo personaje o del bot es menor a cero el programa coloca la imagen de el personaje muerto y bloque todas las teclas
-        if(P2==0||P2==4){
-            d-> setPixmap(QPixmap(":/capucho morir 3.png"));
-        }
-        else if(P2==1||P2==5){
-            d-> setPixmap(QPixmap(":/artes morir 3s.png"));
-        }
-        else if(P2==2||P2==6){
-            d-> setPixmap(QPixmap(":/esmadM3.png"));
-        }
-        if(P2>2){
-            if(ganaste==100){//si ya han pasado 200 milisegundos despues de la muerte de el jugador se inicia el siguiente nivel
-                P2++;// se configura otro personaje para el otro nivel
-                if(P2==7){
-                    P2=0;
-                }
-                close();//se cierra la ventana
-                iniciar_juego *juego= new iniciar_juego(100,100,0,0,nombre_archivo_texto,puntaje,p1,P2); juego->show();//se abre el siguiente nivel
-            }
-            else{
-                ganaste++;//contabiliza el tiempo transcurrido
-            }
-
-        }
-        else if(P2<=2||P2==6){//se decide quien es el ganador de la pelea en estilo de 2 jugadores y se pone la imagen de game over
-            ui->label_7->setVisible(false);
-            ui->pushButton_5->setVisible(false);
-            ui->pushButton_6->setVisible(false);
-        }
-         bloqueo=true;
-         timer_grav->stop();
-         timer_proy->stop();
-    }
     if(event->key()==Qt::Key_Y&&bloqueo==false)on_actiongo_triggered();//inicia todos los timers para crear una falsa ilusion de movimiento
     if(event->key()==Qt::Key_P&&bloqueo==false){//al presionar la tecla p se activa la bandera de bloqueo y pausa el juego
-        on_actionstop_triggered();
         bloqueo=true;
-        ui->label_2->setVisible(true);//hace visible todo lo referente al menu de pausa
-        ui->pushButton->setVisible(true);
+        ui->label->setVisible(true);//hace visible todo lo referente al menu de pausa
+        ui->pushButton_7->setVisible(true);
         ui->pushButton_2->setVisible(true);
         ui->pushButton_3->setVisible(true);
+        if(bot==true){
+          timer_jugador_auto->stop();
+        }
+        gravedad->stop();
     }
     if(event->key()==Qt::Key_F4&&bloqueo==false) close();//al presionarF4 se cierra el programa
-    if(event->key()==Qt::Key_C&&bloqueo==false){//se activan las acciones de golpe de el primer jugador si el bloqueo esta desactivado
+    if(event->key()==Qt::Key_C&&bloqueo==false&&control_activo==false){//se activan las acciones de golpe de el primer jugador si el bloqueo esta desactivado
         event->accept();//acepta el evento
         golpear(1);//llama a la funcion donde se realiza la accion de golpear
     }
-    if(event->key()==Qt::Key_K&&bloqueo==false){//se activan las acciones de golpe de el segundo jugador si el bloqueo esta desactivado
+    if(event->key()==Qt::Key_K&&bloqueo==false&&control_activo==false){//se activan las acciones de golpe de el segundo jugador si el bloqueo esta desactivado
         event->accept();
         golpear(2);
     }
-    if((event->key()== Qt::Key_D && c->get_personaje()->get_px()<950&&bloqueo==false)||(tecla_presionada_p1==true&&recuerdo=='D'&&bloqueo==false&& c->get_personaje()->get_px()<950))
+    if((event->key()== Qt::Key_D && c->get_personaje()->get_px()<950&&bloqueo==false&&control_activo==false)||(tecla_presionada_p1==true&&recuerdo=='D'&&bloqueo==false&& c->get_personaje()->get_px()<950&&control_activo==false))
     {//llama a la funcion que mueve al personaje de el primer jugador a la derecha hasta el limite de el mapa
         mover('D');//funcion donde se mueve el personaje
         if(c->get_personaje()->get_px()>950){
@@ -270,7 +220,7 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
         event->accept();
 
     }
-   if((event->key()== Qt::Key_A&& c->get_personaje()->get_px()>0 && bloqueo==false)||(tecla_presionada_p1==true&&recuerdo=='A'&& c->get_personaje()->get_px()>0&&bloqueo==false))
+   if((event->key()== Qt::Key_A&& c->get_personaje()->get_px()>0 && bloqueo==false&&control_activo==false)||(tecla_presionada_p1==true&&recuerdo=='A'&& c->get_personaje()->get_px()>0&&bloqueo==false&&control_activo==false))
     {//llama a la funcion que mueve al personaje de el primer jugador a la izquierda hasta el limite de el mapa
        if(c->get_personaje()->get_px()<0){
            c->get_personaje()->set_px(0);
@@ -278,7 +228,7 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
        mover('A');
         event->accept();
     }
-    if(event->key()== Qt::Key_W && c->get_personaje()->get_py()<200&&bloqueo==false )
+    if(event->key()== Qt::Key_W && c->get_personaje()->get_py()<200&&bloqueo==false&&control_activo==false )
     {//llama a la funcion que hace saltar a los personajes con la entrada para que solo mueva el primer jugador
 
             mover('W');
@@ -289,7 +239,7 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
             mover('8');
             event->accept();
     }
-   if(event->key()== Qt::Key_S && c->get_personaje()->get_py()>0 && flag==1&&bloqueo==false)
+   if(event->key()== Qt::Key_S && c->get_personaje()->get_py()>0 && flag==1&&bloqueo==false&&control_activo==false)
     {//llama a la funcion donde se decide poner el escudo siempre y cuando la barra de poder este mayor al 50%
         poderes_J(1,1);
         event->accept();
@@ -307,7 +257,7 @@ void iniciar_juego::keyPressEvent(QKeyEvent *event)
        poderes_J(2,1);
        event->accept();
    }
-   if (event->key()==Qt::Key_V&&bloqueo==false ){
+   if (event->key()==Qt::Key_V&&bloqueo==false&&control_activo==false ){
        //llama a la funcion donde se usa un condicional que decide usar el poder del personaje si la barra de poder esta al maximo
         poderes_J(1,2);
         event->accept();
@@ -625,6 +575,59 @@ void iniciar_juego::grav()
     }
 }
 
+void iniciar_juego::joy()
+{
+    char data;
+    if(control->isReadable()){
+        control->read(&data,1);
+        switch (data) {
+        case 'u':
+            mover('W');
+            break;
+        case 'r':
+            mover('D');
+            break;
+        case 'd':
+            poderes_J(1,1);
+            break;
+        case 'l':
+            mover('A');
+            break;
+        case 'F':
+            bloqueo=true;
+            ui->label->setVisible(true);//hace visible todo lo referente al menu de pausa
+            ui->pushButton_7->setVisible(true);
+            ui->pushButton_2->setVisible(true);
+            ui->pushButton_3->setVisible(true);
+            if(bot==true){
+              timer_jugador_auto->stop();
+            }
+            gravedad->stop();
+            break;
+        case 'A':
+            poderes_J(1,2);
+            break;
+        case 'C':
+            poderes_J(1,2);
+            break;
+        case 'D':
+            golpear(1);
+            break;
+        case 'B':
+            golpear(1);
+            break;
+        case 'N':
+            break;
+        default:
+            break;
+        }
+        qDebug()<<'response'<<data;
+    }
+    else{
+        qDebug()<<'Time out';
+    }
+}
+
 void iniciar_juego::mov_proyectil()//comportamiento de el personaje cuando colisiona con la nube o proyectil
 {
     if(nube_activa==true){//si la nube esta activa empieza a contabilozar el tiempo transcurrido
@@ -713,7 +716,9 @@ void iniciar_juego::mov_proyectil()//comportamiento de el personaje cuando colis
         conta_proyectil=0;//reinicia el temporizador
         nube_activa=false;//indica que la nube fue eliminada
         eliminado=false;//indica que ya se puede lanzar otro proyectil
-        ui->graphicsView->setBackgroundBrush(QImage(":/5b734c53396e3_opt.jpg"));//regresa el fondo a la normalidad
+        if(p1==1){
+          ui->graphicsView->setBackgroundBrush(QImage(":/5b734c53396e3_opt.jpg"));//regresa el fondo a la normalidad
+        }
         u=20;
         timer_grav->stop();
         timer_proy->stop();
@@ -726,7 +731,9 @@ void iniciar_juego::mov_proyectil()//comportamiento de el personaje cuando colis
         conta_proyectil2=0;
         eliminado2=false;
         nube_activa2=false;
-        ui->graphicsView->setBackgroundBrush(QImage(":/5b734c53396e3_opt.jpg"));
+        if(P2==1||P2==5){
+          ui->graphicsView->setBackgroundBrush(QImage(":/5b734c53396e3_opt.jpg"));
+        }
         u=20;
         timer_grav->stop();
         timer_proy->stop();
@@ -833,12 +840,137 @@ void iniciar_juego::movimiento_bot()
 
 void iniciar_juego::gravedadt()
 {
+    if(vida2<=0){//si la vida de el primer personaje es menor a cero el programa coloca la imagen de el personaje muerto y bloque todas las teclas
+        if(p1==0){//rectifica el personaje seleccionado por el usuario
+            c-> setPixmap(QPixmap(":/capucho morir 3.png"));
+            ui->graphicsView->showMaximized();
+        }
+        else if(p1==1){
+            c-> setPixmap(QPixmap(":/artes morir 3s.png"));
+        }
+        else if(p1==2){
+            c-> setPixmap(QPixmap(":/esmadM3.png"));
+        }
+        bloqueo=true;//bloquea las acciones de las teclas
+        timer_grav->stop();//detiene todos los timers para asegurar que ya no se mueve nada
+       // timer_salt->stop();
+        timer_proy->stop();
+        ui->label_7->setVisible(true);
+        ui->pushButton_5->setVisible(true);
+        ui->pushButton_6->setVisible(true);
+//        QSize size(1114,597);//establece una escala al gif
+//        QMovie *mov=new QMovie(":/41.gif");//se le da la direccion de donde esta el gif
+//        mov->setSpeed(100000);// se le da la velocidad a ala que se reproduce el gif
+//        mov->setScaledSize(size);//pone el gif a un tamaño escala
+//        ui->label->setMovie(mov);//reproduce el gif dentro de un label
+//        mov->start();//inicia la reproduccion de el gif
+    }
+    if(vida<=0){////si la vida de el segundo personaje o del bot es menor a cero el programa coloca la imagen de el personaje muerto y bloque todas las teclas
+        if(P2==0||P2==4){
+            d-> setPixmap(QPixmap(":/capucho morir 3.png"));
+        }
+        else if(P2==1||P2==5){
+            d-> setPixmap(QPixmap(":/artes morir 3s.png"));
+        }
+        else if(P2==2||P2==6){
+            d-> setPixmap(QPixmap(":/esmadM3.png"));
+        }
+        if(P2>2){
+
+                ui->label_9->setVisible(true);
+            if(ganaste==100){//si ya han pasado 200 milisegundos despues de la muerte de el jugador se inicia el siguiente nivel
+                P2++;// se configura otro personaje para el otro nivel
+                ui->label_9->setVisible(false);
+                ui->label_8->setVisible(true);
+                if(P2==7){
+                    P2=4;
+                }
+                close();//se cierra la ventana
+                iniciar_juego *juego= new iniciar_juego(100,100,0,0,nombre_archivo_texto,puntaje,p1,P2); juego->show();//se abre el siguiente nivel
+                gravedad->stop();
+            }
+            else{
+                ganaste++;//contabiliza el tiempo transcurrido
+            }
+
+        }
+        else if(P2<=2||P2==6){//se decide quien es el ganador de la pelea en estilo de 2 jugadores y se pone la imagen de game over
+            ui->label_7->setVisible(true);
+            ui->pushButton_5->setVisible(true);
+            ui->pushButton_6->setVisible(true);
+        }
+         bloqueo=true;
+         timer_grav->stop();
+         timer_proy->stop();
+    }
+
+    if(P2==1){//verifica si el porro esta colisionando con el enemigo
+        nube->porro(v_limit);
+        if(nube2->collidesWithItem(c)==true&&nube_activa2==true){
+            ui->progressBar->setValue(vida2-20);
+            vida2-=20;
+            if(c->get_personaje()->get_px()<=d->get_personaje()->get_px()){
+                c->get_personaje()->SetVy(1000);
+                c->get_personaje()->SetVx(5000);
+            }
+            if(c->get_personaje()->get_px()>d->get_personaje()->get_px()){
+                c->get_personaje()->SetVy(1000);
+                c->get_personaje()->SetVx(-5000);
+            }
+            if(timer_salt->isActive()){}
+            else{
+              // timer_salt->start(25);
+            }
+        }
+    }
+    if(p1==1){//verifica si el porro de el primer jugador colisiona con el enemigo
+        if(nube->collidesWithItem(d)==true&&nube_activa==true){//disminuye la vida cuando el porro golpea a el personaje
+            ui->progressBar_2->setValue(vida-3);
+            vida-=3;
+            if(c->get_personaje()->get_px()<=d->get_personaje()->get_px()){//hace retroceder al jugador despues de el impacto
+                d->get_personaje()->SetVy(1000);
+                d->get_personaje()->SetVx(5000);
+            }
+            if(c->get_personaje()->get_px()>d->get_personaje()->get_px()){
+                d->get_personaje()->SetVy(1000);
+                d->get_personaje()->SetVx(-5000);
+            }
+            if(timer_salt->isActive()){}
+            else{
+             // timer_salt->start(25);
+            }
+        }
+    }
     c->posicion(v_limit);//actualizaa las posiciones de todos los objetos en el escenario
     d->posicion(v_limit);
     lacr->posicion(v_limit);
     lacr2->posicion(v_limit);
     escudo_objet->posicion(v_limit);
     escudo_objet2->posicion(v_limit);//mirar si sigue cayendo al ejecutar
+    if(poderJ1>=50){
+        ui->label_3->setVisible(true);
+    }
+    else{
+        ui->label_3->setVisible(false);
+    }
+    if(poderJ1>=100){
+        ui->label_5->setVisible(true);
+    }
+    else{
+        ui->label_5->setVisible(false);
+    }
+    if(poderJ2>=50){
+        ui->label_4->setVisible(true);
+    }
+    else{
+        ui->label_4->setVisible(false);
+    }
+    if(poderJ2>=100){
+        ui->label_6->setVisible(true);
+    }
+    else {
+        ui->label_6->setVisible(false);
+    }
     if(p1==1){
        nube->porro(v_limit);
     }
@@ -911,16 +1043,18 @@ void iniciar_juego::gravedadt()
 }
 
 void iniciar_juego::poderes_J(int lanzador,int poder)
+
 {
-    float x=400;//velocidades de los objetos lanzados en x
-    float y=1500;//velocidades de los objetos lanzados en y
+    float x=200;//velocidades de los objetos lanzados en x
+    float y=1300;//velocidades de los objetos lanzados en y
     float px1=c->get_personaje()->get_px();//se pone la posicion actual de el cuerpo
     float py1=c->get_personaje()->get_py();
     float px2=d->get_personaje()->get_px();//se pone la posicion actual de el cuerpo
-    float py2=d->get_personaje()->get_py();
+    float py2
+            =d->get_personaje()->get_py();
     if(lanzador==1){// verifica quien es el que llama a la funcion
         S_lanzador=1;
-        if(poder==1&&poderJ1>=50){//se coloca la imagen al escudo dependiendo de el personaje si la barra de poder esta por escima de 50%
+        if(poder==1&&poderJ1>49){//se coloca la imagen al escudo dependiendo de el personaje si la barra de poder esta por escima de 50%
             if(p1==0){
                 escudo_objet->setPixmap(QPixmap(":/escudo C.png"));
             }
@@ -933,8 +1067,10 @@ void iniciar_juego::poderes_J(int lanzador,int poder)
 
             escudo_objet->get_personaje()->set_px(px1);//se coloca el escudo en la posicion de el personaje
             escudo_objet->get_personaje()->set_py(py1-5);
+            cout<<1<<endl;
             if(escudo==false){
                scene->addItem(escudo_objet);//se añade a la escena el personaje
+               cout<<0<<endl;
                escudo=true;//se le dice al programa que el escudo esta activo
                if(timer_escudo->isActive()){}//si el timer esta encendido no lo vuelve a encender
                else{
@@ -1140,13 +1276,13 @@ void iniciar_juego::golpear(int peleador)
                 d-> setPixmap(QPixmap(":/esmad golpeado.png"));
             }
             if(P2==4){//disminuye la vida dependiendo de el nivel en que se encuentre
-              vida-=1;
+              vida-=20;
             }
             else if(P2==5){
-              vida-=0.5;
+              vida-=1.5;
             }
             else if(P2==6){
-              vida-=0.1;
+              vida-=1;
             }
             else{//es el porcentaje de vida que le baja en el modo de juego de 2 jugadores
               vida-=5;
@@ -1471,15 +1607,6 @@ void iniciar_juego::on_pushButton_6_clicked()
     close();//cierra la ventana
 }
 
-void iniciar_juego::on_pushButton_clicked()//quita la pausa para poder seguir jugando
-{
-    bloqueo=false;
-    ui->label->setVisible(false);
-    ui->pushButton->setVisible(false);
-    ui->pushButton_2->setVisible(false);
-    ui->pushButton_3->setVisible(false);
-}
-
 void iniciar_juego::on_pushButton_3_clicked()
 {
     close();
@@ -1488,4 +1615,45 @@ void iniciar_juego::on_pushButton_3_clicked()
 void iniciar_juego::on_pushButton_2_clicked()//guardar
 {
     guardar();
+}
+
+void iniciar_juego::on_pushButton_7_clicked()
+{
+    bloqueo=false;
+    cout<<0<<endl;
+    ui->label->setVisible(false);
+    ui->pushButton_7->setVisible(false);
+    ui->pushButton_2->setVisible(false);
+    ui->pushButton_3->setVisible(false);
+    if(bot==true){
+      timer_jugador_auto->start(50);
+    }
+    gravedad->start(50);
+}
+
+void iniciar_juego::on_pushButton_4_clicked()
+{
+    control_activo==true;
+   control->setPortName("COM7");
+   if(control->open(QIODevice::ReadWrite)){
+       if(!control->setBaudRate(QSerialPort::Baud9600)){
+           qDebug()<<control->errorString();
+       }
+       if(!control->setDataBits(QSerialPort::Data8)){
+           qDebug()<<control->errorString();
+       }
+       if(!control->setParity(QSerialPort::NoParity)){
+           qDebug()<<control->errorString();
+       }
+       if(!control->setStopBits(QSerialPort::OneStop)){
+           qDebug()<<control->errorString();
+       }
+       if(!control->setFlowControl(QSerialPort::NoFlowControl)){
+           qDebug()<<control->errorString();
+       }
+   }
+   else{
+       qDebug()<<"el puerto COM7 no se ha abierto"<<control->errorString();
+       delete ui;
+   }
 }

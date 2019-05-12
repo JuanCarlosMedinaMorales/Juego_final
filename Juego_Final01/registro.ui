@@ -135,6 +135,9 @@ color: rgb(255, 255, 255);</string>
      <height>71</height>
     </rect>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
     <string notr="true">border-image: url(:/button_reg.png);
 background-image: url(:/transparnt.png);</string>
@@ -151,6 +154,9 @@ background-image: url(:/transparnt.png);</string>
      <width>191</width>
      <height>101</height>
     </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>BusyCursor</cursorShape>
    </property>
    <property name="styleSheet">
     <string notr="true">border-image: url(:/1865661-0 (1).png);</string>
@@ -201,6 +207,9 @@ background-image: url(:/transparnt.png);</string>
      <width>71</width>
      <height>51</height>
     </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
     <string notr="true">border-image: url(:/back1.png);

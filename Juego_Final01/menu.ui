@@ -43,6 +43,9 @@ background-image: url(:/FB_IMG_1543031202147.jpg);</string>
      <height>111</height>
     </rect>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
     <string notr="true">border-image: url(:/LOGIN.png);</string>
    </property>
@@ -58,6 +61,9 @@ background-image: url(:/FB_IMG_1543031202147.jpg);</string>
      <width>171</width>
      <height>71</height>
     </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
     <string notr="true">
@@ -75,6 +81,9 @@ border-image: url(:/REGISTROO.png);</string>
      <width>61</width>
      <height>51</height>
     </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
     <string notr="true">border-image: url(:/back1.png);</string>
