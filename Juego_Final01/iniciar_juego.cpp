@@ -485,6 +485,8 @@ void iniciar_juego::grav()
         if(p1!=1){//rectifica que el personaje sea distinto a el de artes
             nube->get_personaje()->set_px(lacr->get_personaje()->get_px());//se le da la posicion de donde termino el proyetil a la nube
             nube->get_personaje()->set_py(200);
+            nube->get_personaje()->SetVx(0);
+            nube->get_personaje()->setax(0);
             scene->addItem(nube);//se añade a la escena la nube
             nube_activa=true;//rectifica si la nube ya esta en el escenario
             //nube->posicion(v_limit);//actualiza la posicion de nube
@@ -511,7 +513,7 @@ void iniciar_juego::grav()
         lacr->get_personaje()->SetVx(lacr->get_personaje()->GetVx()*-1);
     }
     if(lacr2->get_personaje()->get_py()<200&&u2==1){//si llega a cierta posicion el proyectil setransforma en otra cosa
-        if(P2!=1||P2!=4){//rectifica que el personaje sea distinto a el de artes
+        if(P2!=1||P2!=5){//rectifica que el personaje sea distinto a el de artes
             nube2->get_personaje()->set_px(lacr2->get_personaje()->get_px());//se le da la posicion de donde termino el proyetil a la nube
             nube2->get_personaje()->set_py(200);
             scene->addItem(nube2);//se añade a la escena la nube
@@ -539,7 +541,7 @@ void iniciar_juego::grav()
     if(lacr2->get_personaje()->get_px()>950||lacr2->get_personaje()->get_px()<0){//cambia la velocidad con respecto a x cuando el proyectil llega al limite de la escena
         lacr2->get_personaje()->SetVx(lacr2->get_personaje()->GetVx()*-1);
     }
-    if(p1==1||P2==1||P2==4){
+    if(p1==1||P2==1||P2==5){
         if(S_lanzador==1){
             if(lacr->collidesWithItem(d)){//accion de cuando el hongo coliciona con el otro personaje
                 u=20;
@@ -556,7 +558,7 @@ void iniciar_juego::grav()
                 nube->porro(v_limit);
             }
         }
-        if((S_lanzador==2&&P2==1)||(S_lanzador==2&&P2==4)){
+        if((S_lanzador==2&&P2==1)||(S_lanzador==2&&P2==5)){
             if(lacr2->collidesWithItem(c)){
                 if(eliminado2==false){
                     scene->removeItem(lacr2);
@@ -682,8 +684,8 @@ void iniciar_juego::mov_proyectil()//comportamiento de el personaje cuando colis
         if(P2==1){
             nube->porro(v_limit);
             if(nube2->collidesWithItem(c)==true&&nube_activa2==true){
-                ui->progressBar->setValue(vida2-20);
-                vida2-=20;
+                ui->progressBar->setValue(vida2-3);
+                vida2-=3;
                 if(c->get_personaje()->get_px()<=d->get_personaje()->get_px()){
                     c->get_personaje()->SetVy(1000);
                     c->get_personaje()->SetVx(5000);
@@ -711,6 +713,9 @@ void iniciar_juego::mov_proyectil()//comportamiento de el personaje cuando colis
     if(conta_proyectil==200){
         if(nube_activa==true){
            scene->removeItem(nube);//elimina la nube
+           nube_activa=false;
+           nube->get_personaje()->set_px(0);
+           nube->get_personaje()->set_py(0);
         }
 
         conta_proyectil=0;//reinicia el temporizador
@@ -726,6 +731,8 @@ void iniciar_juego::mov_proyectil()//comportamiento de el personaje cuando colis
     if(conta_proyectil2==200){
         if(nube_activa2==true){
            scene->removeItem(nube2);//elimina la nube
+           nube->get_personaje()->set_px(0);
+           nube->get_personaje()->set_py(0);
         }
         //scene->removeItem(nube2);
         conta_proyectil2=0;
@@ -781,10 +788,10 @@ void iniciar_juego::movimiento_bot()
             accion_player=5;
         }
         podeselec=1+rand()%2;//elige un poder aleatorio para lanzar
-        if(poderJ2>=50&&podeselec==1){//el bot lanza el escudo
+        if(poderJ2>=50&&podeselec==2){//el bot lanza el escudo
           accion_player=6;
         }
-        if(poderJ2>=100&&podeselec==2){//el bot laza un proyactil
+        if(poderJ2>=100&&podeselec==1){//el bot laza un proyactil
             accion_player=7;
         }
 
@@ -904,11 +911,11 @@ void iniciar_juego::gravedadt()
          timer_proy->stop();
     }
 
-    if(P2==1){//verifica si el porro esta colisionando con el enemigo
+    if(P2==1||P2==5){//verifica si el porro esta colisionando con el enemigo
         nube->porro(v_limit);
         if(nube2->collidesWithItem(c)==true&&nube_activa2==true){
-            ui->progressBar->setValue(vida2-20);
-            vida2-=20;
+            ui->progressBar->setValue(vida2-5);
+            vida2-=5;
             if(c->get_personaje()->get_px()<=d->get_personaje()->get_px()){
                 c->get_personaje()->SetVy(1000);
                 c->get_personaje()->SetVx(5000);
@@ -925,8 +932,8 @@ void iniciar_juego::gravedadt()
     }
     if(p1==1){//verifica si el porro de el primer jugador colisiona con el enemigo
         if(nube->collidesWithItem(d)==true&&nube_activa==true){//disminuye la vida cuando el porro golpea a el personaje
-            ui->progressBar_2->setValue(vida-3);
-            vida-=3;
+            ui->progressBar_2->setValue(vida-5);
+            vida-=5;
             if(c->get_personaje()->get_px()<=d->get_personaje()->get_px()){//hace retroceder al jugador despues de el impacto
                 d->get_personaje()->SetVy(1000);
                 d->get_personaje()->SetVx(5000);
@@ -940,6 +947,14 @@ void iniciar_juego::gravedadt()
              // timer_salt->start(25);
             }
         }
+    }
+    if (p1!=1){
+        nube->get_personaje()->SetVx(0);
+        nube->get_personaje()->setax(0);
+    }
+    if(P2!=1||P2!=5){
+        nube2->get_personaje()->SetVx(0);
+        nube2->get_personaje()->setax(0);
     }
     c->posicion(v_limit);//actualizaa las posiciones de todos los objetos en el escenario
     d->posicion(v_limit);
@@ -981,7 +996,7 @@ void iniciar_juego::gravedadt()
         nube->get_personaje()->setay(0);
         nube->posicion(v_limit);
     }
-    if(P2==1){
+    if(P2==1||P2==5){
       nube2->porro(v_limit);
     }
     else{
@@ -1090,7 +1105,7 @@ void iniciar_juego::poderes_J(int lanzador,int poder)
             }
            if(recuerdo=='A'){
                lacr->get_personaje()->SetVx(x*-1);
-               lacr->get_personaje()->SetVy(y*-1);
+               //lacr->get_personaje()->SetVy(y*-1);
            }
            u=0;
            lacr->get_personaje()->set_px(px1);//le da la posicion de a el proyectil de el personae que lo lanzo
@@ -1180,7 +1195,7 @@ void iniciar_juego::poderes_J(int lanzador,int poder)
             }
            if(recuerdo2=='A'){
                lacr2->get_personaje()->SetVx(x*-1);
-               lacr2->get_personaje()->SetVy(y*-1);
+               //lacr2->get_personaje()->SetVy(y*-1);
            }
             u2=0;
            lacr2->get_personaje()->set_px(px2);
@@ -1276,7 +1291,7 @@ void iniciar_juego::golpear(int peleador)
                 d-> setPixmap(QPixmap(":/esmad golpeado.png"));
             }
             if(P2==4){//disminuye la vida dependiendo de el nivel en que se encuentre
-              vida-=20;
+              vida-=2.0;
             }
             else if(P2==5){
               vida-=1.5;
@@ -1384,7 +1399,7 @@ void iniciar_juego::mover(char movida_player)
         if(c->collidesWithItem(escudo_objet2)==true&&escudo2==true){//accion al chocar con el escudo al intentar realizar el movimiento
              c->get_personaje()->SetVx(0);
         }
-        if(c->collidesWithItem(nube)==true&&lacrimogena==true){//la accion de el personaje al interactuar con la nube de gas
+        if(c->collidesWithItem(nube2)==true&&lacrimogena==true){//la accion de el personaje al interactuar con la nube de gas
             c->get_personaje()->SetVx(c->get_personaje()->GetVx()-vel);
             //c->get_personaje()->setax(0);
             //c->get_personaje()->set_px(c->get_personaje()->get_px()-3);//mueve el personaje a la izquierda
@@ -1407,7 +1422,7 @@ void iniciar_juego::mover(char movida_player)
         if(c->collidesWithItem(escudo_objet2)==true&&escudo2==true){
              c->get_personaje()->SetVx(0);
         }
-        else if(c->collidesWithItem(nube)==true&&lacrimogena==true){
+        else if(c->collidesWithItem(nube2)==true&&lacrimogena==true){
             c->get_personaje()->SetVx(c->get_personaje()->GetVx()+vel);
 //             c->get_personaje()->SetVx(0);
 //             c->get_personaje()->setax(0);
@@ -1531,8 +1546,8 @@ void iniciar_juego::mover(char movida_player)
         }
         else{
           d->get_personaje()->set_px(d->get_personaje()->get_px()+15);
-          c->get_personaje()->SetVx(0);
-          c->get_personaje()->setax(0);
+          d->get_personaje()->SetVx(0);
+          d->get_personaje()->setax(0);
           //d->get_personaje()->SetVx(100);
           //d->get_personaje()->SetVx(d->get_personaje()->GetVx()+vel);
         }
@@ -1631,7 +1646,7 @@ void iniciar_juego::on_pushButton_7_clicked()
     gravedad->start(50);
 }
 
-void iniciar_juego::on_pushButton_4_clicked()
+void iniciar_juego::on_pushButton_4_clicked()//control
 {
     control_activo==true;
    control->setPortName("COM7");

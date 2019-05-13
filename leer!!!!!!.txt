@@ -1,2 +1,1 @@
-En el proyecto llamado taller se encuentran los intentos y avances de el multimedia del juego, modifique,el taller dado por el tutor
-ya no eljuego casi por completo esta en juego final :v
+el proyecto finalizado es juego_Fina01

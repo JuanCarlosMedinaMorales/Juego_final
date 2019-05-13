@@ -135,5 +135,6 @@
         <file>ganador.png</file>
         <file>ready.png</file>
         <file>Blaze_Out_-_Red_Silence.mp3</file>
+        <file>sig.png</file>
     </qresource>
 </RCC>

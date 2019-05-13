@@ -118,16 +118,19 @@
    <property name="geometry">
     <rect>
      <x>450</x>
-     <y>380</y>
+     <y>340</y>
      <width>91</width>
-     <height>31</height>
+     <height>71</height>
     </rect>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
-    <string notr="true">border-image: url(:/transparnt.png);</string>
+    <string notr="true">border-image: url(:/sig.png);</string>
    </property>
    <property name="text">
-    <string>PushButton</string>
+    <string/>
    </property>
   </widget>
  </widget>

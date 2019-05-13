@@ -85,7 +85,7 @@ private:
     int h_limit;                //longitud en X de la escena
     int v_limit;                //longitud en Y de laescena
     int diferencia_dista_bot;//distancia entre los dos personajes
-    int vel=100;//velocidad de los personajes
+    int vel=500;//velocidad de los personajes
     bool i=0;
     int flag=1;//bandera usada para saber si el personaje esta en el aire
     int cont;
